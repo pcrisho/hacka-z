@@ -4,7 +4,8 @@
 
 ## 1. Dinámica Inicial y Control de Equipo
 
-- **Estado:** En progreso
+- **Estado:** En progreso — Kick-off completado (01 Set.)
+- **Equipo:** Roberto Crisóstomo (líder), Franco Chávez, Israel Manrique — ver [`docs/00-bases/equipo.md`](../docs/00-bases/equipo.md)
 - **Ofrezco:** 
 - **Busco:** 
 
