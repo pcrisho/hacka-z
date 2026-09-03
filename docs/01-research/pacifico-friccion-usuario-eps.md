@@ -1,0 +1,45 @@
+# Fricciones del usuario con EPS en Perú: momentos de la verdad y transición laboral
+
+> Research propio del equipo. Objetivo: mapear los puntos de fricción reales del usuario de EPS en Perú — dónde se rompe la confianza y dónde queda desprotegido — para contrastar contra el territorio de solución propuesto. Fecha de investigación: septiembre 2026. Enfocado en Pacífico EPS cuando hay dato específico disponible; en la industria EPS peruana en general cuando no.
+
+## 1. Fricciones operativas — los "momentos de la verdad"
+
+### 1.1 Cartas de garantía y autorizaciones
+
+Para hospitalizaciones y cirugías programadas, la EPS debe emitir una **carta de garantía** (autorización) antes de la atención, junto con la orden médica y el DNI del paciente ([Manual del Afiliado EPS Pacífico](https://scc.pj.gob.pe/wps/wcm/connect/47ea37804a7231ee8730bfd53965456a/Manual_Afiliado_EPS+(2).pdf?MOD=AJPERES)). Si el procedimiento está incluido en el PEAS (Plan Esencial de Aseguramiento en Salud) o en el plan contratado, la EPS **no puede negarlo** ([TrámitesPerú — Denuncia contra EPS](https://tramitesperu.com/susalud/denuncia-eps/)).
+
+Susalud tiene canales específicos y gratuitos para reclamar por **negación de cobertura, cobros indebidos y demoras** (línea 113 opción 7, app "Susalud Contigo", portal `sitr.susalud.gob.pe`), con investigación en 30-60 días hábiles ([TrámitesPerú — Susalud](https://tramitesperu.com/susalud/)). La existencia de un canal dedicado específicamente a "negación de cobertura" y "demora" es evidencia indirecta de que son motivos de reclamo frecuentes — pero **no encontré una fuente que confirme con una cifra o ranking oficial que las cartas de garantía sean el mayor generador de reclamos ante Susalud específicamente para Pacífico**. Esto queda como **hipótesis a validar** (por ejemplo, cruzando el portal de transparencia de Susalud o preguntándolo directamente en las entrevistas 1:1 del día 2-3 — es exactamente el tipo de detalle que un usuario real puede confirmar o desmentir en un minuto de conversación).
+
+### 1.2 "Gasto de bolsillo fantasma"
+
+La estructura de costos de un seguro de salud privado en Perú combina tres capas — **deducible** (lo que pagas antes de que el seguro cubra más), **coaseguro** (% que pagas por cada servicio) y **copago** (monto fijo por consulta/medicamento/emergencia) ([Comparabien — ¿Cuánto cuesta un seguro privado de salud?](https://comparabien.com.pe/blog-consejos/cuanto-cuesta-seguro-privado-salud-peru)). Una guía del mismo medio señala que **reembolsos, preexistencias y carencias son los tres puntos que generan la mayoría de conflictos**, y que planes "económicos" a veces tienen copagos tan altos que el usuario termina evitando atenderse ([Comparabien — Seguros de salud privados en Perú](https://comparabien.com.pe/blog-consejos/seguros-salud-privados-peru-guia-completa-y-actualizada)).
+
+Esto confirma el mecanismo detrás de la sensación de "pago un seguro caro y aun así sigo gastando": no es percepción sin base, es el diseño combinado de deducible + coaseguro + copago, que un usuario promedio no necesariamente entiende al momento de contratar (fricción de "letra chica" ya documentada en `insight-sabias-que.md`). No encontré una cifra específica de gasto de bolsillo promedio en Perú para asegurados EPS — **hipótesis a validar** en campo.
+
+## 2. El abismo de la transición laboral
+
+Este es el hallazgo más sólido y con más respaldo normativo del research:
+
+- **Ventana de 60 días.** Si un afiliado deja el empleo que lo afilió a la EPS, puede continuar como asegurado potestativo/independiente, pero debe tramitarlo **dentro de los 60 días** posteriores a dejar de trabajar para conservar la continuidad de sus tratamientos. Si no lo hace a tiempo, **pierde el derecho a la cobertura de su plan** ([APEPS — Preguntas frecuentes](https://www.apeps.org.pe/preguntas-frecuentes/)).
+- **Preexistencias sí tienen protección legal — pero con condiciones.** La Ley N° 29561 y su reglamento garantizan la continuidad de cobertura de diagnósticos preexistentes para trabajadores que cambian de plan por cambio de empleador o de EPS, y para afiliados potestativos, hijos de 18-25 años y padres, siempre que la condición esté dentro del PEAS ([RPP — Ley de cobertura de enfermedades preexistentes](https://rpp.pe/economia/economia/congreso-aprobo-ley-de-cobertura-de-enfermedades-preexistentes-noticia-1045502); [APEPS — FAQ](https://www.apeps.org.pe/preguntas-frecuentes/)).
+- **El costo sube porque desaparece el subsidio del empleador.** En el esquema corporativo, la empresa redirige hasta 2.25 puntos porcentuales del 9% que aporta a EsSalud (25% de ese aporte) hacia la EPS, sin costo adicional para el empleador. Al perder el empleo formal, ese subsidio desaparece — un seguro privado contratado como persona natural (Rímac, Pacífico, Mapfre, Sanitas) cuesta más que la misma cobertura vía planilla, precisamente porque ya no existe ese crédito ([Comparabien — Cuánto cuesta afiliarse a una EPS independiente](https://comparabien.com.pe/blog-consejos/cuanto-cuesta-afiliarse-eps-independiente-peru)).
+- **Carencia de 3 meses.** El seguro potestativo de EsSalud exige 3 aportes antes de obtener cobertura plena — es decir, incluso quien sí actúa a tiempo dentro de la ventana de 60 días atraviesa una ventana adicional de vulnerabilidad antes de estar realmente cubierto ([PerúGestiona — Seguro Potestativo EsSalud](https://perugestiona.pe/salud-sis/essalud-seguro-potestativo-costo/)).
+- **Quien nunca tuvo EPS (informal, independiente sin RUC formal) directamente no puede afiliarse a una EPS** — solo le queda EsSalud potestativo o un seguro privado individual, ambos más caros que la vía corporativa ([Comparabien — Cuánto cuesta afiliarse a una EPS independiente](https://comparabien.com.pe/blog-consejos/cuanto-cuesta-afiliarse-eps-independiente-peru)).
+
+**Por qué esto importa para la propuesta:** el momento de mayor vulnerabilidad del usuario (perder el empleo, o nunca haber tenido uno formal) es exactamente el momento en que el sistema EPS tradicional es más caro, más lento (carencia) y depende de que el propio usuario actúe a tiempo (ventana de 60 días) sin que nadie se lo recuerde activamente. Es el "abismo" real, no solo narrativo — y es distinto del "problema de acceso" genérico: es un problema de **timing y fricción administrativa** en la transición, no solo de precio. Un producto que no depende de que exista una relación laboral formal previa (como el territorio propuesto en `02-ideacion/territorios-solucion.md`) evita este abismo por diseño, en vez de intentar suavizarlo.
+
+## 3. Fuentes
+
+- [TrámitesPerú — Susalud: trámites, reclamos y consultas](https://tramitesperu.com/susalud/)
+- [TrámitesPerú — Denuncia contra EPS: negación de cobertura y cobros indebidos](https://tramitesperu.com/susalud/denuncia-eps/)
+- [Manual del Afiliado EPS Pacífico (PDF, vía Poder Judicial)](https://scc.pj.gob.pe/wps/wcm/connect/47ea37804a7231ee8730bfd53965456a/Manual_Afiliado_EPS+(2).pdf?MOD=AJPERES)
+- [Comparabien — ¿Cuánto cuesta un seguro privado de salud en Perú y cómo elegir el mejor?](https://comparabien.com.pe/blog-consejos/cuanto-cuesta-seguro-privado-salud-peru)
+- [Comparabien — Seguros de Salud Privados en Perú: Guía Completa](https://comparabien.com.pe/blog-consejos/seguros-salud-privados-peru-guia-completa-y-actualizada)
+- [Comparabien — Cuánto cuesta afiliarse a una EPS independiente en Perú](https://comparabien.com.pe/blog-consejos/cuanto-cuesta-afiliarse-eps-independiente-peru)
+- [APEPS — Preguntas frecuentes](https://www.apeps.org.pe/preguntas-frecuentes/)
+- [RPP — Congreso aprobó Ley de cobertura de enfermedades preexistentes](https://rpp.pe/economia/economia/congreso-aprobo-ley-de-cobertura-de-enfermedades-preexistentes-noticia-1045502)
+- [PerúGestiona — Seguro Potestativo EsSalud 2026: Costo por Edad y Planes](https://perugestiona.pe/salud-sis/essalud-seguro-potestativo-costo/)
+
+## 4. Nota de confiabilidad
+
+Las fuentes sobre costos y procedimientos son mayormente sitios de comparación/trámites (Comparabien, TrámitesPerú, PerúGestiona), no boletines oficiales de Susalud o Pacífico — confiables para entender el mecanismo general, pero **las cifras exactas de costos y plazos deben verificarse contra fuentes primarias** (Susalud, condicionados oficiales de Pacífico) antes de citarlas en el one-pager o el pitch, igual que se señaló para las cifras de mercado en `pacifico-seguros-research.md`.
