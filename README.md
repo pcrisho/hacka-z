@@ -20,13 +20,15 @@ Diseñar, en 3 entregables obligatorios, una propuesta de seguros/protección re
 
 ```
 docs/
+  memoria/          Contexto actual y bitácora de decisiones por sesión
   00-bases/         Bases oficiales del concurso y datos del equipo
   01-research/       Insumo oficial de Pacífico (arquetipos, insights, tendencias)
                        + research propio (Pacífico Seguros, industria comparada)
   02-ideacion/       Problem statements y territorios de solución
-  03-mvp/            Especificación y avance del prototipo
-  04-gtm/            Estrategia go-to-market
+  03-mvp/            Especificación y alcance del prototipo
+  04-gtm/            Estrategia go-to-market y modelo de negocio
   05-entregables/    One-pager y guion del video pitch (versión final)
+  06-ideas/          Notas crudas e ideas de trabajo del equipo
   PLAN-TRABAJO.md    Plan de sprint (Doble Diamante aplicado al calendario real)
                        + registro de decisiones para trazabilidad
 1-07-2026/           Notas diarias (bóveda Obsidian)

@@ -16,7 +16,7 @@
 - **Reto principal:** ¿Cómo diseñar una solución de seguros y protección altamente relevante, accesible y atractiva para la Generación Z en el Perú?
 - **Punto de partida:** Identificación, empatía y entendimiento profundo de la problemática real del usuario joven antes de proponer tecnología o producto.
 - **Propósito de Pacífico:** Proteger la felicidad y tranquilidad de las personas (no simplemente vender pólizas tradicionales). Meta país: Contribuir a que Perú sea una sociedad más protegida, informada y resiliente.
-- **Premio:** 2 equipos ganadores con pase a incubación / reconocimiento corporativo.
+- **Premio:** 1er puesto S/2,000 + merchandising/beneficios AWS; 2do puesto S/1,500 + merchandising/beneficios AWS, ambos con certificado (bases oficiales §9; corregido 03 Set. — la mención de "pase a incubación" en una versión anterior de esta nota fue un error introducido por un agente de IA al redactar, no un dato real del kick-off).
 
 ---
 

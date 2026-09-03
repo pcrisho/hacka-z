@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "docs/06-ideas/insigths.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "insigths"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/01-research/industria-seguros-comparativa.md",
+                "file": "docs/00-bases/BASES-CONCURSO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "industria-seguros-comparativa"
+              "title": "BASES-CONCURSO"
             }
           }
         ],
@@ -205,35 +205,40 @@
   },
   "active": "b7b5d0bb643a9d0a",
   "lastOpenFiles": [
-    "docs/00-bases/equipo.md",
     "README.md",
-    "docs/00-bases/equipo.md.tmp.995065.0ba22d5f1e0a",
-    "docs/PLAN-TRABAJO.md.tmp.995065.8687cd48d3fc",
-    "docs/PLAN-TRABAJO.md.tmp.995065.4c09e36aab3e",
-    "docs/01-research/industria-seguros-comparativa.md",
-    "docs/01-research/industria-seguros-comparativa.md.tmp.995065.aa3961306345",
-    "docs/01-research/pacifico-seguros-research.md",
-    "docs/01-research/pacifico-seguros-research.md.tmp.995065.1dad205f97d0",
-    "docs/00-bases/BASES-CONCURSO.md",
     "1-07-2026/INICIALIZATION.md",
-    "CLAUDE.md",
-    "CLAUDE.md.tmp.995065.cc09c1e3614d",
-    "docs/PLAN-TRABAJO.md.tmp.995065.ebce734068e2",
-    "docs/01-research/insight-arquetipos-situacionales.md",
-    "docs/01-research/insight-arquetipos-situacionales.md.tmp.995065.d9364b36e3ff",
-    "AGENTS.md.tmp.995065.b04cdc63b340",
-    "AGENTS.md",
-    "AGENTS.md.tmp.995065.cb49016e181a",
+    "AGENTS.md.tmp.168158.acd42f011f95",
+    "AGENTS.md.tmp.168158.f02a9b9faa23",
+    "AGENTS.md.tmp.168158.9539703df96f",
+    "docs/memoria/bitacora/2026-09-03.md",
+    "docs/memoria/bitacora/2026-09-03.md.tmp.168158.547018625749",
+    "docs/memoria/bitacora/2026-09-01.md",
+    "docs/memoria/bitacora/2026-09-01.md.tmp.168158.0e1f922e3423",
+    "docs/memoria/bitacora",
+    "docs/memoria/CONTEXTO-ACTUAL.md",
+    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.168158.59997e57fc42",
+    "docs/memoria",
+    "docs/02-ideacion/territorios-solucion.md.tmp.168158.8477ea3ef980",
+    "docs/PLAN-TRABAJO.md.tmp.168158.0d055551ea03",
     "docs/PLAN-TRABAJO.md",
+    "docs/03-mvp/alcance-producto.md",
+    "docs/04-gtm/modelo-negocio-y-viabilidad.md",
+    "docs/01-research/pacifico-friccion-usuario-eps.md",
+    "docs/01-research/pacifico-percepcion-eps-digital.md",
+    "docs/01-research/pacifico-microseguros-yape-red-sanna.md",
+    "docs/02-ideacion/identidad-billetera-con-proposito.md",
+    "docs/06-ideas/insigths.md",
+    "docs/02-ideacion/historias-usuario-y-validacion.md",
+    "docs/02-ideacion/territorios-solucion.md",
+    "docs/00-bases/BASES-CONCURSO.md",
+    "docs/00-bases/equipo.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "docs/01-research/industria-seguros-comparativa.md",
+    "docs/01-research/pacifico-seguros-research.md",
+    "docs/01-research/insight-arquetipos-situacionales.md",
     "docs/01-research/insight-plot-twists.md",
     "docs/01-research/insight-tendencias-mercado.md",
-    "docs/01-research/insight-sabias-que.md",
-    "docs/01-research/insight-arquetipos-oficiales.md",
-    "Documents/recomendations/PLOT-TWIST.md",
-    "Documents/recomendations/PONTE-EN-MIS-ZAPATOS.md",
-    "Documents/recomendations/QUE-ESTA-PASANDO.md",
-    "Documents/recomendations/SABIAS-QUE.md",
-    "Documents/BASES-CONCURSO.md",
-    "Documents/recomendations/RECOMENDACIONES 1 3.md"
+    "docs/01-research/insight-sabias-que.md"
   ]
 }
