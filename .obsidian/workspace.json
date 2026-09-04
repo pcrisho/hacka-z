@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/00-bases/BASES-CONCURSO.md",
+                "file": "docs/03-mvp/alcance-producto.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "BASES-CONCURSO"
+              "title": "alcance-producto"
             }
           }
         ],
@@ -98,7 +98,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 311.6328125
   },
   "right": {
     "id": "87164744cf694828",
@@ -203,43 +203,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "b7b5d0bb643a9d0a",
+  "active": "b6231cd3e70e2387",
   "lastOpenFiles": [
-    "docs/05-entregables/guion-pitch-v1.md",
-    "docs/05-entregables/guion-pitch-v1.md.tmp.168158.bfea8d70d7b3",
-    "docs/01-research/instrumento-campo.md",
-    "docs/01-research/instrumento-campo.md.tmp.168158.6e90fe0071fd",
-    "AGENTS.md",
-    "CLAUDE.md",
-    "docs/00-bases/BASES-CONCURSO.md",
-    "README.md",
-    "1-07-2026/INICIALIZATION.md",
-    "AGENTS.md.tmp.168158.acd42f011f95",
-    "AGENTS.md.tmp.168158.f02a9b9faa23",
-    "AGENTS.md.tmp.168158.9539703df96f",
-    "docs/memoria/bitacora/2026-09-03.md",
-    "docs/memoria/bitacora/2026-09-03.md.tmp.168158.547018625749",
-    "docs/memoria/bitacora/2026-09-01.md",
-    "docs/memoria/bitacora/2026-09-01.md.tmp.168158.0e1f922e3423",
-    "docs/memoria/bitacora",
-    "docs/memoria/CONTEXTO-ACTUAL.md",
-    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.168158.59997e57fc42",
-    "docs/memoria",
-    "docs/PLAN-TRABAJO.md",
-    "docs/03-mvp/alcance-producto.md",
-    "docs/04-gtm/modelo-negocio-y-viabilidad.md",
-    "docs/01-research/pacifico-friccion-usuario-eps.md",
-    "docs/01-research/pacifico-percepcion-eps-digital.md",
-    "docs/01-research/pacifico-microseguros-yape-red-sanna.md",
-    "docs/02-ideacion/identidad-billetera-con-proposito.md",
-    "docs/06-ideas/insigths.md",
-    "docs/02-ideacion/historias-usuario-y-validacion.md",
-    "docs/02-ideacion/territorios-solucion.md",
-    "docs/00-bases/equipo.md",
-    "docs/01-research/industria-seguros-comparativa.md",
+    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.5340.e43044676e89",
+    "docs/PLAN-TRABAJO.md.tmp.5340.7bf53be1d968",
+    "docs/03-mvp/alcance-producto.md.tmp.5340.464fafb64392",
+    "docs/04-gtm/modelo-negocio-y-viabilidad.md.tmp.5340.fb60aec2a545",
+    "docs/07-construccion/esquema-landing.md.tmp.5340.b40c9b6dc34e",
+    "docs/07-construccion/esquema-landing.md.tmp.5340.2b90d691fcbe",
+    "docs/05-entregables/guion-pitch-v1.md.tmp.5340.aefa1759567d",
+    "docs/05-entregables/guion-pitch-v1.md.tmp.5340.e58b827e48cb",
+    "docs/02-ideacion/territorios-solucion.md.tmp.5340.fa0c1db05eae",
+    "docs/02-ideacion/territorios-solucion.md.tmp.5340.de1f7edd3b1c",
+    "docs/02-ideacion/territorios-solucion.md.tmp.5340.c8a28c71bd60",
+    "docs/07-construccion/esquema-mvp.md",
+    "docs/07-construccion/esquema-landing.md",
+    "docs/07-construccion/design-system.md",
+    "docs/07-construccion/PRD-mvp.md",
+    "docs/07-construccion/PRD-landing.md",
+    "docs/07-construccion/README.md",
     "docs/01-research/pacifico-seguros-research.md",
+    "docs/01-research/industria-seguros-comparativa.md",
+    "docs/06-ideas/insigths.md",
+    "docs/02-ideacion/problem-statement-v1.md",
+    "docs/memoria/bitacora/2026-09-04.md",
+    "docs/02-ideacion/identidad-billetera-con-proposito.md",
+    "docs/02-ideacion/historias-usuario-y-validacion.md",
+    "docs/00-bases/MODELO-ONE-PAGER.md",
+    "docs/00-bases/LANZAMIENTO.md",
+    "docs/00-bases/BASES-CONCURSO.md",
+    "docs/00-bases/RECOMENDACIONES-PITCH.md",
+    "docs/00-bases/Pasted image 20260904000428.png",
     "docs/01-research/insight-arquetipos-situacionales.md",
+    "docs/01-research/insight-arquetipos-oficiales.md",
+    "docs/01-research/insight-sabias-que.md",
     "docs/01-research/insight-plot-twists.md",
-    "docs/01-research/insight-tendencias-mercado.md"
+    "docs/05-entregables/guion-pitch-v1.md",
+    "docs/01-research/instrumento-campo.md",
+    "AGENTS.md",
+    "CLAUDE.md"
   ]
 }

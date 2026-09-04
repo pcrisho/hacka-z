@@ -17,17 +17,29 @@ Máximo 3, no más — mismo principio que Betterfly (caminar, dormir, meditar: 
 |---|---|---|
 | Micro-ahorro semanal declarado | Aparta un monto simbólico (ej. S/5-10) y lo registra en la app | Responde directo al insight oficial de ansiedad financiera del arquetipo Estudiante/Primer Empleo |
 | Actividad física breve | Registra 15-20 min de actividad, autoreportado (no requiere wearable para el MVP) | Eje físico del "bienestar" sin exigir hardware ni integración compleja |
-| Práctica breve de bienestar mental | Confirma una sesión corta de respiración/mindfulness dentro de la app, o agenda un chequeo preventivo | Eje mental — conecta con "tranquilidad = control", el insight más citado del insumo oficial |
+| Práctica breve de bienestar mental | Confirma una sesión corta de respiración/mindfulness dentro de la app, o agenda un chequeo preventivo | Eje mental — conecta con "tranquilidad = control" y "la salud es más que no enfermarse" (los dos insights más citados del insumo oficial), y responde directo al dolor #1 declarado para el arquetipo situacional Estudiante/Primer Empleo: "burnout, crisis de salud mental" (`01-research/insight-arquetipos-situacionales.md`) |
+
+**Este es el hábito con mayor resonancia esperada (validado 04 Set., a confirmar en campo) — tratarlo como el "hábito ancla" de la narrativa, no como uno más de tres:**
+- Es el único de los tres que responde punto por punto al mismo terreno que ya ocupa Quererte Sano (contenido de bienestar sin mecanismo de earning) — por eso es el diferencial más directo y fácil de explicar frente al jurado: "lo que Quererte Sano da como contenido suelto, aquí se convierte en cobertura real".
+- Tiene una línea recta hacia la recompensa de mayor valor percibido (nivel alto = sesión real de psicología digital, `alcance-producto.md` §3) — a diferencia del hábito financiero o físico, cuyo camino a la recompensa es menos narrativo.
+- Es compatible con provincias sin adaptación: al ser 100% digital (sesión de mindfulness en app, psicología digital como recompensa), no depende de la red física de clínicas ni de la brecha Lima/provincias en penetración de seguros (45% vs. <1.5%, `01-research/pacifico-seguros-research.md`) — a diferencia de una recompensa presencial, que sí quedaría limitada a Lima.
+- **Recomendación de ejecución:** priorizarlo en el onboarding (primera pregunta/sugerencia del agente FIBO) y en el video pitch (el momento demo debe mostrar este hábito primero, no en tercer lugar) — sin cambiar la estructura de 3 hábitos co-iguales para efectos del "score" de comportamiento (`§1`), solo la narrativa y el orden de presentación.
 
 **Contenido asociado:** cápsulas cortas (no artículos largos tipo blog) ligadas directamente a completar el hábito de esa semana — no es una biblioteca general como Quererte Sano, es contenido funcional al loop, no informativo suelto.
 
-## 3. La recompensa — qué es y por qué debería funcionar (con una duda pendiente)
+## 3. La recompensa — por niveles, ligada a la espiral FIBO (decisión cerrada 04 Set.)
 
-Al alcanzar un nivel de Reserva, el usuario desbloquea algo no-monetario: en las historias ya narradas, una sesión de bienestar emocional gratuita. Es la aplicación directa del Plot Twist oficial "prohibido usar descuentos".
+Al alcanzar un nivel de Reserva, el usuario desbloquea algo no-monetario — nunca un descuento (Plot Twist oficial "prohibido usar descuentos"). Se resuelve la duda que este documento dejaba abierta con una estructura de 3 niveles, coherente con el nombre de marca (FIBO, espiral de Fibonacci — ver `02-ideacion/historias-usuario-y-validacion.md` §0):
 
-**Por qué hay evidencia a favor:** Betterfly ya demostró a escala que recompensas no-monetarias/sociales (BetterCoin → donaciones) sostienen el engagement; el insumo oficial confirma rechazo a descuentos disfrazados, no a recompensas en sí.
+| Nivel | Recompensa | Por qué |
+|---|---|---|
+| Bajo (primeros hábitos) | Contenido corto + insignia/reconocimiento social | Costo ~cero, entrega valor inmediato desde el día 0 (principio de cold-start, §5) |
+| Medio (constancia de 2-3 semanas) | 1 mes gratis de un beneficio digital tipo suscripción (mindfulness, productividad) | El insumo oficial confirma que la Gen Z valora suscripciones digitales (Spotify, Canva, Google One, IA) más que descuentos en efectivo (`01-research/insight-sabias-que.md` §5) — más escalable de simular en el MVP que coordinar sesiones reales |
+| Alto (Reserva madura) | Sesión real de bienestar emocional/psicología digital | Conserva el ancla de salud/bienestar de Pacífico como recompensa de mayor valor percibido |
 
-**Por qué no está 100% confirmado para nuestro caso:** Betterfly demuestra esto dentro de un contexto B2B2E — el usuario ya "tiene" el beneficio pagado por su empresa antes de empezar a interactuar. No está confirmado que la misma reacción positiva ocurra en frío, con alguien que no recibió nada gratis de un empleador de por medio. **Pregunta específica a agregar en las entrevistas de campo:** ¿qué tipo de recompensa se percibe como valiosa — una sesión gratuita, contenido, reconocimiento social, algo tipo donación estilo BetterCoin? No asumir que la respuesta es obvia solo porque funcionó en Chile.
+**Por qué hay evidencia a favor:** Betterfly ya demostró a escala que recompensas no-monetarias/sociales (BetterCoin → donaciones) sostienen el engagement; el insumo oficial confirma rechazo a descuentos disfrazados, no a recompensas en sí — y el nivel medio (suscripción digital) tiene respaldo directo y específico en el insight oficial, no solo en el precedente chileno.
+
+**Duda que sigue abierta, ahora acotada al nivel alto únicamente:** Betterfly demuestra el enganche por recompensa no-monetaria dentro de un contexto B2B2E (el usuario ya "tiene" el beneficio pagado por su empresa). No está confirmado que una sesión real (nivel alto) funcione igual en frío, sin empleador de por medio — el nivel medio (suscripción) mitiga este riesgo porque no depende de la misma lógica. Sigue siendo una pregunta útil para campo o para la mentoría.
 
 ## 4. Telemedicina — aclaración importante, no forma parte del gancho gratuito
 

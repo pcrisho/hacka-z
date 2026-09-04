@@ -30,7 +30,19 @@ Este es el hallazgo más sólido y con más respaldo normativo del research:
 
 **Por qué esto importa para la propuesta:** el momento de mayor vulnerabilidad del usuario (perder el empleo, o nunca haber tenido uno formal) es exactamente el momento en que el sistema EPS tradicional es más caro, más lento (carencia) y depende de que el propio usuario actúe a tiempo (ventana de 60 días) sin que nadie se lo recuerde activamente. Es el "abismo" real, no solo narrativo — y es distinto del "problema de acceso" genérico: es un problema de **timing y fricción administrativa** en la transición, no solo de precio. Un producto que no depende de que exista una relación laboral formal previa (como el territorio propuesto en `02-ideacion/territorios-solucion.md`) evita este abismo por diseño, en vez de intentar suavizarlo.
 
-## 3. Fuentes
+## 3. Historial crediticio: qué rol juega realmente (y qué no) — verificado 04 Set. 2026
+
+**Corrección importante al framing usado hasta ahora en el repo.** Varios documentos (`02-ideacion/problem-statement-v1.md`, `historias-usuario-y-validacion.md`, `05-entregables/guion-pitch-v1.md`, `territorios-solucion.md`) venían usando "sin historial crediticio" como la razón por la que el segmento no accede a un seguro de salud tradicional. Verificado contra fuentes públicas: **eso es impreciso.** El historial crediticio no es la barrera real de acceso a un seguro de salud/EPS en Perú — la barrera real, ya bien documentada en §2 de este mismo archivo, es la **informalidad laboral** (falta de planilla/RUC formal, no falta de scoring bancario).
+
+| Dónde sí importa el historial/scoring crediticio | Dónde NO importa (y es donde vive nuestro producto) |
+|---|---|
+| **Seguros vinculados a un crédito** (desgravamen de préstamos personales/vehiculares/tarjetas): solo existen si el crédito fue aprobado — sin préstamo, no hay ese seguro. Confirmado, aunque con un cambio regulatorio reciente relevante: desde la Resolución SBS N° 00890-2025 (marzo 2025), el desgravamen **dejó de ser exigible** para préstamos personales, vehiculares y tarjetas de crédito — sigue siendo obligatorio solo para crédito hipotecario ([Infobae, mar. 2025](https://www.infobae.com/peru/2025/03/12/seguro-de-desgravamen-dejara-de-ser-exigible-para-la-aprobacion-de-un-prestamo-vehicular-personal-o-con-tarjetas-de-credito/)) | **La suscripción de un seguro de salud** (Pacífico incluido) se evalúa mediante una **Declaración Jurada de Salud** — estado de salud y antecedentes médicos del solicitante/dependientes — no mediante scoring crediticio ([Solicitud de Seguro de Salud, Pacífico](https://somoscorredores.pacifico.com.pe/documents/282562/197222b5-b8bd-47ae-4ed4-183b13dffb06)) |
+| **Cartas fianza y pólizas de caución**: evaluación crediticia ante la SBS es obligatoria — pero es un producto institucional/empresarial (obras, contratos), no un seguro de persona natural ([APESEG](https://www.apeseg.org.pe/cartas-fianza-y-cauciones/); [SBS](https://www.sbs.gob.pe/noticia/detallenoticia/idnoticia/2650)) — no aplica a nuestro público objetivo | **El precio base y la cobertura** de un seguro de salud individual no cambian por el scoring bancario de la persona |
+| **Facilidades de pago** (fraccionar la prima anual con tarjeta de crédito sin intereses) y **campañas comerciales cruzadas dentro de Credicorp** (BCP↔Pacífico) — plausible dado que ambos son del mismo grupo, pero no se encontró una fuente pública que confirme el detalle exacto de esas campañas (meses gratis, descuentos por scoring) — **queda como hipótesis razonable, no confirmada**, útil para GTM pero no para citar como hecho en el pitch | |
+
+**Por qué esto importa para la propuesta:** no cambia el problema que resolvemos (la informalidad laboral sigue siendo la causa estructural real, con toda la evidencia de §2), pero sí cambia **cómo se explica correctamente frente a un jurado que trabaja en Pacífico** — decir "el seguro de salud depende de tu historial crediticio" es una afirmación que un evaluador del área técnica puede refutar en el acto. La versión precisa es: *"el seguro de salud no te pide historial crediticio, pero tampoco te llega solo si no tienes un empleador que te afilie — y aparte, cuando sí quieres acceder a beneficios cruzados dentro del ecosistema Credicorp (tasas, promociones, productos de crédito), ahí sí entra un scoring que este segmento tampoco tiene."* Esto en realidad **fortalece** el argumento de negocio de la capa de conversión (`04-gtm/modelo-negocio-y-viabilidad.md` §1, capa 3): el "score alternativo" que FIBO construye con hábitos no compite con la suscripción médica (que nunca dependió de crédito) — compite/complementa exactamente el segundo tipo de barrera, la del scoring crediticio para beneficios cruzados, que si es real y sí excluye a este segmento.
+
+## 4. Fuentes
 
 - [TrámitesPerú — Susalud: trámites, reclamos y consultas](https://tramitesperu.com/susalud/)
 - [TrámitesPerú — Denuncia contra EPS: negación de cobertura y cobros indebidos](https://tramitesperu.com/susalud/denuncia-eps/)
@@ -41,7 +53,11 @@ Este es el hallazgo más sólido y con más respaldo normativo del research:
 - [APEPS — Preguntas frecuentes](https://www.apeps.org.pe/preguntas-frecuentes/)
 - [RPP — Congreso aprobó Ley de cobertura de enfermedades preexistentes](https://rpp.pe/economia/economia/congreso-aprobo-ley-de-cobertura-de-enfermedades-preexistentes-noticia-1045502)
 - [PerúGestiona — Seguro Potestativo EsSalud 2026: Costo por Edad y Planes](https://perugestiona.pe/salud-sis/essalud-seguro-potestativo-costo/)
+- [Pacífico — Solicitud de Seguro de Salud (Declaración Jurada de Salud)](https://somoscorredores.pacifico.com.pe/documents/282562/197222b5-b8bd-47ae-4ed4-183b13dffb06)
+- [Infobae — Seguro de desgravamen dejará de ser exigible (SBS N° 00890-2025, mar. 2025)](https://www.infobae.com/peru/2025/03/12/seguro-de-desgravamen-dejara-de-ser-exigible-para-la-aprobacion-de-un-prestamo-vehicular-personal-o-con-tarjetas-de-credito/)
+- [APESEG — Cartas fianza y cauciones](https://www.apeseg.org.pe/cartas-fianza-y-cauciones/)
+- [SBS — Reglamento de seguros de crédito, caución y garantía](https://www.sbs.gob.pe/noticia/detallenoticia/idnoticia/2650)
 
-## 4. Nota de confiabilidad
+## 5. Nota de confiabilidad
 
 Las fuentes sobre costos y procedimientos son mayormente sitios de comparación/trámites (Comparabien, TrámitesPerú, PerúGestiona), no boletines oficiales de Susalud o Pacífico — confiables para entender el mecanismo general, pero **las cifras exactas de costos y plazos deben verificarse contra fuentes primarias** (Susalud, condicionados oficiales de Pacífico) antes de citarlas en el one-pager o el pitch, igual que se señaló para las cifras de mercado en `pacifico-seguros-research.md`.

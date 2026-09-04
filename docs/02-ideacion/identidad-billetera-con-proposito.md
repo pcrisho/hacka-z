@@ -1,5 +1,7 @@
-# Identidad de producto: "la billetera con propósito"
+# Identidad de producto: "la billetera con propósito" (descartado)
 
+> **Descartado — decisión cerrada (04 Set. 2026, madrugada).** El equipo confirmó que el framing de "billetera" no tiene cabida: era una idea inicial explorada el 03 Set., pero no tiene relación con el producto actual (riesgo real de confundir al usuario pensando que es un medio de pago). Se mantiene este documento por trazabilidad — no se retoma esta dirección salvo que el equipo lo reabra explícitamente. El producto se narra con framing puro de **bienestar** (ver `historias-usuario-y-validacion.md` §0, nombre de marca **FIBO**). Contenido original de la exploración, sin editar, a continuación.
+>
 > Explora una capa de **experiencia/identidad** sobre el territorio ya definido en `territorios-solucion.md` y `historias-usuario-y-validacion.md`. No reemplaza el ancla de salud/bienestar (hallazgo #1: Pacífico gana en EPS, no en producto financiero) — la envuelve en una metáfora más fácil de explicar en 3 minutos. Dirección propuesta el 03 Set. 2026, pendiente de validar con campo y con el equipo.
 
 ## 1. El hueco de posicionamiento

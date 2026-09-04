@@ -10,13 +10,13 @@
 
 ## [0:45–1:15] Segmento e insight
 
-> "Nos enfocamos en jóvenes en su primer empleo o en trabajo independiente: sin historial crediticio, con ingresos variables, para quienes un seguro tradicional —con una prima fija mensual y letra chica— no encaja con su realidad. El insight central: no rechazan la protección, rechazan la forma en que se las ofrecen hoy."
+> "Nos enfocamos en jóvenes en su primer empleo o en trabajo independiente: sin un empleador que los afilie, con ingresos variables, para quienes un seguro tradicional —con una prima fija mensual y letra chica— no encaja con su realidad. El insight central: no rechazan la protección, rechazan la forma en que se las ofrecen hoy."
 
 *Arquetipo: Guardián + Estudiante/Primer Empleo con Ansiedad Financiera (`PLAN-TRABAJO.md` §6, decisión cerrada).*
 
 ## [1:15–2:15] Solución y demostración
 
-> "Proponemos que la cobertura de salud y bienestar se gane con hábitos, no con historial crediticio. Cada semana que el usuario ahorra, se mueve o se realiza un chequeo preventivo, su cobertura crece, sin costo. Quien necesita algo puntual activa un pago fijo y bajo, que puede pausar sin penalidad en una semana de menores ingresos. [Mostrar el prototipo: registro de hábito → crecimiento de cobertura → canje simple del beneficio.] Esto no reemplaza lo que Pacífico ya construyó — lo completa. Quererte Sano ofrece contenido de bienestar sin mecanismo de cobertura; Seguro Salud Yape ofrece cobertura por una prima fija de pago único. Nuestra propuesta une ambos: contenido que ya genera interés, con un mecanismo que convierte ese interés en cobertura real, de forma progresiva y sin exigir un compromiso económico desde el primer día."
+> "Proponemos que la cobertura de salud y bienestar se gane con hábitos, no con una relación laboral formal. Cada semana que el usuario ahorra, se mueve o se realiza un chequeo preventivo, su cobertura crece, sin costo. Quien necesita algo puntual activa un pago fijo y bajo, que puede pausar sin penalidad en una semana de menores ingresos. [Mostrar el prototipo: registro de hábito → crecimiento de cobertura → canje simple del beneficio.] Esto no reemplaza lo que Pacífico ya construyó — lo completa. Quererte Sano ofrece contenido de bienestar sin mecanismo de cobertura; Seguro Salud Yape ofrece cobertura por una prima fija de pago único. Nuestra propuesta une ambos: contenido que ya genera interés, con un mecanismo que convierte ese interés en cobertura real, de forma progresiva y sin exigir un compromiso económico desde el primer día."
 
 *Detalle de qué es real/simulado en el MVP: `03-mvp/alcance-producto.md` §5. Diferenciación vs. competidores: `01-research/pacifico-microseguros-yape-red-sanna.md` §1.*
 
@@ -28,6 +28,6 @@
 
 ## Notas de cierre
 
-- Nombre de producto: pendiente (`PLAN-TRABAJO.md` §8.4) — el guion no usa ningún nombre de marca todavía, a propósito.
-- Identidad "billetera con propósito": pendiente de decidir (`PLAN-TRABAJO.md` §8.3) — este borrador usa el framing de "bienestar", no el de billetera. Si se adopta la metáfora, el segmento de solución debería reescribirse con ese lenguaje.
-- Antes de grabar: confirmar con `01-research/instrumento-campo.md` si el "gancho gratis" (hábitos) y el mecanismo de recompensa generan la reacción esperada — si algún supuesto se cae, este guion cambia.
+- **Nombre de marca: FIBO** (cerrado 04 Set., `PLAN-TRABAJO.md` §7) — el guion arriba no lo usa todavía porque se redactó antes de la decisión; al pulir esta versión, insertar "FIBO" donde hoy dice genéricamente "la propuesta"/"nuestra propuesta" (ej. en el segmento de solución: "proponemos FIBO, donde la cobertura..."). El nombre también aplica al agente conversacional del momento de verdad ("Fibo, tu copiloto de bienestar").
+- **Framing: bienestar puro, cerrado** — "billetera con propósito" quedó descartada explícitamente (`02-ideacion/identidad-billetera-con-proposito.md`), no hace falta reescribir nada por ese lado.
+- Antes de grabar: confirmar con `01-research/instrumento-campo.md` (o con el feedback de la mentoría del 04 Set.) si el "gancho gratis" (hábitos) y el mecanismo de recompensa por niveles (`03-mvp/alcance-producto.md` §3) generan la reacción esperada — si algún supuesto se cae, este guion cambia.

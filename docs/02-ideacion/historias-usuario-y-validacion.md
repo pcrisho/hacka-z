@@ -2,9 +2,9 @@
 
 > Expande `territorios-solucion.md`. Todo lo narrado aquí es **storytelling con supuestos explícitos**, no un hallazgo de campo — sirve para tener una idea preliminar accionable antes de la encuesta/entrevistas del día 2-3, y para que esas entrevistas prueben las suposiciones concretas listadas en la §3, no solo exploren el problema en general.
 
-## 0. Nombre de trabajo
+## 0. Nombre de marca
 
-**"Pacto"** (pacto contigo mismo/a) — nombre provisional solo para narrar, no una decisión de marca. Fácil de reemplazar; útil para no escribir "la app" cuarenta veces.
+**"FIBO"** — decisión cerrada (04 Set. 2026, madrugada, ver `PLAN-TRABAJO.md` §7). Viene de la espiral de Fibonacci (1,1,2,3,5,8...): cada micro-hábito se apoya en los anteriores y compone crecimiento, la misma mecánica que la Reserva de Bienestar. Doble uso: nombre del producto y nombre del agente conversacional ("Fibo, tu copiloto de bienestar") — humaniza la IA del onboarding sin esfuerzo extra. Reemplaza al nombre provisional anterior ("Pacto"), que ya no se usa.
 
 ## 1. El loop central (recap)
 
@@ -19,9 +19,9 @@
 
 Camila egresó hace 4 meses, trabaja freelance en diseño mientras busca su primer empleo formal. Planifica en función de la semana, no del año. Le pesa la adultez y busca alivio, no más cosas que gestionar (insight oficial).
 
-1. Se entera por una amiga que ya usa Pacto — no por un anuncio. La amiga le muestra en su celular que ya desbloqueó una sesión gratis de terapia.
-2. Camila abre Pacto (como mini-app dentro de algo que ya usa, ej. Yape) y responde 2 preguntas de contexto: "¿trabajas de forma independiente?" y "¿qué te preocupa más ahora: tu salud, tu plata o tus herramientas de trabajo?". En base a eso, Pacto le sugiere sus primeros 3 hábitos.
-3. Antes de pedirle nada, Pacto ya le regala algo: un primer contenido corto de bienestar financiero + una explicación en 3 viñetas de cómo crece la Reserva (sin letra chica, respondiendo al plot twist "sin instrucciones").
+1. Se entera por una amiga que ya usa FIBO — no por un anuncio. La amiga le muestra en su celular que ya desbloqueó una sesión gratis de terapia.
+2. Camila abre FIBO (como mini-app dentro de algo que ya usa, ej. Yape) y responde 2 preguntas de contexto: "¿trabajas de forma independiente?" y "¿qué te preocupa más ahora: tu salud, tu plata o tus herramientas de trabajo?". En base a eso, FIBO le sugiere sus primeros 3 hábitos.
+3. Antes de pedirle nada, FIBO ya le regala algo: un primer contenido corto de bienestar financiero + una explicación en 3 viñetas de cómo crece la Reserva (sin letra chica, respondiendo al plot twist "sin instrucciones").
 4. Semana 1: aparta S/10, camina 20 minutos 3 veces, agenda un chequeo preventivo. Su Reserva sube a un nivel que desbloquea 1 sesión de bienestar emocional gratuita.
 5. Un mes después: se le malogra la laptop con la que trabaja. Había activado, ese mismo mes, un top-up de S/8 para herramientas de trabajo (lo pausó dos semanas antes porque tuvo un mes flojo, sin penalidad). Sube una foto del daño, responde 3 preguntas guiadas por un agente conversacional (§6), y en minutos tiene una respuesta clara de siguiente paso — sin llamar a nadie, sin letra chica.
 6. Cierre: aunque nunca tuvo un problema de salud ese mes, ya sintió que "valió la pena" — porque ya recibió valor (la sesión de bienestar) antes de necesitar la cobertura. Responde directamente al plot twist "tu cliente nunca lo usa".
@@ -30,10 +30,10 @@ Camila egresó hace 4 meses, trabaja freelance en diseño mientras busca su prim
 
 Diego reparte en bicicleta y crea contenido part-time. Un mes gana S/2,000 disponibles, el siguiente apenas S/500 — **el plot twist oficial "tu usuario gana diferente cada mes" es literalmente su vida**, no una hipótesis.
 
-1. Ve el banner de Pacto al pagar con Yape a un negocio afiliado — no tiene que buscarlo ni descargar nada nuevo.
+1. Ve el banner de FIBO al pagar con Yape a un negocio afiliado — no tiene que buscarlo ni descargar nada nuevo.
 2. Empieza **sin pagar nada**: solo completando hábitos. Esto es clave — el producto no excluye a quien no tiene margen ese mes, a diferencia de una prima fija mensual.
 3. En una semana buena, activa una microprima de S/3 por 7 días para accidentes de tránsito (se mueve en bici). En una semana mala, la pausa sin penalidad ni cancelación forzada — el sistema no lo "castiga", solo detiene el crecimiento de su Reserva esa semana.
-4. Con el tiempo, su constancia de hábitos (no su historial crediticio, que no tiene) lo hace subir de nivel y acceder a más beneficios acumulados — el producto genera su propio "score" alternativo en vez de depender de uno que Diego nunca tuvo.
+4. Con el tiempo, su constancia de hábitos (no un empleador formal que lo afilie, que Diego no tiene) lo hace subir de nivel y acceder a más beneficios acumulados — el producto genera su propio "score" alternativo de comportamiento. *(Precisión 04 Set.: la suscripción médica nunca dependió del historial crediticio de Diego — dependía de tener planilla. El "score" alternativo que FIBO construye responde a eso, y de paso puede acercarlo al tipo de scoring que sí necesitaría más adelante para beneficios cruzados dentro de Credicorp, ver `01-research/pacifico-friccion-usuario-eps.md` §3.)*
 
 ## 4. Supuestos incorporados en las historias — qué probar en campo (día 2-3)
 
@@ -54,7 +54,7 @@ El riesgo real de este modelo es el clásico problema de arranque: usuario nuevo
 
 1. **Valor antes que compromiso.** Día 0 se regala algo (contenido, primer crédito de sesión) sin exigir ningún hábito todavía — nunca "primero demuéstrame algo, después te doy valor". Esto invierte el orden que hace fallar a la mayoría de programas de fidelización.
 2. **Entrada social, no publicitaria.** La referencia viene de un par real (Camila lo ve en la amiga), no de un banner genérico — coherente con el insight oficial "la confianza se demuestra, rechazan publicidad disfrazada". Cuidado: debe sentirse auténtico, no un esquema de referidos agresivo.
-3. **Vivir dentro de una superficie de confianza existente** (ej. Yape) en vez de pedir una descarga nueva — baja la fricción de activación a casi cero, apalancando una confianza que el usuario ya tiene, no una que Pacto tiene que ganarse desde cero.
+3. **Vivir dentro de una superficie de confianza existente** (ej. Yape) en vez de pedir una descarga nueva — baja la fricción de activación a casi cero, apalancando una confianza que el usuario ya tiene, no una que FIBO tiene que ganarse desde cero.
 4. **Pedir permisos progresivamente.** Empezar con un registro manual simple; recién pedir acceso a datos (ej. lectura de patrones de transacción) después de que el usuario ya vio valor — responde directamente al insight "esperan entender cómo se usan sus datos".
 
 ## 6. ¿Vale la pena un agente conversacional embebido?
@@ -78,5 +78,5 @@ La pregunta de fondo — cómo evitar que la solución se vea afectada por cambi
 ## 8. Qué falta decidir (no bloquea seguir avanzando)
 
 - Confirmar con campo cuál de los supuestos de §4 se sostiene — puede mover el arquetipo líder.
-- Decidir el nombre real (no "Pacto") — puede esperar hasta tener más validación.
+- ~~Decidir el nombre real~~ — **Resuelto (04 Set. 2026): FIBO.** Ver §0.
 - Decidir el alcance exacto del agente para el MVP: ¿demo scripted o llamada real a un LLM vía AWS? (recomendado: llamada real, aunque sea simple, para demostrar uso genuino de AWS).
