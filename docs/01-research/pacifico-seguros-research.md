@@ -16,13 +16,14 @@ Pacífico Seguros nace en 1992 de la fusión de "El Pacífico Compañía de Segu
 
 | Indicador | Dato | Fuente |
 |---|---|---|
-| Participación de mercado en primas totales (2024) | ~24–25%, **2° lugar** detrás de Rimac | Búsqueda agregada de SBS / prensa sectorial |
-| Participación de mercado en EPS (salud, dic. 2025) | **42.3%, 1er lugar** | Datos SBS, dic. 2025 |
+| Participación de mercado en primas totales (dic. 2024) | 24.22%, **2° lugar** detrás de Rímac | SBS / prensa sectorial |
+| Participación de mercado en primas totales (jun. 2025) | 22.6% (S/5,425 millones), **2° lugar** — Rímac lidera con 27.41% | Análisis del Sistema Asegurador Peruano al 30/06/2025, Moody's Local ([PDF](https://moodyslocal.com.pe/wp-content/uploads/2025/10/MLPE-Sistema-Asegurador-Peruano-2025-06-revf-1.pdf)) |
+| Participación de mercado en EPS (salud, dic. 2025) | **42.3%, 1er lugar** | **Confirmado (04 Set. 2026)** — Memoria Integrada Pacífico 2025, que a su vez cita el boletín EPS de avance a diciembre 2025 |
 | Crecimiento del mercado asegurador peruano (2025) | +8.3% en primas directas (vs. PBI país +3.3%) | Fuentes sectoriales agregadas 2025 |
 
-**Lectura:** Pacífico no es líder absoluto en el mercado general (es 2° detrás de Rimac), pero sí domina claramente el segmento salud/EPS. Esto sugiere que una propuesta con componente de salud/bienestar tiene más "terreno propio" del cual Pacífico puede apalancarse rápido que una propuesta puramente de seguros generales, donde compite más de cerca con Rimac.
+**Lectura:** Pacífico no es líder absoluto en el mercado general (es 2° detrás de Rímac, y su participación bajó ligeramente de 24.22% a 22.6% entre dic. 2024 y jun. 2025), pero sí domina claramente el segmento salud/EPS con 42.3%, cifra ya confirmada contra fuente primaria. Esto sugiere que una propuesta con componente de salud/bienestar tiene más "terreno propio" del cual Pacífico puede apalancarse rápido que una propuesta puramente de seguros generales, donde compite más de cerca con Rímac.
 
-*Nota de confiabilidad: las cifras de participación de mercado provienen de fuentes de prensa/sectoriales agregadas por búsqueda web, no de un reporte único verificado línea por línea. Para el one-pager, si se cita el 24-25%/42.3%, conviene confirmar contra la Memoria Integrada 2025 de Pacífico (`pacifico.com.pe/documents/.../Memoria+2025.pdf`) o el reporte SBS "Sistema de Seguros — Diciembre 2025" antes de presentarlo como dato duro ante el jurado.*
+*Nota de confiabilidad (actualizada 04 Set. 2026): el 42.3% de EPS queda confirmado contra la Memoria Integrada 2025 de Pacífico (fuente primaria). El dato de mercado general se actualizó con una fuente más precisa (Moody's Local, con corte a jun. 2025) — usar 22.6%/2° lugar en vez del rango 24-25% si se cita el dato más reciente; 24.22% sigue siendo válido si se especifica que es el corte de dic. 2024.*
 
 ## 3. Presencia fuera de Perú
 
@@ -61,6 +62,7 @@ Pacífico Seguros nace en 1992 de la fusión de "El Pacífico Compañía de Segu
 - [Credicorp — Wikipedia ES](https://es.wikipedia.org/wiki/Credicorp)
 - [El Comercio — "Pacífico innova en seguros para pymes e inclusivos: los planes de la compañía para el 2025"](https://elcomercio.pe/economia/dia-1/pacifico-innova-en-seguros-para-pymes-e-inclusivos-los-planes-de-la-compania-para-el-2025-empresas-creditocorp-proyectos-crecimiento-noticia/)
 - [Memoria Integrada Pacífico Seguros 2025 (PDF oficial)](https://www.pacifico.com.pe/documents/28730/195143110/Memoria+2025.pdf/683b04b6-7896-8764-54b6-dfa803a7692e)
+- [Moody's Local — Análisis del Sistema Asegurador Peruano al 30 de junio de 2025 (PDF)](https://moodyslocal.com.pe/wp-content/uploads/2025/10/MLPE-Sistema-Asegurador-Peruano-2025-06-revf-1.pdf)
 - [Gestión — Penetración de seguros Lima vs. provincias](https://gestion.pe/economia/mercados/penetracion-seguros-lima-45-provincias-chicas-llega-1-5-137677-noticia/)
 - [Infobae — Informalidad laboral en Perú, abril 2026 (INEI)](https://www.infobae.com/peru/2026/04/01/inei-confirma-que-7-de-cada-10-trabajadores-en-peru-son-informales-pierden-acceso-a-cts-seguro-y-pension/)
 - [UNDP — Diagnóstico de microseguros en el Perú (PDF, marzo 2026)](https://www.undp.org/sites/g/files/zskgke326/files/2026-03/informe_final-diagnostico_de_microseguros_en_el_peru.pdf)
