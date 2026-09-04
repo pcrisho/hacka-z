@@ -44,7 +44,7 @@ Fuentes completas en `01-research/`.
 
 ## Preguntas abiertas / próximos pasos
 
-Ver `PLAN-TRABAJO.md` §8 (lista viva). Las que bloquean avance real: canal de encuesta + lista de contactos de entrevistas; validar cifras de mercado de Pacífico contra la Memoria Integrada 2025 antes de citarlas.
+Ver `PLAN-TRABAJO.md` §8 (lista viva). Instrumento de campo ya diseñado (`01-research/instrumento-campo.md`), pendiente recolección de respuestas; cifras de mercado de Pacífico validadas (42.3% EPS en Memoria 2025, 22.6% total Moody's jun. 2025).
 
 ## Mapa de documentos
 
@@ -52,11 +52,11 @@ Ver `PLAN-TRABAJO.md` §8 (lista viva). Las que bloquean avance real: canal de e
 docs/
 ├── memoria/              ← estás aquí (CONTEXTO-ACTUAL.md + bitacora/)
 ├── 00-bases/              reglas oficiales + equipo
-├── 01-research/           insumo oficial + research propio (Pacífico, industria, competidores directos)
+├── 01-research/           insumo oficial + research propio (Pacífico, industria, competidores directos, instrumento de campo)
 ├── 02-ideacion/           territorio de solución, historias de usuario, identidad, pitch
 ├── 03-mvp/                alcance del producto (qué es real vs. simulado)
 ├── 04-gtm/                modelo de negocio y viabilidad
-├── 05-entregables/        (aún vacío — one-pager y video final van aquí)
+├── 05-entregables/        guion de pitch v1 (guion-pitch-v1.md) — one-pager y video final van aquí
 ├── 06-ideas/              notas crudas sin validar del equipo
 └── PLAN-TRABAJO.md         plan de sprint + registro de decisiones (tabla de trazabilidad)
 ```

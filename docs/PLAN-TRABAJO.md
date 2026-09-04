@@ -94,7 +94,7 @@ Toda decisión relevante (arquetipo elegido, problem statement final, concepto d
 
 ## 8. Preguntas abiertas / bloqueadores
 
-1. Nombre/canal concreto para la encuesta digital (Google Forms vs. Typeform) y lista de contactos para las entrevistas 1:1 — asignar responsable.
-2. Validar cifras de mercado de Pacífico (24-25% / 42.3%) contra la Memoria Integrada 2025 oficial antes de citarlas en el one-pager (ver nota de confiabilidad en `01-research/pacifico-seguros-research.md`).
+1. Instrumento de campo diseñado en `01-research/instrumento-campo.md` (encuesta + guía de entrevista semiestructurada; recomendación: Google Forms) — pendiente desplegar y reclutar primeros contactos antes de la mentoría.
+2. **Resuelto (03 Set.):** cifras de mercado de Pacífico validadas contra Memoria Integrada 2025 (42.3% EPS, 1er lugar) y Moody's Local a jun. 2025 (22.6% mercado general, 2° lugar).
 3. Decidir si la identidad "billetera con propósito" (§6, `02-ideacion/identidad-billetera-con-proposito.md`) se adopta como capa de experiencia del producto, o se mantiene el framing de "producto de bienestar" sin la metáfora de billetera.
 4. Nombre real de marca — sigue pendiente, no bloquea seguir avanzando (ver `02-ideacion/historias-usuario-y-validacion.md` §8).
