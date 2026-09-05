@@ -30,3 +30,5 @@ Base de conocimiento y bitácora de trabajo de un equipo de 3 personas (Roberto 
 ## Al iniciar una sesión nueva sobre este proyecto
 
 Leer en este orden: `docs/memoria/CONTEXTO-ACTUAL.md` → `docs/PLAN-TRABAJO.md` (especialmente la tabla de decisiones y preguntas abiertas) → `docs/00-bases/BASES-CONCURSO.md` si hay dudas de reglas. Confirmar con el usuario si el registro de decisiones tiene entradas más recientes que las que estos archivos describen — el plan es un documento vivo durante todo el sprint (01–08 Set. 2026). Al cerrar la sesión con cambios relevantes, actualizar `docs/memoria/CONTEXTO-ACTUAL.md` y agregar una entrada nueva en `docs/memoria/bitacora/`.
+
+Este protocolo está formalizado como dos skills invocables (05 Set. 2026): **`iniciar-sesion`** (lee el estado y reporta resumen + próximo paso antes de trabajar) y **`cerrar-sesion`** (documenta la bitácora, reescribe `CONTEXTO-ACTUAL.md`, y verifica que los artifacts publicados — registrados en `07-construccion/design-system.md` §9 — sigan sincronizados con sus archivos locales). Ver `.claude/skills/`.

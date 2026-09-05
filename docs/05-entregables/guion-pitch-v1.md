@@ -30,6 +30,12 @@
 
 > **Ajuste pendiente (importante):** este párrafo describe la alianza tipo Betterfly-Chubb como precedente de *mecanismo* (hábito→cobertura) y de *postura* (asociarse, no competir) — correcto. Pero no debe leerse como que Betterfly también prueba la adquisición B2C: sí prueba la mecánica, **no** prueba que el B2C puro escale (Betterfly es B2B2E desde 2020 — ver `02-ideacion/territorios-solucion.md` §3). El argumento de adquisición real de este pitch se apoya en que el canal (Yape) ya es de alcance masivo garantizado por ser del mismo grupo Credicorp — no en que "el B2C funciona porque Betterfly lo probó" (`04-gtm/modelo-negocio-y-viabilidad.md` §3.2). Vale la pena ajustar la redacción de este segmento para que la frase de Betterfly no se lea como validación de adquisición.
 
+## [Cierre] Tagline de marca (nuevo, 05 Set.)
+
+> **"Cada hábito suma al siguiente. Tu Reserva crece en espiral."**
+
+Línea de cierre del video: tarjeta final con logo + tagline, inmediatamente después del segmento de modelo de negocio de arriba. Reemplaza el vacío que dejó retirar el framing tipo "vivir tu mejor vida" — la premisa textual de Betterfly, usada literalmente por el equipo en la mentoría con Cami (`4-07-2026/RETROALIMENTACION - 2 - CAMI/RETROALIMENTACION.md` líneas 6-9) y que la mentora pidió explícitamente bajarle protagonismo. Esa frase ya no está en este guion (se corrigió junto con las demás menciones de Betterfly el 04 Set.), pero FIBO nunca tuvo una línea propia que la reemplazara — anclada en la espiral de Fibonacci/crecimiento compuesto (`02-ideacion/historias-usuario-y-validacion.md` §0), no en una aspiración genérica de bienestar. Detalle completo de la decisión en `07-construccion/design-system.md` §8.
+
 ## Notas de cierre
 
 - **Nombre de marca: FIBO** (cerrado 04 Set., `PLAN-TRABAJO.md` §7) — el guion arriba no lo usa todavía porque se redactó antes de la decisión; al pulir esta versión, insertar "FIBO" donde hoy dice genéricamente "la propuesta"/"nuestra propuesta" (ej. en el segmento de solución: "proponemos FIBO, donde la cobertura..."). El nombre también aplica al agente conversacional del momento de verdad ("Fibo, tu copiloto de bienestar").

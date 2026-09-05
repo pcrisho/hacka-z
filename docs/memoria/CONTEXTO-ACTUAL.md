@@ -2,7 +2,7 @@
 
 > **Léeme primero si eres un agente nuevo entrando a este repo.** Este archivo se **reescribe** cada sesión de trabajo para reflejar el estado más reciente — es una fotografía del presente, no un historial. Para ver cómo llegamos aquí y por qué cambiaron las decisiones, ver `bitacora/` (esa sí es append-only, nunca se reescribe).
 >
-> Última actualización: 05 Set. 2026 (día 5 de 8 del sprint). Sesión anterior cerró con las 2 mentorías del 04 Set. y su propagación al repo; esta sesión corrigió los 10 hallazgos de una auditoría de consistencia externa (`memoria/auditoria-consistencia-2026-09-05.md`). No queda ninguna corrección conocida pendiente — el repo está en su estado más consistente hasta ahora.
+> Última actualización: 05 Set. 2026 (día 5 de 8 del sprint). En orden: sesión 1 corrigió los 10 hallazgos de una auditoría de consistencia externa (`memoria/auditoria-consistencia-2026-09-05.md`); sesión 2 cerró los 5 temas de branding/identidad visual que quedaban abiertos — tagline, logo, contraste de la paleta, licencia de fuente y tono de voz (`memoria/bitacora/2026-09-05-branding-cierre.md`); sesión 3 construyó un brandboard visual y un brief de logo como artifacts, pivoteó la tipografía a Bricolage Grotesque + Geist, cerró el stack técnico (Next.js + Vercel + shadcn/ui + NeonDB), ejecutó el scaffold real en `app/`, aplicó el theming completo sobre él (verificado con `pnpm dev`), y formalizó el protocolo de inicio/cierre de sesión como dos skills invocables (`iniciar-sesion`, `cerrar-sesion`, ver `.claude/skills/`) — detalle en `memoria/bitacora/2026-09-05-brandboard-y-stack.md`, `2026-09-05-theming-app.md` y `2026-09-05-skills-sesion.md`. `app/` ya está listo para construir pantallas reales.
 
 ## Qué es esto
 
@@ -14,7 +14,9 @@ Día 5 de 8 (preselección el 08 Set.). **Ya se tuvieron las 2 sesiones de mento
 
 **El instrumento de campo v2 sigue sin desplegarse** — es la tarea más urgente y bloqueante para la próxima sesión, no un tema de documentación.
 
-**Documentación de producto y diseño ya lista para pasar a un agente/sesión enfocada en decisiones técnicas (stack, arquitectura de código).** Última pasada de validación (05 Set.): arquetipo y los 3 hábitos confirmados sin cambios (se evaluó y descartó explícitamente cambiar a arquetipos tipo "deportista"/"runner" y reencuadrar el ahorro como grupal/"junta" — sin evidencia de mentoría que lo respalde, ver `PLAN-TRABAJO.md` §7); alcance del agente conversacional cerrado (onboarding + momento de verdad, sin ampliar a soporte general); y se corrigió una contradicción real en `07-construccion/design-system.md` (proponía evitar el azul corporativo con una paleta inventada, pero los tokens reales de Quererte Sano —el propio Pacífico— sí usan su cyan de marca combinado con verdes de vitalidad — la paleta de FIBO ahora hereda esos tokens reales en vez de una propuesta sin evidencia).
+**Documentación de producto, diseño y marca ya lista para pasar a un agente/sesión enfocada en decisiones técnicas (stack, arquitectura de código).** Última pasada de validación (05 Set.): arquetipo y los 3 hábitos confirmados sin cambios (se evaluó y descartó explícitamente cambiar a arquetipos tipo "deportista"/"runner" y reencuadrar el ahorro como grupal/"junta" — sin evidencia de mentoría que lo respalde, ver `PLAN-TRABAJO.md` §7); alcance del agente conversacional cerrado (onboarding + momento de verdad, sin ampliar a soporte general); se corrigió una contradicción real en `07-construccion/design-system.md` (proponía evitar el azul corporativo con una paleta inventada, pero los tokens reales de Quererte Sano —el propio Pacífico— sí usan su cyan de marca combinado con verdes de vitalidad — la paleta de FIBO ahora hereda esos tokens reales en vez de una propuesta sin evidencia); y, en una segunda sesión el mismo día, se cerraron los 5 temas de branding que quedaban abiertos: tagline propio anclado en la espiral/crecimiento compuesto (reemplaza el vacío que dejó retirar el framing tipo "vivir tu mejor vida" de Betterfly), dirección concreta de logo/lockup (sigue sin producirse un logo final), validación WCAG de la paleta heredada (dorado/verde/terracota son colores de relleno, nunca texto plano — sin cambiar tokens), tipografía principal pasada de `Foco` (sin licencia confirmada) a `Poppins`, y tono de voz validado sin hallazgos contra el copy ya escrito. Detalle en `memoria/bitacora/2026-09-05-branding-cierre.md` y `PLAN-TRABAJO.md` §7.
+
+**Tercera sesión el mismo día:** se construyó `FIBO Brandboard` (artifact + copia local en `07-construccion/brandboard.html`) para validar visualmente el design system, y `FIBO Logo Brief` (artifact) con el criterio para que Roberto explore el logo por su cuenta en Behance. Al revisar `docs/03-mvp/ux-ui-referencia-3` (sistema de un producto cripto, `caldera.xyz`) se rescató solo su método de pairing tipográfico, no su paleta — esto pivoteó la tipografía de titulares de `Poppins` a **`Bricolage Grotesque`** (display) + **`Geist`** (cuerpo/UI). También se cerró el **stack técnico**: Next.js + Vercel + shadcn/ui tematizado con los tokens de FIBO + NeonDB solo para waitlist/referidos de la landing (`07-construccion/stack-tecnico.md`). Detalle en `memoria/bitacora/2026-09-05-brandboard-y-stack.md`.
 
 ## Decisiones ya cerradas — no reabrir salvo que la mentoría o el campo las contradigan
 
@@ -71,7 +73,7 @@ Fuentes completas en `01-research/`.
 Ver `PLAN-TRABAJO.md` §8. Las que bloquean avance real, en orden de prioridad:
 1. **Desplegar `01-research/instrumento-campo.md` v2** — sigue sin hacerse, es la tarea #1. Ya incorpora las preguntas de la mentoría (comunidad, transparencia de datos, valor real del hábito mental, ubicación, rubro).
 2. Restructurar `05-entregables/guion-pitch-v1.md` según las notas de cierre ya dejadas (abrir con el usuario, no con la cifra; Betterfly sin protagonismo; respuesta lista a "¿por qué no Quererte Sano?").
-3. Construir landing + prototipo siguiendo `07-construccion/` (PRDs, design system, esquemas de pantalla y customer journey ya definidos, todos actualizados y auditados) — sin bloqueadores de decisión pendientes para arrancar. Landing primero (genera señal B2C real), prototipo en paralelo/después con prioridad.
+3. Construir landing + prototipo siguiendo `07-construccion/` (PRDs, design system, esquemas de pantalla, customer journey y stack técnico, todos definidos, con `app/` ya inicializado y themeado) — sin bloqueadores de decisión pendientes. Landing primero (genera señal B2C real), prototipo en paralelo/después con prioridad.
 
 **Nota para la próxima sesión:** no hay correcciones de consistencia pendientes conocidas — la auditoría del 05 Set. (`memoria/auditoria-consistencia-2026-09-05.md`) ya se resolvió por completo. Si se hace una auditoría de seguimiento más adelante, conviene esperar a que haya más contenido nuevo (campo desplegado, prototipo construido) para que valga la pena repetirla.
 
@@ -83,13 +85,15 @@ docs/
 ├── 00-bases/              BASES-CONCURSO.md (única fuente de rúbrica/plazos) + LANZAMIENTO.md/plantillas (contexto, no puntaje) + equipo
 ├── 01-research/           insumo oficial + research propio + instrumento de campo v2 (a desplegar 05 Set.) + insight-salud-mental-y-habito-gen-z.md
 ├── 02-ideacion/           territorio de solución, historias de usuario, identidad, problem-statement-v1.md, hallazgos-mentoria-04-set.md
-├── 03-mvp/                alcance del producto + referencias UI/UX de Pacífico (Ref 1: Corporativo, Ref 2: Quererte Sano) con sus DESIGN.md
+├── 03-mvp/                alcance del producto + referencias UI/UX de Pacífico (Ref 1: Corporativo, Ref 2: Quererte Sano) + Ref 3 (caldera.xyz, solo se usó su método tipográfico, no su paleta) con sus DESIGN.md
 ├── 04-gtm/                modelo de negocio y viabilidad
 ├── 05-entregables/        guion-pitch-v1.md (borrador, con notas de reestructuración pendientes) — one-pager y video final van aquí
 ├── 06-ideas/              notas crudas sin validar del equipo
-├── 07-construccion/       PRDs (landing + MVP), design system, esquemas de pantalla, customer-journey.md — puente a construcción
+├── 07-construccion/       PRDs (landing + MVP), design system + brandboard.html, esquemas de pantalla, customer-journey.md, stack-tecnico.md — puente a construcción
 └── PLAN-TRABAJO.md         plan de sprint + registro de decisiones (tabla de trazabilidad)
 ```
+
+Fuera de `docs/`, en la raíz del repo: **`app/`** (proyecto Next.js del prototipo/landing, inicializado y themeado el 05 Set. — ver `stack-tecnico.md`) y **`.claude/skills/`** (`iniciar-sesion`, `cerrar-sesion` — el protocolo de arranque/cierre de sesión ya no es solo prosa en `AGENTS.md`, es invocable).
 
 ## Cómo trabajar en este repo
 

@@ -1,0 +1,539 @@
+<title>FIBO Brandboard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..700&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap">
+<style>
+
+  :root{
+    --bg:#F9FAFB; --surface:#FFFFFF; --surface-2:#F2F5F5; --border:#E7EBED;
+    --text:#545E62; --text-strong:#2F373C; --text-muted:#65737B;
+    --cyan-50:#E8F9FF; --cyan-100:#AADDEE; --cyan-500:#0099CC; --cyan-600:#0080AA; --cyan-700:#006688; --cyan-800:#004C66; --cyan-900:#001F29;
+    --green-xlow:#D6F5DF; --green-500:#01A355; --green-pill-bg:#CFF8DD; --green-text:#007C2D;
+    --gold:#D4A24C; --gold-on-dark:#003840;
+    --terracota:#C97B5B; --terracota-dark:#8C4A2F; --terracota-xlow:#FBEEE9;
+    --grad-fresh: linear-gradient(90deg,#35DAFF,#65F9CF,#98FFF3);
+    --deep-teal:#003840;
+    --shadow: 0 1px 5px 0 rgba(0,0,0,0.06);
+    --font-display:'Bricolage Grotesque', 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-body:'Geist', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-mono:'Geist Mono', ui-monospace, "SFMono-Regular", monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#001A23; --surface:#04262F; --surface-2:#0A333D; --border:#0F3F49;
+      --text:#B8D4DC; --text-strong:#F2FBFD; --text-muted:#7FA3AD;
+      --shadow: 0 1px 8px 0 rgba(0,0,0,0.35);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#001A23; --surface:#04262F; --surface-2:#0A333D; --border:#0F3F49;
+    --text:#B8D4DC; --text-strong:#F2FBFD; --text-muted:#7FA3AD;
+    --shadow: 0 1px 8px 0 rgba(0,0,0,0.35);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:var(--font-body); font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:var(--font-display); color:var(--text-strong); margin:0; text-wrap:balance; }
+  p{margin:0;}
+  code, .mono{ font-family:var(--font-mono); }
+  a{color:inherit;}
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+  section{ padding:88px 0; border-bottom:1px solid var(--border); }
+  section:last-of-type{ border-bottom:none; }
+
+  .eyebrow{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--cyan-600); font-weight:600; display:flex; align-items:center; gap:10px; margin-bottom:18px;
+  }
+  .eyebrow::before{ content:""; width:18px; height:1px; background:var(--cyan-600); display:inline-block; }
+  :root[data-theme="dark"] .eyebrow{ color:#6FD6FF; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .eyebrow{ color:#6FD6FF; } }
+
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:48px; flex-wrap:wrap; }
+  .section-head h2{ font-size:40px; font-weight:800; line-height:1.05; }
+  .section-head .note{ max-width:340px; font-size:14px; color:var(--text-muted); }
+
+  /* ---------- Nav ---------- */
+  .topnav{
+    position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom:1px solid var(--border);
+  }
+  .topnav .wrap{ display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px; max-width:1180px; }
+  .brandmark{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:800; font-size:18px; color:var(--text-strong); }
+  .brandmark svg{ width:22px; height:22px; display:block; }
+  .navlinks{ display:flex; gap:26px; font-size:13px; font-weight:500; }
+  .navlinks a{ text-decoration:none; color:var(--text-muted); }
+  .navlinks a:hover{ color:var(--cyan-600); }
+  .themebtn{
+    font-family:var(--font-mono); font-size:12px; border:1px solid var(--border); background:var(--surface);
+    color:var(--text); padding:6px 12px; border-radius:100px; cursor:pointer;
+  }
+  .themebtn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible{ outline:2px solid var(--cyan-500); outline-offset:2px; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-top:72px; }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; }
+  .hero h1{ font-size:clamp(40px,6.4vw,84px); font-weight:800; letter-spacing:-0.01em; line-height:0.98; }
+  .hero h1 .light{ font-weight:300; display:block; color:var(--text); }
+  .hero h1 .accent{ color:var(--cyan-500); }
+  .tagline{ margin-top:26px; font-size:19px; color:var(--text-strong); max-width:46ch; }
+  .tagline b{ color:var(--cyan-600); font-weight:700; }
+  .meta-row{ margin-top:34px; display:flex; gap:28px; font-size:13px; color:var(--text-muted); font-family:var(--font-mono); flex-wrap:wrap;}
+  .meta-row span b{ color:var(--text-strong); font-family:var(--font-body); font-weight:600; }
+  canvas#spiral{ width:100%; aspect-ratio:1/1; display:block; }
+
+  /* ---------- Palette ---------- */
+  .swatch-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; }
+  .swatch{
+    border:1px solid var(--border); border-radius:20px; overflow:hidden; background:var(--surface);
+    display:flex; flex-direction:column;
+  }
+  .swatch .fill{ height:104px; }
+  .swatch .info{ padding:16px 18px 18px; display:flex; flex-direction:column; gap:6px; }
+  .swatch .name{ font-weight:700; color:var(--text-strong); font-size:14.5px; }
+  .swatch .hex{ font-family:var(--font-mono); font-size:12.5px; color:var(--text-muted); }
+  .swatch .use{ font-size:12.5px; color:var(--text-muted); line-height:1.45; }
+  .badge{
+    align-self:flex-start; font-family:var(--font-mono); font-size:11px; padding:3px 9px; border-radius:100px;
+    font-weight:600; margin-top:4px;
+  }
+  .badge.pass{ background:var(--green-pill-bg); color:var(--green-text); }
+  .badge.limited{ background:var(--terracota-xlow); color:var(--terracota-dark); }
+  .badge.fail{ background:#FBEBEC; color:#B3261E; }
+
+  .subgroup-label{ font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); margin:44px 0 16px; }
+  .subgroup-label:first-child{ margin-top:0; }
+
+  /* ---------- Typography ---------- */
+  .type-specimen{ border-top:1px solid var(--border); padding:34px 0; display:grid; grid-template-columns:120px 1fr; gap:28px; align-items:baseline; }
+  .type-specimen:first-of-type{ border-top:none; }
+  .type-specimen .tag{ font-family:var(--font-mono); font-size:12px; color:var(--text-muted); padding-top:6px; }
+  .type-specimen .sample{ color:var(--text-strong); }
+  .type-meta{ margin-top:10px; font-family:var(--font-mono); font-size:12px; color:var(--text-muted); }
+  .two-tone{ font-family:var(--font-display); font-size:clamp(32px,4.2vw,52px); line-height:1.05; font-weight:800; }
+  .two-tone .l{ font-weight:300; }
+  .pairing-note{ background:var(--surface-2); border-radius:20px; padding:28px 30px; font-size:14.5px; color:var(--text); margin-top:40px; }
+  .pairing-note b{ color:var(--text-strong); }
+
+  /* ---------- Voice ---------- */
+  .voice-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .voice-card{ border-radius:20px; padding:22px 24px; border:1px solid var(--border); }
+  .voice-card.dont{ background:var(--terracota-xlow); border-color:transparent; }
+  .voice-card.do{ background:var(--green-xlow); border-color:transparent; }
+  .voice-card .label{ font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; font-weight:700; margin-bottom:10px; display:block; }
+  .voice-card.dont .label{ color:var(--terracota-dark); }
+  .voice-card.do .label{ color:var(--green-text); }
+  .voice-card p{ font-size:14.5px; line-height:1.55; }
+  .voice-card.dont p{ color:var(--terracota-dark); }
+  .voice-card.do p{ color:var(--green-text); }
+  .voice-pairs{ display:flex; flex-direction:column; gap:14px; margin-top:18px; }
+
+  /* ---------- Components ---------- */
+  .comp-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px; }
+  .comp-card{ border:1px solid var(--border); border-radius:22px; padding:26px; background:var(--surface); }
+  .comp-card .comp-label{ font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); margin-bottom:18px; }
+
+  .habit-card{ display:flex; gap:14px; align-items:center; }
+  .habit-icon{ width:44px; height:44px; border-radius:14px; background:var(--green-xlow); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .habit-body{ flex:1; }
+  .habit-body .t{ font-weight:700; color:var(--text-strong); font-size:14.5px; }
+  .habit-body .s{ font-size:12.5px; color:var(--text-muted); margin-top:2px; }
+  .pill{ font-size:11.5px; font-weight:700; padding:4px 11px; border-radius:100px; white-space:nowrap; }
+  .pill.done{ background:var(--green-pill-bg); color:var(--green-text); }
+  .pill.pending{ background:var(--surface-2); color:var(--text-muted); }
+
+  .ring-wrap{ display:flex; align-items:center; gap:20px; }
+  .ring-wrap svg{ width:96px; height:96px; }
+  .ring-copy .n{ font-family:var(--font-display); font-weight:800; font-size:26px; color:var(--text-strong); }
+  .ring-copy .s{ font-size:12.5px; color:var(--text-muted); }
+
+  .tiers{ display:flex; flex-direction:column; gap:10px; }
+  .tier{ display:flex; justify-content:space-between; align-items:center; padding:12px 16px; border-radius:14px; font-size:13px; font-weight:600; }
+  .tier.low{ background:var(--green-xlow); color:var(--green-text); }
+  .tier.mid{ background:var(--cyan-50); color:var(--cyan-700); }
+  .tier.high{ background:var(--gold-on-dark); color:var(--gold); }
+  :root[data-theme="dark"] .tier.mid{ background:#062B36; color:#8FE0FF; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .tier.mid{ background:#062B36; color:#8FE0FF; } }
+
+  .bubble{ background:var(--cyan-50); color:var(--deep-teal); border-radius:18px 18px 18px 4px; padding:16px 18px; font-size:13.5px; max-width:88%; }
+  :root[data-theme="dark"] .bubble{ background:#062B36; color:#EAFBFF; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .bubble{ background:#062B36; color:#EAFBFF; } }
+  .bubble-row{ display:flex; gap:10px; align-items:flex-start; }
+  .bubble-avatar{ width:28px; height:28px; border-radius:50%; background:var(--cyan-500); flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+  .bubble-avatar svg{ width:14px; height:14px; }
+
+  .toggle-row{ display:flex; justify-content:space-between; align-items:center; }
+  .toggle-row .t{ font-weight:700; font-size:14px; color:var(--text-strong); }
+  .switch{ width:44px; height:26px; border-radius:100px; background:var(--terracota-xlow); position:relative; flex-shrink:0; }
+  .switch::after{ content:""; position:absolute; width:20px; height:20px; border-radius:50%; background:var(--terracota-dark); top:3px; left:3px; }
+  .pause-chip{ margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:var(--terracota-xlow); color:var(--terracota-dark); font-size:12px; font-weight:700; padding:6px 12px; border-radius:100px; }
+
+  /* ---------- Logo ---------- */
+  .logo-block{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+  .logo-plate{ border-radius:24px; padding:60px 40px; display:flex; flex-direction:column; align-items:flex-start; gap:18px; }
+  .logo-plate.on-light{ background:#FFFFFF; border:1px solid #E7EBED; }
+  .logo-plate.on-dark{ background:var(--deep-teal); }
+  .logo-plate.on-dark .lockup{ color:#fff; }
+  .logo-plate.on-dark svg .spiral-path{ stroke:var(--gold); }
+  .lockup{ display:flex; align-items:center; gap:12px; font-family:var(--font-display); font-weight:800; font-size:34px; color:var(--cyan-500); }
+  .lockup svg{ width:38px; height:38px; }
+  .logo-plate .short-tag{ font-size:12.5px; }
+  .logo-plate.on-light .short-tag{ color:#65737B; }
+  .logo-plate.on-dark .short-tag{ color:#8FC6D6; }
+  .logo-notes{ font-size:14px; color:var(--text); line-height:1.7; }
+  .logo-notes li{ margin-bottom:8px; }
+
+  footer{ padding:48px 0 64px; font-size:13px; color:var(--text-muted); }
+  .foot-row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+
+  @media (max-width:760px){
+    section{ padding:56px 0; }
+    .hero-grid, .logo-block{ grid-template-columns:1fr; }
+    .voice-grid{ grid-template-columns:1fr; }
+    .type-specimen{ grid-template-columns:1fr; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+</style>
+
+<nav class="topnav">
+  <div class="wrap">
+    <div class="brandmark">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 4 5 4 9c0 3 2 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 2c5 0 8 3 8 7 0 5-4 8-9 8-3.5 0-6-2-6-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".45"/></svg>
+      FIBO · Brandboard
+    </div>
+    <div class="navlinks">
+      <a href="#paleta">Paleta</a>
+      <a href="#tipografia">Tipografía</a>
+      <a href="#voz">Voz</a>
+      <a href="#componentes">Componentes</a>
+      <a href="#logo">Logo</a>
+    </div>
+    <button class="themebtn" id="themeToggle" type="button" aria-label="Cambiar tema de vista previa">Tema: sistema</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Design system · cerrado 05 Set. 2026</div>
+      <h1>
+        F<span class="accent">I</span>BO
+        <span class="light">crece en espiral.</span>
+      </h1>
+      <p class="tagline"><b>Cada hábito suma al siguiente.</b> Tu Reserva crece en espiral — no de un salto.</p>
+      <div class="meta-row">
+        <span><b>Paleta</b> heredada de Pacífico / Quererte Sano</span>
+        <span><b>Tipografía</b> Bricolage Grotesque + Geist</span>
+        <span><b>Contraste</b> validado WCAG 2.1</span>
+      </div>
+    </div>
+    <canvas id="spiral" width="640" height="640" role="img" aria-label="Espiral áurea de Fibonacci, dibujada en dorado, símbolo del crecimiento compuesto de FIBO"></canvas>
+  </div>
+</header>
+
+<section id="paleta">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Paleta</h2>
+      <p class="note">Tokens reales de Pacífico Corporativo y Quererte Sano, más dos acentos propios de FIBO. Nada inventado — cada hex viene de producción real o de una decisión propia documentada.</p>
+    </div>
+
+    <div class="subgroup-label">Marca / confianza</div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="fill" style="background:#0099CC"></div><div class="info"><span class="name">Cyan Pacífico</span><span class="hex mono">#0099CC · --cyan-500</span><span class="use">Primario. CTAs grandes, enlaces de marca, respaldo institucional.</span><span class="badge limited">3.27:1 · solo UI grande/negrita</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#004C66"></div><div class="info"><span class="name">Cyan profundo</span><span class="hex mono">#004C66 · --cyan-800</span><span class="use">Texto sobre fondo claro cuando se necesita asociación cyan.</span><span class="badge pass">9.8:1 · apto para texto</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#01A355"></div><div class="info"><span class="name">Verde Salud</span><span class="hex mono">#01A355 · --green-500</span><span class="use">Relleno / ícono de hábito cumplido — nunca como texto plano.</span><span class="badge limited">3.3:1 · solo relleno</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#007C2D"></div><div class="info"><span class="name">Verde texto</span><span class="hex mono">#007C2D · --green-text</span><span class="use">Texto sobre pastilla clara #CFF8DD — patrón "hábito cumplido".</span><span class="badge pass">5.36:1 · apto para texto</span></div></div>
+    </div>
+
+    <div class="subgroup-label">Acentos propios de FIBO (no existen en Pacífico)</div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="fill" style="background:#D4A24C"></div><div class="info"><span class="name">Dorado espiral</span><span class="hex mono">#D4A24C · --gold</span><span class="use">Relleno del anillo/espiral, ícono grueso. Nunca texto sobre fondo claro.</span><span class="badge fail">2.32:1 · nunca como texto claro</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#003840"></div><div class="info"><span class="name">Chip oscuro para dorado</span><span class="hex mono">#003840</span><span class="use">Fondo del chip "nivel alto" — el dorado sí funciona como texto aquí.</span><span class="badge pass">5.53:1 · dorado sobre esto pasa</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#C97B5B"></div><div class="info"><span class="name">Terracota pausa</span><span class="hex mono">#C97B5B · --terracota</span><span class="use">Ícono/borde del estado "pausado". Negrita ≥16px como máximo en texto.</span><span class="badge limited">3.25:1 · solo UI grande/negrita</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#8C4A2F"></div><div class="info"><span class="name">Terracota texto</span><span class="hex mono">#8C4A2F · --terracota-dark</span><span class="use">Texto sobre chip claro #FBEEE9 — mismo patrón que el verde.</span><span class="badge pass">6.69:1 · apto para texto</span></div></div>
+    </div>
+
+    <div class="subgroup-label">Gradiente y neutros</div>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="fill" style="background:linear-gradient(90deg,#35DAFF,#65F9CF,#98FFF3)"></div><div class="info"><span class="name">Tritono fresco</span><span class="hex mono">#35DAFF → #98FFF3</span><span class="use">Badges de comunidad/logro, firma visual de Quererte Sano — reutilizada, no reinventada.</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#F9FAFB;border-bottom:1px solid #E7EBED"></div><div class="info"><span class="name">Fondo</span><span class="hex mono">#F9FAFB · --bg</span><span class="use">Fondo general de app y landing.</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#545E62"></div><div class="info"><span class="name">Texto cuerpo</span><span class="hex mono">#545E62 · --text</span><span class="use">Párrafos y descripciones.</span><span class="badge pass">6.65:1</span></div></div>
+      <div class="swatch"><div class="fill" style="background:#2F373C"></div><div class="info"><span class="name">Texto titular</span><span class="hex mono">#2F373C · --text-strong</span><span class="use">Encabezados de alto contraste.</span><span class="badge pass">12.1:1</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="tipografia">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tipografía</h2>
+      <p class="note">Propuesta nueva (05 Set., pendiente de tu validación aquí antes de cerrarla en <code class="mono">design-system.md</code>): un display con carácter + un cuerpo neutro, en vez de una sola fuente "segura" para todo.</p>
+    </div>
+
+    <div class="type-specimen">
+      <span class="tag">Display<br>Bricolage<br>Grotesque</span>
+      <div class="sample">
+        <div style="font-family:var(--font-display); font-weight:800; font-size:clamp(30px,4.6vw,58px); line-height:1.02;">Tu Reserva crece</div>
+        <div class="type-meta">peso 800 · usar ≥28px · titulares, wordmark, números de nivel</div>
+      </div>
+    </div>
+    <div class="type-specimen">
+      <span class="tag">Two-Tone<br>Heading</span>
+      <div class="sample">
+        <div class="two-tone"><span class="l">Pequeños hábitos,</span> <span style="color:var(--cyan-500)">gran Reserva</span></div>
+        <div class="type-meta">patrón heredado de Quererte Sano: una palabra en light + una en bold, aquí con Bricolage Grotesque</div>
+      </div>
+    </div>
+    <div class="type-specimen">
+      <span class="tag">Cuerpo / UI<br>Geist</span>
+      <div class="sample">
+        <p style="font-size:17px; color:var(--text-strong); max-width:60ch;">Cada semana que ahorras, te mueves o haces una pausa de bienestar, tu Reserva crece un poco más — sin costo, sin letra chica.</p>
+        <div class="type-meta">peso 400/500 · párrafos, botones, formularios</div>
+      </div>
+    </div>
+    <div class="type-specimen">
+      <span class="tag">Utilitaria<br>Geist Mono</span>
+      <div class="sample">
+        <p class="mono" style="font-size:14px;">--color-gold: #D4A24C; /* relleno, no texto */</p>
+        <div class="type-meta">tokens, hex, timestamps, contadores de la Reserva</div>
+      </div>
+    </div>
+
+    <div class="pairing-note">
+      <b>Por qué este pairing y de dónde sale:</b> la referencia 3 (<code class="mono">ux-ui-referencia-3</code>) es el sistema de <code class="mono">caldera.xyz</code>, un producto cripto — su paleta volcánica no aplica a FIBO, pero su fórmula tipográfica sí: un display expresivo de peso fuerte arriba, un cuerpo humanista de peso medio abajo, nunca el mismo peso para ambos roles. Bricolage Grotesque cubre el rol "juvenil/con carácter" sin caer en el Inter/Space Grotesk por defecto; Geist cubre cuerpo y UI, coherente con que el stack de la app va sobre Vercel/Next.js. <b>Reemplaza la decisión anterior de Poppins</b> — se deja aquí para validar antes de escribirlo en el design system.
+    </div>
+  </div>
+</section>
+
+<section id="voz">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Voz</h2>
+      <p class="note">4 reglas ya cerradas en <code class="mono">design-system.md</code> §4 — aquí en pares reales, no abstractos.</p>
+    </div>
+    <div class="voice-pairs">
+      <div class="voice-grid">
+        <div class="voice-card dont"><span class="label">Nunca</span><p>"Su solicitud de siniestro será procesada según carencia contractual."</p></div>
+        <div class="voice-card do"><span class="label">Siempre</span><p>"Algo pasó — cuéntanos qué fue y en minutos sabes el siguiente paso."</p></div>
+      </div>
+      <div class="voice-grid">
+        <div class="voice-card dont"><span class="label">Nunca</span><p>"¡Aprovecha 43% dscto. solo por hoy en tu prima!"</p></div>
+        <div class="voice-card do"><span class="label">Siempre</span><p>"Tu Reserva subió de nivel — esto es lo que acabas de ganar."</p></div>
+      </div>
+      <div class="voice-grid">
+        <div class="voice-card dont"><span class="label">Nunca</span><p>"El sistema ha detectado inactividad en su cuenta."</p></div>
+        <div class="voice-card do"><span class="label">Siempre</span><p>"Te extrañamos esta semana — retomar es tan simple como un hábito."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="componentes">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Componentes</h2>
+      <p class="note">Los 5 que <code class="mono">design-system.md</code> §5 marca como prioritarios para la demo, ya construidos con las reglas de contraste aplicadas.</p>
+    </div>
+    <div class="comp-grid">
+
+      <div class="comp-card">
+        <div class="comp-label">Tarjeta de hábito</div>
+        <div class="habit-card">
+          <div class="habit-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 13l4 4L20 6" stroke="#007C2D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="habit-body">
+            <div class="t">Camina 20 min</div>
+            <div class="s">+8 a tu Reserva esta semana</div>
+          </div>
+          <span class="pill done">Hecho</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Anillo de progreso</div>
+        <div class="ring-wrap">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border)" stroke-width="9"/>
+            <circle cx="50" cy="50" r="42" fill="none" stroke="var(--gold)" stroke-width="9" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="97" transform="rotate(-90 50 50)"/>
+          </svg>
+          <div class="ring-copy"><div class="n">63%</div><div class="s">a tu próximo nivel</div></div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Recompensa por nivel</div>
+        <div class="tiers">
+          <div class="tier low"><span>Nivel bajo</span><span>Insignia</span></div>
+          <div class="tier mid"><span>Nivel medio</span><span>1 mes gratis</span></div>
+          <div class="tier high"><span>Nivel alto</span><span>Sesión real</span></div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Burbuja de chat FIBO</div>
+        <div class="bubble-row">
+          <div class="bubble-avatar"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3C8 3 5 5.5 5 9c0 2.5 1.7 4 3.8 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <div class="bubble">Cuéntame qué pasó con tu laptop — con una foto y 2 preguntas ya sé cómo ayudarte.</div>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-label">Toggle de top-up</div>
+        <div class="toggle-row"><span class="t">Herramientas de trabajo</span><div class="switch"></div></div>
+        <div class="pause-chip">Pausado · sin penalidad</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="logo">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Dirección de logo</h2>
+      <p class="note">No es el logo final — eso lo defines tú con tu propia exploración en Behance. Esto es la dirección ya cerrada en <code class="mono">design-system.md</code> §6, para que valides el lockup contra tu propuesta.</p>
+    </div>
+    <div class="logo-block">
+      <div class="logo-plate on-light">
+        <div class="lockup">
+          <svg viewBox="0 0 24 24" fill="none"><path class="spiral-path" d="M12 2C7 2 4 5 4 9c0 3 2 5 5 5" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round"/><path d="M12 2c5 0 8 3 8 7 0 5-4 8-9 8-3.5 0-6-2-6-5" stroke="var(--cyan-500)" stroke-width="2.2" stroke-linecap="round" opacity=".5"/></svg>
+          FIBO
+        </div>
+        <span class="short-tag">Sobre fondo claro</span>
+      </div>
+      <div class="logo-plate on-dark">
+        <div class="lockup">
+          <svg viewBox="0 0 24 24" fill="none"><path class="spiral-path" d="M12 2C7 2 4 5 4 9c0 3 2 5 5 5" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round"/><path d="M12 2c5 0 8 3 8 7 0 5-4 8-9 8-3.5 0-6-2-6-5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".5"/></svg>
+          FIBO
+        </div>
+        <span class="short-tag">Sobre fondo oscuro</span>
+      </div>
+    </div>
+    <ul class="logo-notes" style="margin-top:32px;">
+      <li><b>Wordmark:</b> "FIBO" en Bricolage Grotesque peso 800, Cyan Pacífico sobre claro / blanco sobre oscuro.</li>
+      <li><b>Ícono:</b> espiral áurea de 2-3 arcos, trazo grueso, dorado — es el mismo ícono del anillo de progreso, reutilizado como marca.</li>
+      <li><b>Lockup único:</b> ícono + wordmark horizontal, ~32-40px de alto — sin variantes apiladas ni monocromáticas para este sprint.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>FIBO Brandboard v1 · cerrado 05 Set. 2026</span>
+    <span>Paleta: Pacífico/Quererte Sano · Tipografía: Bricolage Grotesque + Geist (propuesta) · Stack objetivo: Next.js + shadcn/ui</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+  var states = ['system','light','dark'];
+  var labels = {system:'Tema: sistema', light:'Tema: claro', dark:'Tema: oscuro'};
+  var saved = 'system';
+  try { saved = localStorage.getItem('fibo-theme-preview') || 'system'; } catch(e){}
+  function apply(state){
+    if(state === 'system'){ root.removeAttribute('data-theme'); }
+    else { root.setAttribute('data-theme', state); }
+    btn.textContent = labels[state];
+  }
+  apply(saved);
+  btn.addEventListener('click', function(){
+    var idx = (states.indexOf(saved) + 1) % states.length;
+    saved = states[idx];
+    try { localStorage.setItem('fibo-theme-preview', saved); } catch(e){}
+    apply(saved);
+  });
+})();
+
+(function(){
+  var canvas = document.getElementById('spiral');
+  var ctx = canvas.getContext('2d');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = canvas.width, H = canvas.height;
+  var cx = W/2, cy = H/2;
+  var phi = 1.61803398875;
+  var maxTheta = 4.55 * Math.PI;
+  var a = 3.2;
+  var progress = reduced ? 1 : 0;
+
+  function getColor(name, fallback){
+    var v = getComputedStyle(document.documentElement).getPropertyValue(name);
+    return v && v.trim() ? v.trim() : fallback;
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    var gold = getColor('--gold', '#D4A24C');
+    var cyan = getColor('--cyan-500', '#0099CC');
+    var theta0 = maxTheta * progress;
+    var steps = 900;
+    ctx.lineCap = 'round';
+
+    // faint guide rings (Fibonacci-esque concentric arcs)
+    ctx.strokeStyle = cyan;
+    ctx.globalAlpha = 0.10;
+    ctx.lineWidth = 1;
+    [40,70,105,145,190,240].forEach(function(r){
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+
+    // golden spiral, drawn progressively
+    ctx.beginPath();
+    for(var i=0;i<=steps;i++){
+      var t = (theta0 * i)/steps;
+      var r = a * Math.pow(phi, t/(Math.PI/2));
+      var x = cx + r*Math.cos(t);
+      var y = cy + r*Math.sin(t);
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = gold;
+    ctx.lineWidth = 3.4;
+    ctx.stroke();
+
+    // endpoint dot = "current growth point"
+    var tEnd = theta0;
+    var rEnd = a * Math.pow(phi, tEnd/(Math.PI/2));
+    var xEnd = cx + rEnd*Math.cos(tEnd);
+    var yEnd = cy + rEnd*Math.sin(tEnd);
+    ctx.beginPath();
+    ctx.arc(xEnd, yEnd, 5, 0, Math.PI*2);
+    ctx.fillStyle = gold;
+    ctx.fill();
+  }
+
+  if(reduced){
+    draw();
+  } else {
+    function step(){
+      progress += 0.006;
+      if(progress > 1) progress = 1;
+      draw();
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener('resize', function(){
+    var rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * 2; canvas.height = rect.width * 2;
+    W = canvas.width; H = canvas.height; cx = W/2; cy = H/2;
+    draw();
+  });
+
+  var mo = new MutationObserver(function(){ draw(); });
+  mo.observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+})();
+</script>

@@ -6,7 +6,7 @@
 
 ### 1. Hero
 - Nombre "FIBO" + ícono de espiral (ver `design-system.md` §6).
-- Una frase corta, hablándole a Camila directamente, no a un inversionista. Base de copy: `02-ideacion/problem-statement-v1.md` (Problem Statement), simplificado a una sola oración de gancho — ej. tono "tu cobertura crece contigo, no con tu planilla" (ajustar redacción final al momento de escribir, no cerrar copy aquí; **no usar "historial crediticio"** — es impreciso, ver `01-research/pacifico-friccion-usuario-eps.md` §3).
+- **Copy cerrado (05 Set.):** tagline oficial de marca como subtítulo del hero — *"Cada hábito suma al siguiente. Tu Reserva crece en espiral."* (`design-system.md` §8). Como titular corto encima, en el patrón Two-Tone Heading: *"Pequeños hábitos,* **gran Reserva"** (no usar "historial crediticio" — es impreciso, ver `01-research/pacifico-friccion-usuario-eps.md` §3).
 - CTA único, visible sin hacer scroll: "Únete a la lista de espera".
 
 ### 2. El problema (breve, 2-3 líneas)

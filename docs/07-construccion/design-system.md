@@ -26,11 +26,30 @@ Segundo principio: el segmento (`PLAN-TRABAJO.md` §6) rechaza letra chica, publ
 
 Detalle completo de tokens (incluye estados hover/pressed, escalas intermedias) en `docs/03-mvp/ux-ui-referencia-2/DESIGN.md` §2.
 
-## 3. Tipografía — resuelta con tokens reales (corregido 05 Set.)
+### 2.1 Validación de contraste/accesibilidad (cerrado 05 Set.)
 
-- **Titulares:** `Foco` (la tipografía real de Pacífico, `Foco Trial`/`Foco_Trial_Bd`/`Foco_Trial_Lt`) — o una sans-serif redondeada equivalente si no se consigue la fuente exacta a tiempo (ej. Poppins). Adoptar el patrón **"Two-Tone Heading"** de Quererte Sano: mezclar una palabra en `font-light` con una en `font-bold` en el mismo titular — es la firma visual de bienestar de Pacífico, ya validada en producción.
-- **Cuerpo/UI:** `Roboto` (la tipografía real de Pacífico) o `system-ui` — prioridad es legibilidad mobile.
-- Evitar serif — se asocia a documento legal/letra chica, exactamente lo que el segmento rechaza (insight oficial). Esto sí se mantiene de la versión anterior, es coherente con ambas referencias reales.
+Chequeo WCAG 2.1 (ratio texto normal ≥4.5:1, texto grande/negrita ≥18px o componentes UI ≥3:1) sobre las combinaciones que usan los componentes prioritarios de §5. Regla general que resuelve todos los hallazgos: **cyan500, verde-medio y dorado son colores de fondo/relleno/ícono, no de texto sobre fondo claro** — para texto usar siempre las variantes oscuras ya definidas arriba.
+
+| Combinación | Ratio | Veredicto | Dónde aplica / ajuste |
+|---|---|---|---|
+| Texto blanco sobre botón cyan `#0099CC` | 3.27:1 | Pasa solo como UI grande/negrita (≥16px bold), no como texto de párrafo | Heredado de Quererte Sano (ellos ya lo usan así en producción) — mantener solo en botones píldora de 48px con texto en negrita, nunca en párrafos |
+| Texto cyan `#0099CC` sobre fondo blanco/gris50 | 3.27:1 | Falla para texto normal | No usar cyan500 como color de texto de cuerpo o links — el propio design system ya evita esto en la práctica (§2 define `#545E62`/`#2F373C` para texto, no cyan directo); dejarlo explícito para que nadie lo reintroduzca por accidente |
+| Texto `#545E62` (cuerpo) / `#2F373C` (titulares) sobre blanco/gris50 | 6.65:1 / 12.1:1 | Pasa AA (cuerpo) y AAA (titulares) | Sin cambios — los tokens de texto ya definidos son correctos, úsalos siempre para texto real |
+| **Dorado `#D4A24C` como texto sobre blanco/gris50** | **2.32:1** | **Falla incluso como texto grande** | Es el hallazgo real de esta validación: el acento de la espiral **no puede usarse como color de texto** en ningún tamaño — solo como relleno del anillo/espiral, ícono grueso (≥3px stroke) o fondo de chip oscuro. Si una etiqueta necesita asociarse visualmente al nivel "dorado", usar un chip con fondo oscuro (`#003840` o `#2F373C`) y texto dorado, nunca dorado sobre claro |
+| Verde-medio `#01A355`/`#00AF3F` como texto sobre blanco/gris50 | 3.3:1 | Falla para texto normal | Para pastillas de "hábito cumplido" usar el patrón que Referencia 1 ya valida en producción: fondo tintado + texto oscuro (`#007C2D` sobre `#F4FFF9`/`#CFF8DD`, 5.36:1, pasa AA) — nunca verde-medio plano como color de texto |
+| Terracota `#C97B5B` como texto sobre blanco/gris50 | 3.25:1 | Pasa solo como UI grande/negrita, falla para texto normal | Mismo patrón de chip que el verde: usar fondo tintado claro + terracota solo en negrita ≥16px o en el ícono/borde del chip de "pausado", no en texto corrido |
+
+**Consecuencia directa para los componentes de §5:** el anillo/espiral de progreso (dorado como relleno, no como número/etiqueta encima sin fondo oscuro), la tarjeta de recompensa (nivel "dorado" siempre en chip con fondo oscuro), la tarjeta de hábito (pastilla verde con el patrón fondo-tintado + texto oscuro) y el toggle de pausa (terracota en ícono/borde + negrita, no en texto plano) ya quedan resueltos con esta regla — no se requiere ningún cambio de paleta, solo esta disciplina de uso.
+
+## 3. Tipografía — Bricolage Grotesque (display) + Geist (cuerpo/UI), Foco solo si aparece kit oficial (corregido 05 Set., 2ª sesión)
+
+- **Decisión de licencia (05 Set., confirmada por el equipo):** `Foco`/`Foco Trial` es la tipografía real de Pacífico, pero es una fuente de prueba (trial) sin licencia confirmada de uso/redistribución para el build del equipo. Sin acceso legal verificado, comprometerla en el design system es un riesgo evitable. Si en algún momento el equipo confirma acceso legítimo al kit de marca oficial de Pacífico (ej. entregado por el comité del hackathon), se puede reemplazar la tipografía de titulares por `Foco` sin rediseñar nada más — son intercambiables en los mismos tokens tipográficos.
+- **Decisión de pairing (05 Set., 2ª sesión, validada contra el brandboard):** en vez de una sola fuente "segura" para todo (la primera pasada de esta corrección proponía `Poppins` para titulares y cuerpo), se separan los dos roles con personalidad propia. La referencia que motivó el cambio es `docs/03-mvp/ux-ui-referencia-3/DESIGN.md` (sistema de `caldera.xyz`, un producto cripto): su paleta volcánica no aplica a FIBO, pero su *método* tipográfico sí — un display expresivo de peso fuerte + un cuerpo humanista de peso medio, nunca la misma fuente para ambos roles.
+- **Titulares/display:** `Bricolage Grotesque` (Google Fonts, variable, peso 800 para titulares/wordmark) — expresiva y con carácter propio para el público Gen Z, evitando el Poppins/Inter/Space Grotesk "seguro pero genérico". Mantiene el patrón **"Two-Tone Heading"** de Quererte Sano: mezclar una palabra en `font-light` con una en `font-bold` en el mismo titular.
+- **Cuerpo/UI:** `Geist` (Google Fonts, libre) — coherente con que el stack de construcción es Next.js/Vercel (`stack-tecnico.md`), limpia y legible en mobile. Reemplaza a `Roboto` como elección principal; `Roboto` queda como alternativa válida si Geist da problemas de integración.
+- **Utilitaria (tokens, hex, cifras, timestamps):** `Geist Mono` — rol nuevo, antes no existía una fuente monoespaciada en el sistema.
+- Validado visualmente en `brandboard.html` (artifact + copia local en esta carpeta) antes de cerrarse aquí.
+- Evitar serif — se asocia a documento legal/letra chica, exactamente lo que el segmento rechaza (insight oficial). Esto se mantiene sin cambios.
 
 ## 4. Tono de voz
 
@@ -38,6 +57,8 @@ Detalle completo de tokens (incluye estados hover/pressed, escalas intermedias) 
 - Nunca alarmista. El producto acompaña, no asusta.
 - Primera persona/cercana del agente FIBO ("te ayudo a...", no "el sistema procesará su solicitud").
 - Nunca lenguaje de descuento/oferta ("¡Gana!", "¡Aprovecha!") — coherente con el rechazo explícito a descuentos disfrazados (Plot Twist oficial).
+
+**Validado 05 Set.:** se revisó el copy ya escrito en `07-construccion/esquema-mvp.md`, `esquema-landing.md` y los diálogos de `02-ideacion/historias-usuario-y-validacion.md` contra estas 4 reglas — sin hallazgos. Las únicas menciones de "prima"/"microprima"/"descuento" en esos documentos son uso analítico interno (explicar el modelo a otro agente/mentor), no copy de cara al usuario; el copy de UI ya usa el lenguaje traducido ("pausa", "tu Reserva", "algo pasó") consistentemente.
 
 ## 5. Componentes clave (los que importan para la demo)
 
@@ -49,9 +70,16 @@ Detalle completo de tokens (incluye estados hover/pressed, escalas intermedias) 
 | **Burbuja de chat del agente FIBO** | Debe sentirse conversacional y cálida, no como un formulario con pasos numerados |
 | **Toggle de top-up (activar/pausar)** | Debe comunicar explícitamente "sin penalidad" al pausar — es un diferencial de producto, no solo un switch on/off |
 
-## 6. Qué queda fuera de esta versión
+**Nota de accesibilidad para los 5 componentes de esta tabla:** ver §2.1 — el resumen corto es que dorado/verde/terracota son colores de relleno o de chip con fondo tintado, nunca texto plano sobre fondo claro.
 
-- Logotipo final / lockup de marca — para el hackathon alcanza con un tratamiento tipográfico simple del nombre "FIBO" + el ícono de espiral; no es necesario un proceso de branding completo.
+## 6. Logotipo/lockup — se mantiene fuera de alcance de producción, con dirección concreta (cerrado 05 Set.)
+
+**Decisión (05 Set.):** con 3 días de sprint restantes, no se justifica abrir una exploración de branding completa — se mantiene la decisión original de no producir un logotipo final. Lo que sí se cierra ahora es la ambigüedad de "tratamiento tipográfico simple", para que quien construya la landing/app no tenga que decidir esto sobre la marcha:
+
+- **Wordmark:** el nombre "FIBO" en `Bricolage Grotesque` `font-weight:800` (o `Foco` si aparece el kit oficial, ver §3), en Cyan Pacífico `#0099CC` sobre fondo claro / blanco sobre fondo oscuro. Sin efectos, sin degradado en el texto — el degradado se reserva para el ícono y los componentes de progreso.
+- **Ícono:** una espiral áurea simplificada (2-3 arcos concéntricos construidos con `border-radius` sobre cuadrados en proporción de Fibonacci — no un logo importado ni ilustración vectorial custom), en trazo grueso (≥3px), color dorado de acento `#D4A24C` sobre fondo claro u oscuro indistintamente (es relleno/trazo, no texto — no aplica la restricción de §2.1). Es el mismo ícono que ya usa el anillo de progreso de la Reserva, reutilizado como marca — no un ícono nuevo y distinto.
+- **Lockup:** ícono a la izquierda + wordmark a la derecha, un solo tamaño (el de la cabecera de la landing/app, ~32-40px de alto). No se necesitan variantes apiladas, monocromáticas ni de distintos tamaños para el hackathon — alcanza con la versión horizontal única.
+- Sigue sin ser necesario un manual de marca, variantes de lockup, o un proceso de branding completo — este es el límite de la dirección visual del logo para este sprint.
 - Ilustraciones custom — usar formas geométricas simples (círculos, espirales) antes que invertir tiempo en ilustración original.
 - Modo oscuro — no es prioridad para una demo de 3 minutos.
 
@@ -61,4 +89,31 @@ Para no diseñar en el vacío y mantener coherencia con la línea visual real de
 
 1. **[Referencia 1 — Pacífico Corporativo](file:///home/pcrisho/Documents/University/hacka-z/docs/03-mvp/ux-ui-referencia-1/DESIGN.md):** Sistema visual institucional (`pacifico.com.pe`). Define el Azul/Cyan Pacífico (`#0099CC`), el Magenta de acción (`#EE2C70`), la tipografía `Foco`, las tarjetas de producto y el anclaje de confianza del microseguro pay-as-you-go.
 2. **[Referencia 2 — Quererte Sano](file:///home/pcrisho/Documents/University/hacka-z/docs/03-mvp/ux-ui-referencia-2/DESIGN.md):** Sistema visual de bienestar y prevención (`querertesano.pe`). Define la paleta extendida para hábitos saludables, los gradientes frescos de vitalidad (`#35DAFF` → `#65F9CF` → `#98FFF3`), botones de 48px `rounded-full`, y titulares de doble peso ("Two-Tone Headings" con `font-light` en `#003840` + `font-bold` en `#0099CC`).
+
+## 8. Tagline de marca (cerrado 05 Set.)
+
+**Tagline oficial de FIBO:**
+
+> **"Cada hábito suma al siguiente. Tu Reserva crece en espiral."**
+
+**Versión corta** (footer, splash de app, bajo el lockup del logo): **"Crece en espiral."**
+
+**Por qué se cierra ahora:** el equipo, en la mentoría en vivo con Cami, describió el producto ("Figo") usando literalmente la premisa textual de Betterfly — *"queremos que tú vivas tu mejor vida"* (`4-07-2026/RETROALIMENTACION - 2 - CAMI/RETROALIMENTACION.md` líneas 6-9) — y la mentora advirtió explícitamente *"quítale protagonismo a Betterfly, el protagonista son ustedes"* (misma transcripción, línea 24-28). Esa frase ya no aparece en `05-entregables/guion-pitch-v1.md` (se corrigió junto con el resto de las menciones de Betterfly el 04 Set.), pero FIBO se quedó sin una línea propia que la reemplazara — este tagline cierra ese vacío.
+
+**Por qué esta redacción y no otra:** ancla en la metáfora que ya es la razón de ser del nombre de marca — la espiral de Fibonacci / crecimiento compuesto de hábitos (`02-ideacion/historias-usuario-y-validacion.md` §0) — en vez de en una aspiración genérica de bienestar ("vivir tu mejor vida") que no distingue a FIBO de Betterfly ni de ningún otro producto de bienestar. Nombra el mecanismo real del producto (hábito → Reserva que crece), no una promesa emocional intercambiable.
+
+**Dónde usarlo:** línea de cierre del video de pitch (tarjeta final con logo, después del segmento de modelo de negocio — ver `05-entregables/guion-pitch-v1.md`), subtítulo del Hero de la landing (`esquema-landing.md` §1, que hasta ahora dejaba el copy del hero sin cerrar), y subtítulo del one-pager cuando se redacte.
+
+## 9. Brandboard visual y brief de logo (05 Set., 2ª sesión)
+
+Todo lo de arriba (paleta, tipografía, tono, componentes, dirección de logo) tiene una versión visual/interactiva validada en **[`brandboard.html`](./brandboard.html)** (copia local, iterable; también publicado como artifact) — úsalo como referencia rápida en vez de leer los hex sueltos de §2. Incluye toggle de tema claro/oscuro/sistema para revisar ambos modos.
+
+El logo en sí sigue sin producirse (decisión de §6, sin cambios) — Roberto lo diseña con inspiración propia de Behance. El criterio para esa exploración (qué debe comunicar el ícono, qué evitar del territorio "espiral/Fibonacci", pruebas de tamaño mínimo/monocromía) está en un documento separado, `FIBO Logo Brief`, publicado como artifact — no se replica aquí para no mantener dos copias del mismo criterio.
+
+**Registro de artifacts publicados (fuente de verdad para la skill `cerrar-sesion` — no editar manualmente salvo que se publique/retire un artifact):**
+
+| Artifact | Archivo local | URL publicada |
+|---|---|---|
+| FIBO Brandboard | `07-construccion/brandboard.html` | https://claude.ai/code/artifact/e66cd762-b274-483f-961f-d7e07901af50 |
+| FIBO Logo Brief | (sin copia local — solo artifact) | https://claude.ai/code/artifact/a89d1f5f-4be5-49aa-b890-5598823f07e1 |
 

@@ -22,9 +22,10 @@ Son cosas distintas con objetivos distintos — no confundirlas:
 3. **[`design-system.md`](./design-system.md)** — identidad visual de FIBO: paleta, tipografía, tono, componentes clave. Es una **propuesta inicial** (no hay validación visual de campo todavía) — sirve para no bloquear la construcción, no es un cierre definitivo de marca.
 4. **[`esquema-landing.md`](./esquema-landing.md)** — wireframe en texto de la landing, sección por sección.
 5. **[`esquema-mvp.md`](./esquema-mvp.md)** — flujo de pantallas del prototipo, mapeado 1:1 contra la tabla real-vs-simulado de `03-mvp/alcance-producto.md` §5.
+6. **[`brandboard.html`](./brandboard.html)** — versión visual/interactiva de `design-system.md` (paleta con anotaciones de contraste, tipografía en vivo, tono, componentes, dirección de logo). Abrir directamente en el navegador para iterar en local; espejo del artifact publicado (05 Set. 2026). Si se edita aquí, considerar si el cambio también debe reflejarse en `design-system.md` para que ambos no diverjan.
+7. **[`stack-tecnico.md`](./stack-tecnico.md)** — Next.js + Vercel + shadcn/ui + NeonDB (solo para waitlist), cerrado 05 Set. 2026. Única pregunta abierta: dónde vive el código dentro del repo.
 
 ## Qué no se resuelve aquí
 
 - Copy final de marketing (vive en `05-entregables/` cuando se cierre).
 - Decisiones de negocio o de producto ya cerradas — esas están en `docs/memoria/CONTEXTO-ACTUAL.md`, aquí solo se ejecutan.
-- Stack técnico exacto de implementación (framework, hosting) — se define al empezar a codear con Claude Code, no es un documento de planeación, es una decisión de sesión de construcción.
