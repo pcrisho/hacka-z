@@ -1,0 +1,166 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-heading);
+    --font-sans: var(--font-sans);
+    --font-mono: var(--font-mono);
+    --color-link: var(--link);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+ * Tokens de marca FIBO — heredados de Pacífico Corporativo / Quererte Sano
+ * + 2 acentos propios (dorado espiral, terracota pausa).
+ * Fuente de verdad: docs/07-construccion/design-system.md (§2, §2.1) y brandboard.html.
+ * No editar tokens de color a mano sin revisar la regla de contraste de §2.1:
+ * dorado/verde/terracota-base son de relleno o de chip, nunca texto plano sobre claro.
+ */
+:root {
+    --background: #F9FAFB;
+    --foreground: #2F373C;
+    --card: #FFFFFF;
+    --card-foreground: #2F373C;
+    --popover: #FFFFFF;
+    --popover-foreground: #2F373C;
+
+    --primary: #0099CC;
+    --primary-foreground: #FFFFFF;
+    /* Texto/link de color marca sobre fondo claro (--primary falla AA como texto corrido, ver §2.1) */
+    --link: #004C66;
+
+    --secondary: #F2F5F5;
+    --secondary-foreground: #2F373C;
+    --muted: #F2F5F5;
+    --muted-foreground: #65737B;
+
+    /* Acento genérico de UI (hover/highlight) en tinte cyan — el dorado NO va aquí, es de relleno/ícono, no de superficie de texto */
+    --accent: #E8F9FF;
+    --accent-foreground: #004C66;
+
+    /* Terracota oscuro: mismo token de texto-seguro que usan los chips de "pausado" — nunca la terracota base como fondo sólido con texto encima */
+    --destructive: #8C4A2F;
+    --destructive-foreground: #FFFFFF;
+
+    --border: #E7EBED;
+    --input: #E7EBED;
+    --ring: #0099CC;
+
+    --chart-1: #0099CC;
+    --chart-2: #01A355;
+    --chart-3: #D4A24C;
+    --chart-4: #8C4A2F;
+    --chart-5: #004C66;
+
+    --radius: 1.25rem;
+
+    --sidebar: #F9FAFB;
+    --sidebar-foreground: #2F373C;
+    --sidebar-primary: #0099CC;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #E8F9FF;
+    --sidebar-accent-foreground: #004C66;
+    --sidebar-border: #E7EBED;
+    --sidebar-ring: #0099CC;
+}
+
+.dark {
+    --background: #001A23;
+    --foreground: #F2FBFD;
+    --card: #04262F;
+    --card-foreground: #F2FBFD;
+    --popover: #04262F;
+    --popover-foreground: #F2FBFD;
+
+    --primary: #0099CC;
+    --primary-foreground: #FFFFFF;
+    --link: #6FD6FF;
+
+    --secondary: #0A333D;
+    --secondary-foreground: #F2FBFD;
+    --muted: #0A333D;
+    --muted-foreground: #7FA3AD;
+
+    --accent: #062B36;
+    --accent-foreground: #8FE0FF;
+
+    --destructive: #8C4A2F;
+    --destructive-foreground: #FFFFFF;
+
+    --border: #0F3F49;
+    --input: #0F3F49;
+    --ring: #0099CC;
+
+    --chart-1: #0099CC;
+    --chart-2: #01A355;
+    --chart-3: #D4A24C;
+    --chart-4: #8C4A2F;
+    --chart-5: #6FD6FF;
+
+    --sidebar: #04262F;
+    --sidebar-foreground: #F2FBFD;
+    --sidebar-primary: #0099CC;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #062B36;
+    --sidebar-accent-foreground: #8FE0FF;
+    --sidebar-border: #0F3F49;
+    --sidebar-ring: #0099CC;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+    }
+  html {
+    @apply font-sans;
+    }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+    }
+}
