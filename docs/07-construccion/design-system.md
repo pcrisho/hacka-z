@@ -50,3 +50,11 @@ Estos son valores de partida, no hex definitivos — ajustar en la primera pasad
 - Logotipo final / lockup de marca — para el hackathon alcanza con un tratamiento tipográfico simple del nombre "FIBO" + el ícono de espiral; no es necesario un proceso de branding completo.
 - Ilustraciones custom — usar formas geométricas simples (círculos, espirales) antes que invertir tiempo en ilustración original.
 - Modo oscuro — no es prioridad para una demo de 3 minutos.
+
+## 7. Referencias visuales oficiales de Pacífico Seguros
+
+Para no diseñar en el vacío y mantener coherencia con la línea visual real de Pacífico Seguros, se documentaron e integraron dos referencias oficiales de producción en `docs/03-mvp/`:
+
+1. **[Referencia 1 — Pacífico Corporativo](file:///home/pcrisho/Documents/University/hacka-z/docs/03-mvp/ux-ui-referencia-1/DESIGN.md):** Sistema visual institucional (`pacifico.com.pe`). Define el Azul/Cyan Pacífico (`#0099CC`), el Magenta de acción (`#EE2C70`), la tipografía `Foco`, las tarjetas de producto y el anclaje de confianza del microseguro pay-as-you-go.
+2. **[Referencia 2 — Quererte Sano](file:///home/pcrisho/Documents/University/hacka-z/docs/03-mvp/ux-ui-referencia-2/DESIGN.md):** Sistema visual de bienestar y prevención (`querertesano.pe`). Define la paleta extendida para hábitos saludables, los gradientes frescos de vitalidad (`#35DAFF` → `#65F9CF` → `#98FFF3`), botones de 48px `rounded-full`, y titulares de doble peso ("Two-Tone Headings" con `font-light` en `#003840` + `font-bold` en `#0099CC`).
+

@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/03-mvp/alcance-producto.md",
+                "file": "4-07-2026/RETROALIMENTACION - 2 - CAMI/RETROALIMENTACION.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "alcance-producto"
+              "title": "RETROALIMENTACION"
             }
           }
         ],
@@ -205,17 +205,27 @@
   },
   "active": "b6231cd3e70e2387",
   "lastOpenFiles": [
-    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.5340.e43044676e89",
-    "docs/PLAN-TRABAJO.md.tmp.5340.7bf53be1d968",
-    "docs/03-mvp/alcance-producto.md.tmp.5340.464fafb64392",
-    "docs/04-gtm/modelo-negocio-y-viabilidad.md.tmp.5340.fb60aec2a545",
-    "docs/07-construccion/esquema-landing.md.tmp.5340.b40c9b6dc34e",
-    "docs/07-construccion/esquema-landing.md.tmp.5340.2b90d691fcbe",
-    "docs/05-entregables/guion-pitch-v1.md.tmp.5340.aefa1759567d",
-    "docs/05-entregables/guion-pitch-v1.md.tmp.5340.e58b827e48cb",
-    "docs/02-ideacion/territorios-solucion.md.tmp.5340.fa0c1db05eae",
-    "docs/02-ideacion/territorios-solucion.md.tmp.5340.de1f7edd3b1c",
-    "docs/02-ideacion/territorios-solucion.md.tmp.5340.c8a28c71bd60",
+    "docs/memoria/bitacora/2026-09-05-diseno-referencias.md",
+    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.60063.0adffde434ea",
+    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.60063.e035b3015259",
+    "docs/03-mvp/ux-ui-referencia-2/DESIGN.md",
+    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.60063.f9ef6720bc58",
+    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.60063.ccfb1680a476",
+    "docs/03-mvp/ux-ui-referencia-1/DESIGN.md",
+    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.60063.284a215abf9e",
+    "docs/memoria/bitacora/2026-09-05.md",
+    "docs/memoria/bitacora/2026-09-05.md.tmp.60063.2b7689839637",
+    "docs/PLAN-TRABAJO.md.tmp.60063.a8efcbc4aa9b",
+    "docs/01-research/pacifico-seguros-research.md.tmp.60063.163fdd1d6bd0",
+    "docs/memoria/CONTEXTO-ACTUAL.md.tmp.60063.611b014c5658",
+    "docs/02-ideacion/problem-statement-v1.md.tmp.60063.f6d9d6097305",
+    "docs/memoria/auditoria-consistencia-2026-09-05.md",
+    "docs/07-construccion/customer-journey.md",
+    "docs/01-research/insight-salud-mental-y-habito-gen-z.md",
+    "docs/02-ideacion/hallazgos-mentoria-04-set.md",
+    "4-07-2026/RETROALIMENTACION - 1 - LUIGGI/RETROALIMENTACION.md",
+    "4-07-2026/RETROALIMENTACION - 2 - CAMI/RETROALIMENTACION.md",
+    "docs/03-mvp/alcance-producto.md",
     "docs/07-construccion/esquema-mvp.md",
     "docs/07-construccion/esquema-landing.md",
     "docs/07-construccion/design-system.md",
@@ -231,16 +241,6 @@
     "docs/02-ideacion/historias-usuario-y-validacion.md",
     "docs/00-bases/MODELO-ONE-PAGER.md",
     "docs/00-bases/LANZAMIENTO.md",
-    "docs/00-bases/BASES-CONCURSO.md",
-    "docs/00-bases/RECOMENDACIONES-PITCH.md",
-    "docs/00-bases/Pasted image 20260904000428.png",
-    "docs/01-research/insight-arquetipos-situacionales.md",
-    "docs/01-research/insight-arquetipos-oficiales.md",
-    "docs/01-research/insight-sabias-que.md",
-    "docs/01-research/insight-plot-twists.md",
-    "docs/05-entregables/guion-pitch-v1.md",
-    "docs/01-research/instrumento-campo.md",
-    "AGENTS.md",
-    "CLAUDE.md"
+    "docs/00-bases/Pasted image 20260904000428.png"
   ]
 }
