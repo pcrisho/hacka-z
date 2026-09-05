@@ -65,7 +65,7 @@
 7. **(Mostrar el concepto, igual que en la encuesta §A.3)** — reacción en caliente: ¿qué te gusta, qué te choca, qué no entiendes?
 8. ¿Te sería más fácil mantener un hábito si lo haces con un grupo de amigos o conocidos, en vez de solo? ¿Por qué sí o no? *(nueva — profundiza la pregunta 15 de la encuesta)*
 9. Si supieras desde el día 1 que la app eventualmente te va a ofrecer un seguro según tus hábitos, ¿cambiaría cómo te sientes usándola? *(nueva — profundiza la pregunta 16)*
-10. ¿Confiarías en un primer filtro hecho por un asistente/IA antes de hablar con una persona? ¿En qué caso sí, en cuál no?
+10. ¿Confiarías en un primer filtro hecho por un asistente/IA antes de hablar con una persona? ¿En qué caso sí, en cuál no? *(Seguimiento, nuevo 05 Set.: ¿y para algo más amplio, como resolver dudas generales sobre tus beneficios o tu seguro? ¿Cambia tu respuesta?)* — valida si conviene ampliar el agente más allá de onboarding/reclamos (`02-ideacion/historias-usuario-y-validacion.md` §8).
 11. Si esto existiera y te gustara, ¿se lo dirías a alguien sin que te lo pidamos? ¿A quién, y por qué?
 12. Cierre abierto: ¿qué le falta a esto para que realmente lo uses, no solo lo pruebes una vez?
 

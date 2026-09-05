@@ -14,6 +14,8 @@ Día 5 de 8 (preselección el 08 Set.). **Ya se tuvieron las 2 sesiones de mento
 
 **El instrumento de campo v2 sigue sin desplegarse** — es la tarea más urgente y bloqueante para la próxima sesión, no un tema de documentación.
 
+**Documentación de producto y diseño ya lista para pasar a un agente/sesión enfocada en decisiones técnicas (stack, arquitectura de código).** Última pasada de validación (05 Set.): arquetipo y los 3 hábitos confirmados sin cambios (se evaluó y descartó explícitamente cambiar a arquetipos tipo "deportista"/"runner" y reencuadrar el ahorro como grupal/"junta" — sin evidencia de mentoría que lo respalde, ver `PLAN-TRABAJO.md` §7); alcance del agente conversacional cerrado (onboarding + momento de verdad, sin ampliar a soporte general); y se corrigió una contradicción real en `07-construccion/design-system.md` (proponía evitar el azul corporativo con una paleta inventada, pero los tokens reales de Quererte Sano —el propio Pacífico— sí usan su cyan de marca combinado con verdes de vitalidad — la paleta de FIBO ahora hereda esos tokens reales en vez de una propuesta sin evidencia).
+
 ## Decisiones ya cerradas — no reabrir salvo que la mentoría o el campo las contradigan
 
 | Decisión | Resumen | Detalle |
@@ -34,6 +36,8 @@ Día 5 de 8 (preselección el 08 Set.). **Ya se tuvieron las 2 sesiones de mento
 **Territorio de producto nuevo, fuera de alcance del MVP:** comunidades + seguro grupal contextual (ej. seguro de pichanga entre amigos) y ayudar a dejar malos hábitos, no solo construir buenos — validados en mentoría, documentados como visión a mediano plazo en `historias-usuario-y-validacion.md` §8, no se construyen en el hackathon.
 
 **Lo que queda pendiente de validar con mentores/campo:** el nivel alto de la recompensa, la conversión real banner-de-Yape→instalación (ya no "alcance resuelto de fábrica", ver `04-gtm/modelo-negocio-y-viabilidad.md` §3.2), y las preguntas nuevas de `01-research/instrumento-campo.md` v2 (comunidad, transparencia de datos, valor real del hábito de bienestar mental) — ver `problem-statement-v1.md` y `hallazgos-mentoria-04-set.md` §5 para el detalle.
+
+**Gap identificado y resuelto (05 Set.):** el agente conversacional nunca se puso a prueba con Luiggi ni Cami (verificado contra las transcripciones crudas de `4-07-2026/`, ninguna lo menciona). A partir de esto, el equipo evaluó explícitamente ampliar el rol del agente a soporte general de consultas (beneficios, seguros) y **decidió no hacerlo en esta iteración** — se mantiene acotado a onboarding + primer filtro del momento de verdad (`historias-usuario-y-validacion.md` §6), y la extensión queda documentada como visión de producto en §8 del mismo archivo. Se agregó una pregunta a la guía de entrevistas de `instrumento-campo.md` v2 para cerrar parte del hueco de validación sin retrasar el lanzamiento.
 
 ## El territorio de solución (resumen)
 

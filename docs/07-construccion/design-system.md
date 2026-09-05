@@ -8,25 +8,29 @@ La identidad visual debe **mostrar** el concepto de FIBO (crecimiento compuesto 
 
 Segundo principio: el segmento (`PLAN-TRABAJO.md` §6) rechaza letra chica, publicidad disfrazada y complejidad — el diseño debe ser **simple y cálido**, no corporativo/técnico. Es salud y bienestar, no una app de banca tradicional.
 
-## 2. Paleta de color (propuesta)
+## 2. Paleta de color — resuelta con tokens reales (corregido 05 Set., ver §7)
 
-Evitar el azul corporativo típico de seguros (asociado a lo que el segmento ya desconfía) y evitar también verde-fintech genérico. Dirección propuesta: tonos cálidos de crecimiento orgánico.
+**Corrección importante:** la versión anterior de esta sección proponía "evitar el azul corporativo típico de seguros" e inventaba una paleta cálida (verde salvia, dorado, crema) sin ningún dato que lo respalde. Al extraer los tokens reales de **Quererte Sano** — el propio brazo de bienestar de Pacífico, la referencia más cercana a lo que FIBO quiere ser (§7) — se confirma que ese supuesto era incorrecto: Pacífico **ya resolvió** "salud/bienestar sin sentirse corporativo" usando su cyan de marca (`#0099CC`) combinado con verdes de vitalidad y degradados frescos, no evitándolo. Adoptar una paleta ajena a la de Pacífico habría sido una decisión de diseño sin evidencia, justo cuando la evidencia real ya existía en `docs/03-mvp/ux-ui-referencia-2/DESIGN.md`.
 
-| Uso | Color | Justificación |
-|---|---|---|
-| Primario (marca, CTA principal) | Verde salvia / verde bienestar (`#4A7C59` aprox.) | Salud + calma, distinto del azul-seguro genérico |
-| Acento (crecimiento, Reserva, espiral) | Dorado/ámbar suave (`#D4A24C` aprox.) | Referencia visual directa a la espiral de Fibonacci (proporción áurea) sin ser literal ni cursi |
-| Fondo | Blanco cálido / crema (`#FAF7F2`) | Evita el blanco frío de apps financieras tradicionales |
-| Texto principal | Gris carbón, no negro puro (`#2B2B2B`) | Suaviza el tono, más cercano a "acompañar" que a "informar" |
-| Alerta/pausa (top-up pausado) | Terracota suave (`#C97B5B`) | Comunica pausa sin sentirse como error/penalidad — coherente con "se pausa sin penalidad" |
+**Paleta definitiva de FIBO — heredada de Quererte Sano, con un acento propio:**
 
-Estos son valores de partida, no hex definitivos — ajustar en la primera pasada de construcción según contraste/accesibilidad real en pantalla.
+| Uso | Color / token | Fuente | Justificación |
+|---|---|---|---|
+| Primario (marca, CTA, confianza) | Cyan Pacífico `#0099CC` (escala `--colors-cyan50` a `900`) | Quererte Sano / Pacífico Corporativo | Es el color real de Pacífico — ancla de confianza institucional, no inventado |
+| Secundario (hábitos, crecimiento, éxito) | Verde Salud `#01A355` / `#00AF3F` (escala verde) | Quererte Sano | Vitalidad y confirmación de hábito cumplido, ya validado en producción por el propio Pacífico |
+| Acento distintivo de FIBO (espiral, Reserva) | Dorado/ámbar suave (`#D4A24C` aprox.) | Propio de FIBO, no existe en ninguna referencia de Pacífico | Único elemento no heredado — referencia visual directa a la espiral de Fibonacci (proporción áurea); diferencia a FIBO dentro del ecosistema Pacífico sin romper su lenguaje de marca |
+| Gradiente destacado (badges, chips de comunidad/logro) | Tritono fresco `#35DAFF → #65F9CF → #98FFF3` | Quererte Sano | Firma visual ya reconocible del brazo de bienestar de Pacífico — reutilizar en vez de inventar una nueva |
+| Fondo | Gris neutro `#F9FAFB` / blanco | Quererte Sano | Fondo limpio validado en producción, mobile-first |
+| Texto principal | `#545E62` (cuerpo) / `#2F373C` (titulares) | Quererte Sano | Legible, no negro puro, coherente con el tono "acompaña, no informa" |
+| Alerta/pausa (top-up pausado) | Terracota suave (`#C97B5B` aprox.) | Propio de FIBO | Sigue sin existir en las referencias de Pacífico — comunica pausa sin sentirse como error/penalidad |
 
-## 3. Tipografía (propuesta)
+Detalle completo de tokens (incluye estados hover/pressed, escalas intermedias) en `docs/03-mvp/ux-ui-referencia-2/DESIGN.md` §2.
 
-- **Titulares:** una sans-serif redondeada, cercana (ej. tipo Nunito, Poppins) — refuerza cercanía, no institucionalidad.
-- **Cuerpo/UI:** una sans-serif de alta legibilidad en pantallas chicas (ej. Inter, system-ui) — prioridad es legibilidad mobile sobre personalidad.
-- Evitar serif — se asocia a documento legal/letra chica, exactamente lo que el segmento rechaza (insight oficial).
+## 3. Tipografía — resuelta con tokens reales (corregido 05 Set.)
+
+- **Titulares:** `Foco` (la tipografía real de Pacífico, `Foco Trial`/`Foco_Trial_Bd`/`Foco_Trial_Lt`) — o una sans-serif redondeada equivalente si no se consigue la fuente exacta a tiempo (ej. Poppins). Adoptar el patrón **"Two-Tone Heading"** de Quererte Sano: mezclar una palabra en `font-light` con una en `font-bold` en el mismo titular — es la firma visual de bienestar de Pacífico, ya validada en producción.
+- **Cuerpo/UI:** `Roboto` (la tipografía real de Pacífico) o `system-ui` — prioridad es legibilidad mobile.
+- Evitar serif — se asocia a documento legal/letra chica, exactamente lo que el segmento rechaza (insight oficial). Esto sí se mantiene de la versión anterior, es coherente con ambas referencias reales.
 
 ## 4. Tono de voz
 

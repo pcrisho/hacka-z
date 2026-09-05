@@ -2,7 +2,7 @@
 
 > **Primera evidencia externa real del proyecto.** Todo lo anterior en `01-research/` es research secundario (fuentes públicas) o insumo oficial de kick-off; esto es feedback directo de dos mentores de Pacífico sobre la propuesta ya presentada, con preguntas y objeciones reales. Se le da prioridad alta en la toma de decisiones — a la par del insumo oficial de kick-off, por encima del research secundario del equipo.
 >
-> **Fuente:** transcripciones automáticas (audio→texto, con ruido de reconocimiento de voz) de las dos sesiones de mentoría del 04 Set., guardadas íntegras en `4-07-2026/RETROALIMENTACION - 1 - LUIGGI/RETROALIMENTACION.md` y `4-07-2026/RETROALIMENTACION - 2 - CAMI/RETROALIMENTACION.md`. Este documento es la síntesis y las decisiones que se toman a partir de ellas — las transcripciones crudas no se editan, quedan como registro.
+> **Fuente:** transcripciones automáticas (audio→texto, con ruido de reconocimiento de voz) de las dos sesiones de mentoría del 04 Set., guardadas íntegras en `4-07-2026/RETROALIMENTACION - 1 - LUIGGI/RETROALIMENTACION.md` y `4-07-2026/RETROALIMENTACION - 2 - CAMI/RETROALIMENTACION.md`. Cada una de esas carpetas tiene además su propio `RESUMEN-EJECUTIVO.md` con los insights de esa sesión específica — este documento es la síntesis conjunta y el registro de qué decisión salió de qué comentario, organizado por tema en vez de por sesión; para una lectura rápida de una sola mentoría, ir primero al resumen ejecutivo correspondiente.
 
 ## 1. Contexto
 
