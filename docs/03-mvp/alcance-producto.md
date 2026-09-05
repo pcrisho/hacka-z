@@ -27,9 +27,11 @@ Máximo 3, no más — mismo principio que Betterfly (caminar, dormir, meditar: 
 
 **Contenido asociado:** cápsulas cortas (no artículos largos tipo blog) ligadas directamente a completar el hábito de esa semana — no es una biblioteca general como Quererte Sano, es contenido funcional al loop, no informativo suelto.
 
-## 3. La recompensa — por niveles, ligada a la espiral FIBO (decisión cerrada 04 Set.)
+## 3. La recompensa — por niveles, ligada a la espiral FIBO, y como puerta de entrada al microseguro (decisión cerrada 04 Set., actualizada tras mentoría)
 
-Al alcanzar un nivel de Reserva, el usuario desbloquea algo no-monetario — nunca un descuento (Plot Twist oficial "prohibido usar descuentos"). Se resuelve la duda que este documento dejaba abierta con una estructura de 3 niveles, coherente con el nombre de marca (FIBO, espiral de Fibonacci — ver `02-ideacion/historias-usuario-y-validacion.md` §0):
+**Encuadre correcto (actualizado 04 Set., `02-ideacion/hallazgos-mentoria-04-set.md` §3.2):** la recompensa **no es un mecanismo de monetización paralelo** a la microprima pay-as-you-go — es el paso previo y gratuito que **gana el derecho** a que se le ofrezca al usuario un microseguro personalizado. No hay dos productos que "vender" (recompensa + seguro); hay una sola progresión: hábito → recompensa (prueba de valor y de confianza) → oferta de microseguro. Esto corrige una objeción real de la mentora Cami: *"si una persona te pagaría por X beneficio y además te pagaría por un seguro..."* — con este encuadre, el beneficio no compite con el seguro por la misma decisión de compra, la antecede y la justifica.
+
+Al alcanzar un nivel de Reserva, el usuario desbloquea algo no-monetario — nunca un descuento (Plot Twist oficial "prohibido usar descuentos"). Estructura de 3 niveles, coherente con el nombre de marca (FIBO, espiral de Fibonacci — ver `02-ideacion/historias-usuario-y-validacion.md` §0):
 
 | Nivel | Recompensa | Por qué |
 |---|---|---|
@@ -38,6 +40,8 @@ Al alcanzar un nivel de Reserva, el usuario desbloquea algo no-monetario — nun
 | Alto (Reserva madura) | Sesión real de bienestar emocional/psicología digital | Conserva el ancla de salud/bienestar de Pacífico como recompensa de mayor valor percibido |
 
 **Por qué hay evidencia a favor:** Betterfly ya demostró a escala que recompensas no-monetarias/sociales (BetterCoin → donaciones) sostienen el engagement; el insumo oficial confirma rechazo a descuentos disfrazados, no a recompensas en sí — y el nivel medio (suscripción digital) tiene respaldo directo y específico en el insight oficial, no solo en el precedente chileno.
+
+*(Nota de limpieza, 05 Set.: este punto tenía un fragmento de nota de trabajo sin integrar sobre "ayudar a dejar malos hábitos" — ese contenido ya está desarrollado como visión de producto, fuera de alcance del MVP, en `02-ideacion/historias-usuario-y-validacion.md` §8.)*
 
 **Duda que sigue abierta, ahora acotada al nivel alto únicamente:** Betterfly demuestra el enganche por recompensa no-monetaria dentro de un contexto B2B2E (el usuario ya "tiene" el beneficio pagado por su empresa). No está confirmado que una sesión real (nivel alto) funcione igual en frío, sin empleador de por medio — el nivel medio (suscripción) mitiga este riesgo porque no depende de la misma lógica. Sigue siendo una pregunta útil para campo o para la mentoría.
 

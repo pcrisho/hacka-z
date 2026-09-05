@@ -13,14 +13,14 @@
 | Uruguay | 3.7% | Ídem |
 | Colombia | 3.6% | Ídem |
 | Brasil / promedio LatAm | ~3.0% | Ídem |
-| **Perú** | **2.5%** (2025) | Ver `pacifico-seguros-research.md` |
+| **Perú** | **2.05%** (2T 2025) — corregido 05 Set., ver `pacifico-seguros-research.md` §5 | [APESEG, Informe Trimestral 2T 2025](https://www.apeseg.org.pe/wp-content/uploads/2025/10/Resultados-Sistema-Asegurador-2T25-web.pdf) |
 
 Perú no solo está por debajo de los mercados desarrollados (4x menos que EEUU/UK) sino también por debajo del promedio de su propia región. No es solo "somos un país pobre" — Chile, con un PBI per cápita no tan distante, duplica la penetración peruana, lo que apunta a factores estructurales y de confianza, no solo de ingreso disponible.
 
 ## 2. Qué explica la diferencia (más allá del ingreso)
 
 1. **Formalidad laboral y seguro "por defecto".** En EEUU y UK, buena parte de la población accede a seguro de salud/vida a través del empleo formal o de sistemas cuasi-obligatorios (Medicare/Medicaid, NHS + seguros complementarios). En Perú, con ~70% de informalidad laboral ([INEI vía Infobae, abril 2026](https://www.infobae.com/peru/2026/04/01/inei-confirma-que-7-de-cada-10-trabajadores-en-peru-son-informales-pierden-acceso-a-cts-seguro-y-pension/)), el seguro casi nunca llega "por defecto" — el usuario tiene que buscarlo y decidirlo activamente, lo cual eleva la fricción de adopción drásticamente.
-2. **Historial y scoring disponible.** Los mercados desarrollados tienen décadas de historial crediticio y actuarial granular por persona, lo que permite pricing individualizado y productos "instantáneos" (ej. Lemonade emite pólizas en minutos). En Perú, gran parte de la Gen Z (estudiantes, freelancers, primer empleo) no tiene historial crediticio ni actuarial — cualquier producto que dependa de scoring tradicional excluye a su propio público objetivo.
+2. **Historial y scoring disponible.** Los mercados desarrollados tienen décadas de historial actuarial granular por persona, lo que permite pricing individualizado y productos "instantáneos" (ej. Lemonade emite pólizas en minutos). En Perú, gran parte de la Gen Z (estudiantes, freelancers, primer empleo) no tiene ese historial actuarial ni acceso a seguro vía planilla — cualquier producto que dependa de scoring tradicional excluye a su propio público objetivo. *(Precisión 05 Set., auditoría de consistencia: esto no es un tema de historial crediticio bancario — el seguro de salud nunca se evaluó con eso, ver `01-research/pacifico-friccion-usuario-eps.md` §3 — es la ausencia de datos actuariales/de planilla lo que excluye al segmento.)*
 3. **Madurez de canales digitales de distribución.** En mercados desarrollados, el seguro embebido (point-of-sale, checkout de e-commerce) ya es una categoría consolidada (ver Trov, sección 3). En Perú, la distribución digital de seguros es más reciente — pero el país sí tiene un canal digital masivo y ya adoptado: Yape (mencionado en las notas del equipo), que podría cumplir el rol que en EEUU cumple el checkout de Amazon o Stripe.
 4. **Confianza y letra chica.** Los insights oficiales de Pacífico (`insight-sabias-que.md`) confirman que la Gen Z peruana rechaza específicamente la letra chica y confía más en pares que en publicidad — esto no es exclusivo de Perú, pero se combina con una industria aseguradora local que históricamente no ha priorizado la transparencia, a diferencia de insurtechs como Lemonade que hicieron de la transparencia su propuesta de marca central.
 
@@ -53,7 +53,7 @@ Perú no solo está por debajo de los mercados desarrollados (4x menos que EEUU/
 - Distribuir seguro sobre una base de confianza financiera ya existente (Nubank) — en Perú el equivalente más fuerte es **Yape** (ya mencionado en las notas del equipo), que ya tiene adopción masiva Gen Z.
 
 **Requiere adaptación:**
-- Microseguro on-demand "por segundo" (Trov): el concepto es válido, pero probablemente debe simplificarse a "por día/por evento" en un MVP de 7 días, y el pricing no puede depender de scoring individual sofisticado dado el bajo historial crediticio de la Gen Z peruana — mejor un pricing simple y plano por categoría de riesgo.
+- Microseguro on-demand "por segundo" (Trov): el concepto es válido, pero probablemente debe simplificarse a "por día/por evento" en un MVP de 7 días, y el pricing no puede depender de scoring individual sofisticado dado el bajo acceso a datos actuariales/de planilla de la Gen Z peruana (no es un tema de historial crediticio, corregido 05 Set.) — mejor un pricing simple y plano por categoría de riesgo.
 - Seguro embebido en checkout (point-of-sale): en Perú el "checkout" dominante para Gen Z no es tarjeta de crédito sino Yape/billeteras digitales — cualquier propuesta de embedded insurance debe anclarse ahí, no en un flujo de tarjeta como en EEUU.
 
 **Probablemente no aplica directamente:**

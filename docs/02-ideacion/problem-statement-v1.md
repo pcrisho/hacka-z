@@ -14,12 +14,12 @@ Arquetipo cruzado (decisión cerrada, `PLAN-TRABAJO.md` §6): **Guardián** (pie
 
 ## Solución (resumen, detalle en `05-entregables/guion-pitch-v1.md`)
 
-**FIBO** (nombre de marca cerrado 04 Set. — espiral de Fibonacci, simboliza el crecimiento compuesto de los hábitos). Cobertura de salud/bienestar que se gana con hábitos semanales, no con planilla formal, sin costo en su capa base; top-ups pay-as-you-go pausables sin penalidad para riesgos puntuales. Recompensa por niveles (contenido/insignia → suscripción digital tipo mindfulness → sesión real de bienestar, detalle en `03-mvp/alcance-producto.md` §3). Vive dentro de Yape. No reemplaza lo que Pacífico ya construyó (Quererte Sano, Seguro Salud Yape) — lo completa con el mecanismo que a ambos les falta: progresión por comportamiento.
+**FIBO** (nombre de marca cerrado 04 Set. — espiral de Fibonacci, simboliza el crecimiento compuesto de los hábitos). Cobertura de salud/bienestar que se gana con hábitos semanales, no con planilla formal, sin costo en su capa base. Al alcanzar cierto nivel de constancia, el usuario recibe una recompensa no monetaria y, como consecuencia de eso, se le ofrece un microseguro personalizado pay-as-you-go, pausable sin penalidad (la recompensa gana el derecho a la oferta, no son dos mecanismos paralelos — decisión de la mentoría, `hallazgos-mentoria-04-set.md` §3.2; detalle en `03-mvp/alcance-producto.md` §3). Es una **app independiente**, no vive dentro de Yape — Yape se integra como pasarela de pago para las microprimas y como canal de descubrimiento (`hallazgos-mentoria-04-set.md` §3.1). No reemplaza lo que Pacífico ya construyó (Quererte Sano, Seguro Salud Yape) — lo completa con el mecanismo que a ambos les falta: progresión por comportamiento.
 
 ## Qué ya está validado con evidencia (secundaria, con fuente) vs. qué es supuesto de diseño
 
 **Con evidencia:**
-- Informalidad ~70% como driver estructural (`industria-seguros-comparativa.md`).
+- Informalidad ~70% general, **84.9% específico en jóvenes de 14-24 años** (cifra más aguda y más precisa para nuestro segmento, agregada 05 Set.) como driver estructural (`industria-seguros-comparativa.md`, `01-research/insight-salud-mental-y-habito-gen-z.md` §2).
 - Pacífico lidera EPS (42.3%, confirmado contra Memoria 2025) pero no el mercado general (22.6%, jun. 2025).
 - Seguro Salud Yape y Quererte Sano ya existen y no cubren el mecanismo "hábito → cobertura" (`pacifico-microseguros-yape-red-sanna.md`).
 - Betterfly valida la mecánica hábito→cobertura, **no** la adquisición B2C (es B2B2E desde 2020).
@@ -33,7 +33,7 @@ Arquetipo cruzado (decisión cerrada, `PLAN-TRABAJO.md` §6): **Guardián** (pie
 
 No se llega con data de campo propia todavía — se llega con research secundario sólido y estas preguntas puntuales, que es justo lo que la dinámica de mentoría pide (`00-bases/LANZAMIENTO.md` §6: "trae preguntas concretas").
 
-1. **Canal/distribución:** ¿Qué tan realista es, desde dentro de Pacífico, un espacio dentro de Yape para un mecanismo distinto a Seguro Salud Yape? ¿Qué tasa de conversión ven hoy en el banner de Seguro Salud Yape (para calibrar si nuestro supuesto de "alcance ya resuelto vía Credicorp" es razonable)?
+1. **Canal/distribución:** ¿Qué tan realista es, desde dentro de Pacífico, conseguir un espacio de banner dentro de Yape que dirija a una app independiente (FIBO)? ¿Qué tasa de conversión ven hoy en el banner de Seguro Salud Yape (para calibrar qué tan realista es esperar que alguien pase de "ve el banner" a "instala la app")?
 2. **Recompensa:** ¿Un crédito de suscripción digital (nivel medio, tipo mindfulness/productividad) resuena más que una sesión real de bienestar (nivel alto), o al revés, para alguien que todavía no tiene un empleador de por medio subsidiando el beneficio?
 3. **Respaldo actuarial:** si el mecanismo de "hábito → cobertura" se implementara de verdad (no en el MVP), ¿qué tan lejos está esto de algo que Pacífico podría respaldar internamente, vs. necesitar un partner tipo Chubb?
 4. **Validación de campo:** dado que la encuesta/entrevistas propias siguen en curso, ¿qué señal mínima de campo consideraría el jurado suficiente para la preselección del 08 Set.?

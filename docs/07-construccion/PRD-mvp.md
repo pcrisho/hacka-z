@@ -14,12 +14,14 @@ Se construye pensando en la Historia 1 (Camila, `02-ideacion/historias-usuario-y
 
 Tomado de `03-mvp/alcance-producto.md` §5, regla general: *"todo lo que sea parte del flujo crítico único se construye real e interactivo; todo lo que dependa de infraestructura externa real se simula."*
 
-1. Onboarding conversacional (agente FIBO, LLM real vía API, no bloqueante, fallback simulado si falla/tarda — `historias-usuario-y-validacion.md` §6).
+1. Onboarding conversacional (agente FIBO, LLM real vía API, no bloqueante, fallback simulado si falla/tarda — `historias-usuario-y-validacion.md` §6). Incluye el anuncio de transparencia de datos: FIBO cuenta desde el inicio que más adelante ofrecerá microseguros según la constancia del usuario (`02-ideacion/hallazgos-mentoria-04-set.md` §3.6).
 2. Registro de los 3 hábitos semanales (micro-ahorro, actividad física, práctica de bienestar mental).
 3. Crecimiento visible de la Reserva de Bienestar (debe sentirse real, no un número estático).
-4. Desbloqueo de recompensa por nivel (bajo → medio → alto, `03-mvp/alcance-producto.md` §3).
-5. Activar/pausar un top-up pay-as-you-go (el diferencial frente a Seguro Salud Yape).
+4. Desbloqueo de recompensa por nivel (bajo → medio → alto, `03-mvp/alcance-producto.md` §3) — **y, como consecuencia de ese nivel, no en paralelo**, la oferta de un microseguro personalizado (decisión "recompensa gana el derecho a la oferta", `hallazgos-mentoria-04-set.md` §3.2).
+5. Activar/pausar ese microseguro pay-as-you-go, pagado vía Yape (el diferencial frente a Seguro Salud Yape).
 6. Momento de verdad: reclamo/canje guiado por el agente, con escalamiento a humano simulado.
+
+**Corrección de arquitectura (04 Set., mentoría):** FIBO es una app independiente — no vive embebida dentro de Yape. Yape se integra únicamente como pasarela de pago del paso 5. Ver `hallazgos-mentoria-04-set.md` §3.1.
 
 Detalle pantalla por pantalla en [`esquema-mvp.md`](./esquema-mvp.md).
 
@@ -27,10 +29,14 @@ Detalle pantalla por pantalla en [`esquema-mvp.md`](./esquema-mvp.md).
 
 Reutiliza tal cual la tabla de `03-mvp/alcance-producto.md` §5 — no se repite aquí para evitar que las dos tablas diverjan con el tiempo. Regla corta: pagos reales, terapeuta/psicólogo real, aseguradora de respaldo real y telemedicina propia **no se construyen** — se simulan o se referencian como salida hacia lo que Pacífico ya tiene (Dr. Online).
 
+## 4.1. Limitación aceptada explícitamente: honor system
+
+El registro de hábitos es autodeclarado — el usuario dice que hizo el hábito, no hay verificación. Un mentor objetó esto en la sesión del 04 Set. (posible "gaming" del sistema) y sugirió evidencia fotográfica o integración con wearables como solución más robusta. **Decisión:** no se resuelve en el MVP — se documenta y se acepta como limitación conocida, consistente con "MVP = validar, no construir completo". Verificación por evidencia o wearables queda como roadmap post-hackathon, no como pendiente del sprint. Ver `02-ideacion/hallazgos-mentoria-04-set.md` §3.5.
+
 ## 5. Requisitos técnicos mínimos
 
 - Prototipo **codeado** (HTML/React), no Figma — decisión ya cerrada (`PLAN-TRABAJO.md` §7, 04 Set.).
-- Debe correr en mobile (el contexto de uso real es dentro de una superficie tipo Yape) — priorizar diseño mobile-first, ver `esquema-mvp.md`.
+- Debe correr en mobile (es una app propia de uso diario) — priorizar diseño mobile-first, ver `esquema-mvp.md`.
 - Agente conversacional: llamada real a un LLM vía API (Bedrock u otro), con manejo de fallback no bloqueante — no dejar el flujo esperando indefinidamente una respuesta.
 - Sin backend persistente real requerido — estado de la Reserva/hábitos puede vivir en el cliente (localStorage o estado de sesión) para efectos de la demo; no es necesario resolver persistencia multi-usuario real para el hackathon.
 

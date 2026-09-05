@@ -20,7 +20,7 @@ Igual que el producto: Guardián + Estudiante/Primer Empleo con Ansiedad Financi
 
 ## 4. Alcance (dentro)
 
-- Página única (one-page), mobile-first (el segmento vive en el celular, contexto Yape).
+- Página única (one-page), mobile-first (el segmento vive en el celular).
 - Propuesta de valor corta + CTA único: unirse a la lista de espera.
 - Formulario mínimo: solo lo indispensable para contactar y para atribuir referidos (ej. nombre/alias + celular o correo).
 - **Mecanismo de referido:** cada persona registrada recibe un link único (`?ref=<id>`); la landing debe poder atribuir un nuevo registro a quien lo invitó. No requiere cuenta de usuario — con guardar el `ref` en el registro alcanza.

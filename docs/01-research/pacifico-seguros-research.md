@@ -46,14 +46,14 @@ Pacífico Seguros nace en 1992 de la fusión de "El Pacífico Compañía de Segu
 
 | Indicador | Perú | Fuente |
 |---|---|---|
-| Penetración (primas / PBI), 2025 | **2.5%** (rango 2.0–2.1% entre 2020-2024, con leve alza en 2025) | Fuentes sectoriales / APESEG, mayo 2025 |
+| Penetración (primas / PBI), 2T 2025 | **2.05%** — **Confirmado (05 Set. 2026)** contra fuente primaria, corregido desde "2.5%" (cita anterior sin URL verificable) | [APESEG — Informe Trimestral del Sistema Asegurador, 2T 2025 (PDF)](https://www.apeseg.org.pe/wp-content/uploads/2025/10/Resultados-Sistema-Asegurador-2T25-web.pdf) |
 | Promedio regional LatAm | ~3.0% | Comparativa sectorial 2025 |
 | Chile / Colombia / Brasil / Uruguay | 5.3% / 3.6% / 3.0% / 3.7% | Comparativa sectorial 2025 |
 | Densidad de seguro (prima anual per cápita) | subió de US$117 (2020) a **US$189 (2024)** | Fuentes sectoriales 2025 |
 | Penetración en Lima vs. provincias | 45% en Lima vs. **menos de 1.5% en provincias pequeñas** | [Gestión, "Penetración de seguros en Lima es 45% pero en provincias 'chicas' no llega ni al 1.5%"](https://gestion.pe/economia/mercados/penetracion-seguros-lima-45-provincias-chicas-llega-1-5-137677-noticia/) |
 | Informalidad laboral (2026) | **~70% de trabajadores informales** (≈12.3 millones de personas sin CTS, seguro ni pensión vía planilla) | [Infobae, abril 2026, cifras INEI](https://www.infobae.com/peru/2026/04/01/inei-confirma-que-7-de-cada-10-trabajadores-en-peru-son-informales-pierden-acceso-a-cts-seguro-y-pension/) |
 
-**Lectura clave:** Perú está por debajo del promedio LatAm en penetración de seguros, y la brecha Lima/provincias es enorme (45% vs. <1.5%). La informalidad laboral (70%) es probablemente la variable estructural más importante: gran parte de la Gen Z peruana no tiene seguro vía planilla porque no tiene planilla — esto valida directamente los arquetipos "Freelancer" y "Estudiante/primer empleo" del insumo oficial, y sugiere que cualquier producto anclado en historial crediticio o descuento de planilla excluye a una porción grande del mercado.
+**Lectura clave:** Perú está por debajo del promedio LatAm en penetración de seguros, y la brecha Lima/provincias es enorme (45% vs. <1.5%). La informalidad laboral (70%) es probablemente la variable estructural más importante: gran parte de la Gen Z peruana no tiene seguro vía planilla porque no tiene planilla — esto valida directamente los arquetipos "Freelancer" y "Estudiante/primer empleo" del insumo oficial, y sugiere que cualquier producto anclado en acceso vía planilla formal o en historial actuarial individual excluye a una porción grande del mercado (no es un tema de historial crediticio bancario — precisión 05 Set., ver `pacifico-friccion-usuario-eps.md` §3).
 
 ## 6. Fuentes
 
@@ -66,3 +66,4 @@ Pacífico Seguros nace en 1992 de la fusión de "El Pacífico Compañía de Segu
 - [Gestión — Penetración de seguros Lima vs. provincias](https://gestion.pe/economia/mercados/penetracion-seguros-lima-45-provincias-chicas-llega-1-5-137677-noticia/)
 - [Infobae — Informalidad laboral en Perú, abril 2026 (INEI)](https://www.infobae.com/peru/2026/04/01/inei-confirma-que-7-de-cada-10-trabajadores-en-peru-son-informales-pierden-acceso-a-cts-seguro-y-pension/)
 - [UNDP — Diagnóstico de microseguros en el Perú (PDF, marzo 2026)](https://www.undp.org/sites/g/files/zskgke326/files/2026-03/informe_final-diagnostico_de_microseguros_en_el_peru.pdf)
+- [APESEG — Informe Trimestral del Sistema Asegurador, 2T 2025 (PDF)](https://www.apeseg.org.pe/wp-content/uploads/2025/10/Resultados-Sistema-Asegurador-2T25-web.pdf)
