@@ -2,7 +2,7 @@
 
 > **Léeme primero si eres un agente nuevo entrando a este repo.** Este archivo se **reescribe** cada sesión de trabajo para reflejar el estado más reciente — es una fotografía del presente, no un historial. Para ver cómo llegamos aquí y por qué cambiaron las decisiones, ver `bitacora/` (esa sí es append-only, nunca se reescribe).
 >
-> Última actualización: 05 Set. 2026 (día 5 de 8 del sprint). En orden: sesión 1 corrigió los 10 hallazgos de una auditoría de consistencia externa (`memoria/auditoria-consistencia-2026-09-05.md`); sesión 2 cerró los 5 temas de branding/identidad visual que quedaban abiertos — tagline, logo, contraste de la paleta, licencia de fuente y tono de voz (`memoria/bitacora/2026-09-05-branding-cierre.md`); sesión 3 construyó un brandboard visual y un brief de logo como artifacts, pivoteó la tipografía a Bricolage Grotesque + Geist, cerró el stack técnico (Next.js + Vercel + shadcn/ui + NeonDB), ejecutó el scaffold real en `app/`, aplicó el theming completo sobre él (verificado con `pnpm dev`), y formalizó el protocolo de inicio/cierre de sesión como dos skills invocables (`iniciar-sesion`, `cerrar-sesion`, ver `.claude/skills/`) — detalle en `memoria/bitacora/2026-09-05-brandboard-y-stack.md`, `2026-09-05-theming-app.md` y `2026-09-05-skills-sesion.md`. `app/` ya está listo para construir pantallas reales.
+> Última actualización: 05 Set. 2026 (día 5 de 8 del sprint). En orden: sesión 1 corrigió los 10 hallazgos de una auditoría de consistencia externa (`memoria/auditoria-consistencia-2026-09-05.md`); sesión 2 cerró los 5 temas de branding/identidad visual que quedaban abiertos — tagline, logo, contraste de la paleta, licencia de fuente y tono de voz (`memoria/bitacora/2026-09-05-branding-cierre.md`); sesión 3 construyó un brandboard visual y un brief de logo como artifacts, pivoteó la tipografía a Bricolage Grotesque + Geist, cerró el stack técnico (Next.js + Vercel + shadcn/ui + NeonDB), ejecutó el scaffold real en `app/`, aplicó el theming completo sobre él (verificado con `pnpm dev`), y formalizó el protocolo de inicio/cierre de sesión como dos skills invocables (`iniciar-sesion`, `cerrar-sesion`, ver `.claude/skills/`); sesión 4 cerró el problem statement (`problem-statement-v2.md` reemplaza a v1) y construyó la **landing v1 real sobre `app/`** — lista de espera con NeonDB, referidos, validación real — con tres pasadas de rediseño hasta llegar a una dirección visual validada (disciplina estructural tipo Brex + colores de FIBO, sin copiar la paleta de ninguna referencia) — detalle en `memoria/bitacora/2026-09-05-landing-v1-y-direccion-visual.md`. `app/` ya tiene una landing funcional, no solo un scaffold.
 
 ## Qué es esto
 
@@ -73,7 +73,7 @@ Fuentes completas en `01-research/`.
 Ver `PLAN-TRABAJO.md` §8. Las que bloquean avance real, en orden de prioridad:
 1. **Desplegar `01-research/instrumento-campo.md` v2** — sigue sin hacerse, es la tarea #1. Ya incorpora las preguntas de la mentoría (comunidad, transparencia de datos, valor real del hábito mental, ubicación, rubro).
 2. Restructurar `05-entregables/guion-pitch-v1.md` según las notas de cierre ya dejadas (abrir con el usuario, no con la cifra; Betterfly sin protagonismo; respuesta lista a "¿por qué no Quererte Sano?").
-3. Construir landing + prototipo siguiendo `07-construccion/` (PRDs, design system, esquemas de pantalla, customer journey y stack técnico, todos definidos, con `app/` ya inicializado y themeado) — sin bloqueadores de decisión pendientes. Landing primero (genera señal B2C real), prototipo en paralelo/después con prioridad.
+3. **Landing v1 ya construida y funcionando** (`app/`, ver `memoria/bitacora/2026-09-05-landing-v1-y-direccion-visual.md`) — falta el deploy a Vercel (stack ya listo, falta que el equipo conecte el repo o dé acceso). El prototipo del flujo crítico (hábitos/Reserva/agente) sigue sin empezar — es el siguiente bloque grande de construcción, con la misma barra de calidad que la landing (no básico en los flujos que sí construya).
 
 **Nota para la próxima sesión:** no hay correcciones de consistencia pendientes conocidas — la auditoría del 05 Set. (`memoria/auditoria-consistencia-2026-09-05.md`) ya se resolvió por completo. Si se hace una auditoría de seguimiento más adelante, conviene esperar a que haya más contenido nuevo (campo desplegado, prototipo construido) para que valga la pena repetirla.
 
@@ -84,8 +84,8 @@ docs/
 ├── memoria/              ← estás aquí (CONTEXTO-ACTUAL.md + bitacora/ + auditoria-consistencia-2026-09-05.md)
 ├── 00-bases/              BASES-CONCURSO.md (única fuente de rúbrica/plazos) + LANZAMIENTO.md/plantillas (contexto, no puntaje) + equipo
 ├── 01-research/           insumo oficial + research propio + instrumento de campo v2 (a desplegar 05 Set.) + insight-salud-mental-y-habito-gen-z.md
-├── 02-ideacion/           territorio de solución, historias de usuario, identidad, problem-statement-v1.md, hallazgos-mentoria-04-set.md
-├── 03-mvp/                alcance del producto + referencias UI/UX de Pacífico (Ref 1: Corporativo, Ref 2: Quererte Sano) + Ref 3 (caldera.xyz, solo se usó su método tipográfico, no su paleta) con sus DESIGN.md
+├── 02-ideacion/           territorio de solución, historias de usuario, identidad, problem-statement-v2.md (v1 superado, se conserva por trazabilidad), hallazgos-mentoria-04-set.md
+├── 03-mvp/                alcance del producto + referencias UI/UX de Pacífico (Ref 1: Corporativo, Ref 2: Quererte Sano) + Ref 3 (caldera.xyz, solo su método tipográfico) + Ref 4 (Betterfly real, HTML guardado — usar el archivo, no lo que alguien crea recordar de su paleta) con sus DESIGN.md
 ├── 04-gtm/                modelo de negocio y viabilidad
 ├── 05-entregables/        guion-pitch-v1.md (borrador, con notas de reestructuración pendientes) — one-pager y video final van aquí
 ├── 06-ideas/              notas crudas sin validar del equipo
@@ -93,7 +93,9 @@ docs/
 └── PLAN-TRABAJO.md         plan de sprint + registro de decisiones (tabla de trazabilidad)
 ```
 
-Fuera de `docs/`, en la raíz del repo: **`app/`** (proyecto Next.js del prototipo/landing, inicializado y themeado el 05 Set. — ver `stack-tecnico.md`) y **`.claude/skills/`** (`iniciar-sesion`, `cerrar-sesion` — el protocolo de arranque/cierre de sesión ya no es solo prosa en `AGENTS.md`, es invocable).
+Fuera de `docs/`, en la raíz del repo: **`app/`** (proyecto Next.js — landing v1 funcional con lista de espera real en NeonDB, ver `app/components/landing/`; el prototipo del flujo crítico todavía no empieza) y **`.claude/skills/`** (`iniciar-sesion`, `cerrar-sesion`).
+
+**Tooling de diseño disponible en sesiones futuras (agregado 05 Set., sesión 4):** plugin oficial `frontend-design` (evaluación/crítica de diseño, no solo generación), skill de terceros `taste-skill` (`/taste <url>`, requiere Playwright MCP — ya configurado y funcionando), registries de shadcn `@magicui`, `@react-bits` y `@aceternity` en `app/components.json` (ver bitácora de sesión 4 para qué se usó de cada una y qué se descartó explícitamente).
 
 ## Cómo trabajar en este repo
 

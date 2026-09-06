@@ -1,32 +1,37 @@
-import { Button } from "@/components/ui/button"
+import { SiteHeader } from "@/components/landing/site-header"
+import { Hero } from "@/components/landing/hero"
+import { Problema } from "@/components/landing/problema"
+import { Mecanismo } from "@/components/landing/mecanismo"
+import { PruebaSocial } from "@/components/landing/prueba-social"
+import { CtaFinal } from "@/components/landing/cta-final"
+import { WaitlistForm } from "@/components/landing/formulario"
+import { Footer } from "@/components/landing/footer"
+import { getRecentRefCodes, getWaitlistCount } from "@/lib/waitlist"
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}) {
+  const params = await searchParams
+  const rawRef = params.ref
+  const referredBy = typeof rawRef === "string" ? rawRef : undefined
+  const [count, recentRefCodes] = await Promise.all([
+    getWaitlistCount(),
+    getRecentRefCodes(5),
+  ])
+
   return (
-    <div className="flex min-h-svh items-center justify-center p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="text-2xl font-bold">
-            <span className="font-light">Cada hábito suma,</span>{" "}
-            <span className="text-primary">tu Reserva crece</span>
-          </h1>
-          <p className="text-muted-foreground">
-            Theming de FIBO aplicado — paleta, tipografía (Bricolage
-            Grotesque + Geist) y radios ya salen de{" "}
-            <code className="font-mono text-xs">app/globals.css</code>.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Button>Registrar hábito</Button>
-          <Button variant="secondary">Ver Reserva</Button>
-          <Button variant="outline">Pausar top-up</Button>
-          <Button variant="ghost">Cancelar</Button>
-          <Button variant="destructive">Eliminar cuenta</Button>
-          <Button variant="link">¿Por qué FIBO?</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Presiona <kbd>d</kbd> para alternar modo oscuro)
-        </div>
-      </div>
+    <div className="flex min-h-svh flex-col">
+      <SiteHeader />
+      <Hero />
+      <Problema />
+      <Mecanismo />
+      <PruebaSocial count={count} recentRefCodes={recentRefCodes} />
+      <CtaFinal>
+        <WaitlistForm referredBy={referredBy} />
+      </CtaFinal>
+      <Footer />
     </div>
   )
 }

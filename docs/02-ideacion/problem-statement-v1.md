@@ -1,5 +1,7 @@
 # Problem Statement v1 + brief para la mentoría (04 Set., 9-11am)
 
+> **Superado por [`problem-statement-v2.md`](./problem-statement-v2.md) (05 Set. 2026).** Este documento cumplió su función como brief pre-mentoría — la mentoría del 04 Set. ya ocurrió y sus preguntas ya fueron respondidas (`02-ideacion/hallazgos-mentoria-04-set.md`), y era la única programada en el sprint. Se conserva sin editar por trazabilidad (qué se sabía antes vs. después de la mentoría), pero no es la fuente de verdad para one-pager, pitch o construcción — usar v2.
+>
 > Consolida en un solo documento lo que hasta ahora vivía repartido entre `territorios-solucion.md`, `historias-usuario-y-validacion.md` y `05-entregables/guion-pitch-v1.md`. Formato de problem statement tomado de `1-07-2026/INICIALIZATION.md` §9. **Sigue siendo v1**: no hay data primaria propia todavía (encuesta/entrevistas sin desplegar) — este documento se apoya en research secundario + insumo oficial del kick-off, y debe decirse así de frente a los mentores, no disfrazarse de hallazgo de campo.
 
 ## Problem Statement
