@@ -4,7 +4,7 @@ import { Panel } from "@/components/landing/panel"
 
 export function CtaFinal({ children }: { children: ReactNode }) {
   return (
-    <section id="registro" className="bg-primary px-6 py-28 text-primary-foreground">
+    <section id="registro" className="bg-primary px-6 py-16 sm:py-20 md:py-28 text-primary-foreground scroll-mt-16">
       <div className="mx-auto flex max-w-md flex-col items-center gap-2 text-center">
         <h2 className="font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
           Únete a la lista de espera

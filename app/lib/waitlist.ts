@@ -48,25 +48,15 @@ export async function getRecentRefCodes(limit = 5): Promise<string[]> {
 // Validación permisiva a propósito: el segmento (Guardián + Estudiante/Primer
 // Empleo) puede dejar celular peruano o correo, sin formato único forzado.
 const waitlistSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(2, "Cuéntanos cómo te llamamos (mínimo 2 caracteres)."),
+  name: z.string().trim().optional(),
   contact: z
     .string()
     .trim()
-    .min(6, "Déjanos un celular o correo válido.")
-    .refine(
-      (value) =>
-        value.includes("@")
-          ? z.email().safeParse(value).success
-          : /^\+?\d{6,15}$/.test(value.replace(/[\s-]/g, "")),
-      "Escribe un correo válido o un celular (solo números)."
-    ),
+    .email("Ingresa un correo electrónico válido (ej. tu@correo.com)."),
 })
 
 export type JoinWaitlistInput = {
-  name: string
+  name?: string
   contact: string
   referredBy?: string | null
 }
@@ -80,9 +70,19 @@ export async function joinWaitlist(
 ): Promise<JoinWaitlistResult> {
   await ensureTable()
 
+  const trimmedContact = input.contact?.trim() ?? ""
+  let resolvedName = input.name?.trim() || ""
+  if (!resolvedName) {
+    if (trimmedContact.includes("@")) {
+      resolvedName = trimmedContact.split("@")[0]
+    } else {
+      resolvedName = "Amigo FIBO"
+    }
+  }
+
   const parsed = waitlistSchema.safeParse({
-    name: input.name,
-    contact: input.contact,
+    name: resolvedName,
+    contact: trimmedContact,
   })
 
   if (!parsed.success) {
@@ -96,7 +96,8 @@ export async function joinWaitlist(
     }
   }
 
-  const { name, contact } = parsed.data
+  const name = resolvedName
+  const contact = parsed.data.contact
 
   // Solo se atribuye el referido si el código realmente existe — evitar
   // que un `?ref=` inventado o manipulado en la URL ensucie la cadena.

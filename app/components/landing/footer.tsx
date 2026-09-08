@@ -9,7 +9,7 @@ export function Footer() {
         Seguros × AWS. Todavía no procesa pagos ni datos sensibles reales.
       </p>
       <p className="text-xs text-muted-foreground">
-        Tu nombre y contacto se usan únicamente para la lista de espera —
+        Tu correo y nombre se usan únicamente para la lista de espera —
         nada más.
       </p>
     </footer>

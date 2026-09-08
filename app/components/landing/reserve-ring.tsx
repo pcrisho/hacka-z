@@ -20,12 +20,6 @@ export function ReserveRing({ compact = false }: { compact?: boolean }) {
   return (
     <div className="relative flex flex-col items-center gap-3">
       <div className="relative">
-        {!compact && (
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10 scale-125 rounded-full bg-[radial-gradient(circle,var(--chart-3)_0%,transparent_70%)] opacity-25 blur-2xl"
-          />
-        )}
         <AnimatedCircularProgressBar
           value={value}
           gaugePrimaryColor="var(--primary)"

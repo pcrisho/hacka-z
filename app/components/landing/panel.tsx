@@ -15,7 +15,7 @@ export function Panel({
   return (
     <div
       className={cn(
-        "rounded-xl border border-border bg-card p-6 text-card-foreground",
+        "rounded-2xl border border-border/70 bg-card p-5 sm:p-6 text-card-foreground shadow-sm",
         className
       )}
     >

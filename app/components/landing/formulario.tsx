@@ -11,46 +11,15 @@ import { FieldError } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 
-// Input editorial: solo línea inferior, sin caja ni pill — para que el
-// formulario no se sienta como el kit de tarjetas genérico de shadcn.
-function LineField({
-  id,
-  name,
-  label,
-  placeholder,
-  invalid,
-}: {
-  id: string
-  name: string
-  label: string
-  placeholder: string
-  invalid: boolean
-}) {
-  return (
-    <div className="flex flex-col gap-1">
-      <label htmlFor={id} className="text-sm text-muted-foreground">
-        {label}
-      </label>
-      <input
-        id={id}
-        name={name}
-        placeholder={placeholder}
-        required
-        aria-invalid={invalid}
-        className={cn(
-          "border-b-2 border-border bg-transparent py-2 font-heading text-2xl outline-none",
-          "placeholder:text-muted-foreground/50 focus:border-primary",
-          "aria-invalid:border-destructive"
-        )}
-      />
-    </div>
-  )
-}
-
 function SubmitButton() {
   const { pending } = useFormStatus()
   return (
-    <Button type="submit" size="lg" disabled={pending} className="w-full">
+    <Button
+      type="submit"
+      size="default"
+      disabled={pending}
+      className="h-10 w-full rounded-xl text-sm font-semibold shadow-xs"
+    >
       {pending ? "Uniéndote..." : "Unirme a la lista de espera"}
     </Button>
   )
@@ -142,36 +111,65 @@ export function WaitlistForm({ referredBy }: { referredBy?: string }) {
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-5">
+    <form action={formAction} className="flex flex-col gap-3 text-left">
       {referredBy ? (
         <input type="hidden" name="ref" value={referredBy} />
       ) : null}
-      <LineField
-        id="name"
-        name="name"
-        label="Nombre o alias"
-        placeholder="Camila"
-        invalid={!!state.fieldErrors?.name}
-      />
-      <FieldError
-        errors={state.fieldErrors?.name?.map((message) => ({ message }))}
-      />
-      <LineField
-        id="contact"
-        name="contact"
-        label="Celular o correo"
-        placeholder="999 999 999"
-        invalid={!!state.fieldErrors?.contact}
-      />
-      <FieldError
-        errors={state.fieldErrors?.contact?.map((message) => ({ message }))}
-      />
+
+      <div className="flex flex-col gap-1.5">
+        <label
+          htmlFor="contact"
+          className="text-xs font-medium text-foreground"
+        >
+          Correo electrónico <span className="text-primary">*</span>
+        </label>
+        <Input
+          id="contact"
+          name="contact"
+          type="email"
+          autoComplete="email"
+          placeholder="tu@correo.com"
+          required
+          aria-invalid={!!state.fieldErrors?.contact}
+          className="h-10 rounded-xl border-border/80 bg-background px-3 text-sm placeholder:text-muted-foreground/50"
+        />
+        <FieldError
+          errors={state.fieldErrors?.contact?.map((message) => ({ message }))}
+        />
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <div className="flex items-center justify-between">
+          <label
+            htmlFor="name"
+            className="text-xs font-medium text-foreground"
+          >
+            Nombre o alias
+          </label>
+          <span className="text-[11px] text-muted-foreground/70">Opcional</span>
+        </div>
+        <Input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="ej. Camila"
+          aria-invalid={!!state.fieldErrors?.name}
+          className="h-10 rounded-xl border-border/80 bg-background px-3 text-sm placeholder:text-muted-foreground/50"
+        />
+        <FieldError
+          errors={state.fieldErrors?.name?.map((message) => ({ message }))}
+        />
+      </div>
+
       {state.status === "error" && !state.fieldErrors ? (
-        <p role="alert" className="text-sm text-destructive">
+        <p role="alert" className="text-xs text-destructive">
           {state.message}
         </p>
       ) : null}
-      <SubmitButton />
+
+      <div className="pt-1">
+        <SubmitButton />
+      </div>
     </form>
   )
 }
