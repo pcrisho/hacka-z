@@ -93,7 +93,15 @@
     --chart-4: #8C4A2F;
     --chart-5: #004C66;
 
-    --radius: 1.25rem;
+    /* 0.6rem, no 1.25rem: con el Card/Bubble reales de la librería
+       (rounded-4xl / rounded-3xl, no rounded-lg como se asumió al fijar
+       este valor la primera vez) 1.25rem producía tarjetas de 52px y
+       burbujas de 44px — muy por encima de los 20-24px que pide
+       design-system.md §5. Con 0.6rem, --radius-4xl cae en ~25px y
+       --radius-3xl en ~21px; los botones (rounded-4xl) siguen viéndose
+       en forma de píldora porque el navegador clampea el radio a la mitad
+       de la altura del botón sin importar el valor exacto. */
+    --radius: 0.6rem;
 
     --sidebar: #F9FAFB;
     --sidebar-foreground: #2F373C;
@@ -159,7 +167,7 @@
     cursor: pointer;
     }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
     }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
