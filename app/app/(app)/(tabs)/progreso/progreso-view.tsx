@@ -469,8 +469,8 @@ export function ProgresoView() {
 
           <p className="text-xs text-muted-foreground leading-relaxed">
             {state.seguro.activo
-              ? "Póliza médica activa con hasta S/ 500 de indemnización por hospitalización y teleconsultas ilimitadas con Tsana."
-              : "Hasta S/ 500 de indemnización por hospitalización. Pausable en cualquier momento vía Yape."}
+              ? "Respaldo médico activo con hasta S/ 500 ante emergencias y consultas de salud preventiva con Tsana."
+              : "Hasta S/ 500 de respaldo económico ante hospitalización. Pausable en cualquier momento vía Yape."}
           </p>
 
           <Button

@@ -474,7 +474,7 @@ export function OnboardingView() {
                   </span>
                   <span className="text-[11px] text-muted-foreground leading-relaxed">
                     Cada hábito cumplido suma puntos a tu Reserva de Bienestar y
-                    activa teleconsultas médicas ilimitadas con Tsana.
+                    desbloquea consultas de salud preventiva con Tsana.
                   </span>
                 </div>
               </div>
@@ -574,11 +574,11 @@ export function OnboardingView() {
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-xs font-bold text-foreground">
-                      2. Respaldo y Telemedicina Preventiva
+                      2. Beneficios de Bienestar con Pacífico
                     </span>
                     <p className="text-[11px] text-muted-foreground leading-relaxed">
-                      Tus puntos desbloquean hasta S/ 500 en indemnización por
-                      hospitalización, además de teleconsultas ilimitadas con Tsana.
+                      Tus puntos desbloquean múltiples beneficios con Pacífico y
+                      acceso a consultas de salud preventiva con Tsana.
                     </p>
                   </div>
                 </CardContent>
@@ -692,7 +692,7 @@ export function OnboardingView() {
                   </p>
                   <div className="mt-1 flex items-center gap-2 rounded-lg bg-muted/60 px-3 py-2 text-[11px] font-medium text-foreground">
                     <CheckCircle2 className="size-4 text-emerald-500" />
-                    <span>Marca un hábito en un tap para ganar puntos y festejar con confetti.</span>
+                    <span>Marca tu hábito con un toque para sumar a tu Reserva y mantener tu racha activa.</span>
                   </div>
                 </div>
               )}

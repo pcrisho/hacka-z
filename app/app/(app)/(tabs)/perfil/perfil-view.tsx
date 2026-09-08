@@ -346,7 +346,7 @@ export function PerfilView() {
               <div>
                 <p className="text-xs font-bold text-foreground leading-tight">Microseguro</p>
                 <p className="text-[11px] text-muted-foreground leading-snug pt-0.5 line-clamp-2">
-                  Hasta S/ 500 de indemnización por hospitalización.
+                  Hasta S/ 500 de respaldo económico ante hospitalización.
                 </p>
               </div>
             </div>

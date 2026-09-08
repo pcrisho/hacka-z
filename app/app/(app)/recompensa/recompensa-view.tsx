@@ -243,7 +243,7 @@ export function RecompensaView() {
                 <Shield className="size-3.5" />
               </div>
               <span className="text-[11px] font-medium text-foreground">
-                Hasta <strong>S/ 500</strong> de indemnización por hospitalización
+                Hasta <strong>S/ 500</strong> de respaldo económico ante hospitalización
               </span>
             </div>
 
