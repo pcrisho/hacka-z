@@ -6,6 +6,8 @@
 
 ## Flujo de pantallas
 
+> **Nota de implementación (06 Set.):** las pantallas 2 y 3 se construyeron como una sola ruta (`/hoy`) en vez de dos pantallas separadas — el anillo de la Reserva es "el componente más importante de todo el prototipo" (`design-system.md` §5) y esconderlo detrás de una navegación aparte le restaba protagonismo en vez de dárselo. El contenido de ambas pantallas descrito abajo no cambia, solo la forma en que se agrupan. Detalle técnico completo en `decisiones-app-web.md`.
+
 ### 1. Onboarding conversacional — **Real** (llamada a LLM)
 - Agente FIBO se presenta, hace las 2 preguntas de contexto ("¿trabajas de forma independiente?", "¿qué te preocupa más: salud, plata o herramientas de trabajo?").
 - En base a las respuestas, sugiere los 3 hábitos iniciales.
