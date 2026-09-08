@@ -37,6 +37,7 @@ import { Input } from "@/components/ui/input"
 import { useReserva } from "@/hooks/use-reserva"
 import type { UsuarioPerfil } from "@/lib/reserva/types"
 import { cn } from "@/lib/utils"
+import { PrototipoAvisoModal } from "../_components/prototipo-aviso-modal"
 
 export function OnboardingView() {
   const router = useRouter()
@@ -44,6 +45,7 @@ export function OnboardingView() {
 
   const [paso, setPaso] = useState<1 | 2 | 3 | 4 | 5>(1)
   const [completando, setCompletando] = useState(false)
+  const [mostrarAvisoPrototipo, setMostrarAvisoPrototipo] = useState(false)
 
   // Paso 1: Datos Personales & Alias (vacíos para registro real)
   const [nombres, setNombres] = useState("")
@@ -158,6 +160,21 @@ export function OnboardingView() {
               <p className="text-xs text-muted-foreground">
                 Tu nombre nos permite personalizar tu experiencia y emitir tus constancias en FIBO.
               </p>
+            </div>
+
+            {/* Aviso de privacidad y prototipo */}
+            <div className="flex items-center justify-between rounded-xl border border-primary/20 bg-primary/5 px-3 py-2 text-[11px] text-muted-foreground">
+              <div className="flex items-center gap-2 min-w-0">
+                <ShieldCheck className="size-4 text-primary shrink-0" />
+                <span className="truncate font-medium">Prototipo interactivo • Datos 100% locales</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setMostrarAvisoPrototipo(true)}
+                className="font-semibold text-primary underline underline-offset-2 hover:opacity-80 cursor-pointer ml-2 shrink-0"
+              >
+                Ver aviso
+              </button>
             </div>
 
             <div className="flex flex-col gap-2.5">
@@ -457,7 +474,7 @@ export function OnboardingView() {
                   </span>
                   <span className="text-[11px] text-muted-foreground leading-relaxed">
                     Cada hábito cumplido suma puntos a tu Reserva de Bienestar y
-                    activa consultas médicas con Dr. Online sin copagos ni costos adicionales.
+                    activa teleconsultas médicas ilimitadas con Tsana.
                   </span>
                 </div>
               </div>
@@ -560,8 +577,8 @@ export function OnboardingView() {
                       2. Respaldo y Telemedicina Preventiva
                     </span>
                     <p className="text-[11px] text-muted-foreground leading-relaxed">
-                      Tus puntos desbloquean hasta S/ 15,000 en cobertura médica y de
-                      accidentes, además de telemedicina ilimitada 24/7 sin copagos.
+                      Tus puntos desbloquean hasta S/ 500 en indemnización por
+                      hospitalización, además de teleconsultas ilimitadas con Tsana.
                     </p>
                   </div>
                 </CardContent>
@@ -714,7 +731,7 @@ export function OnboardingView() {
                   </div>
                   <p className="text-xs text-muted-foreground leading-relaxed">
                     Mira cómo tu constancia se convierte en dinero real de cobertura:
-                    hasta S/ 15,000 proyectados, curva de crecimiento y desglose por
+                    hasta S/ 500 proyectados, curva de crecimiento y desglose por
                     categoría.
                   </p>
                   <div className="mt-1 flex items-center gap-2 rounded-lg bg-muted/60 px-3 py-2 text-[11px] font-medium text-foreground">
@@ -804,6 +821,11 @@ export function OnboardingView() {
           </Button>
         )}
       </div>
+
+      <PrototipoAvisoModal
+        forzarApertura={mostrarAvisoPrototipo}
+        onClose={() => setMostrarAvisoPrototipo(false)}
+      />
     </div>
   )
 }

@@ -20,15 +20,23 @@ export async function joinWaitlistAction(
   const refInput = formData.get("ref")
   const referredBy = refInput ? String(refInput) : null
 
-  const result = await joinWaitlist({ name, contact, referredBy })
+  try {
+    const result = await joinWaitlist({ name, contact, referredBy })
 
-  if (!result.ok) {
+    if (!result.ok) {
+      return {
+        status: "error",
+        message: result.error,
+        fieldErrors: result.fieldErrors,
+      }
+    }
+
+    return { status: "success", refCode: result.refCode }
+  } catch (error) {
+    console.error("[Waitlist Action Error]", error)
     return {
       status: "error",
-      message: result.error,
-      fieldErrors: result.fieldErrors,
+      message: "No se pudo registrar tu lugar. Intenta de nuevo.",
     }
   }
-
-  return { status: "success", refCode: result.refCode }
 }

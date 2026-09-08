@@ -11,6 +11,8 @@ import { FieldError } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 
+import Link from "next/link"
+
 function SubmitButton() {
   const { pending } = useFormStatus()
   return (
@@ -20,7 +22,7 @@ function SubmitButton() {
       disabled={pending}
       className="h-10 w-full rounded-xl text-sm font-semibold shadow-xs"
     >
-      {pending ? "Uniéndote..." : "Unirme a la lista de espera"}
+      {pending ? "Asegurando tu lugar..." : "Asegurar mi lugar"}
     </Button>
   )
 }
@@ -64,7 +66,7 @@ function SuccessShare({ refCode }: { refCode: string }) {
 
   const link = `${origin}/?ref=${refCode}`
   const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
-    `Me uní a la lista de espera de FIBO, la app que hace crecer tu Reserva de Bienestar con hábitos simples. Únete tú también: ${link}`
+    `Me sumé a FIBO, la app que transforma tus hábitos diarios en respaldo médico real. ¡Únete tú también y cuidemos nuestra salud juntos! 👉 ${link}`
   )}`
 
   return (
@@ -76,11 +78,11 @@ function SuccessShare({ refCode }: { refCode: string }) {
       />
       <p className="flex items-center gap-2 font-heading text-lg font-semibold">
         <PartyPopper className="size-5 text-primary" />
-        Listo, ya estás en la lista
+        ¡Lugar asegurado!
       </p>
       <p className="text-sm text-muted-foreground">
-        Comparte tu link único — cada persona que se una con él suma a tu
-        cadena de referidos.
+        Invita a tus amigos a sumar hábitos juntos. Comparte tu enlace personal y
+        avancen en comunidad hacia una mejor cobertura.
       </p>
       <div className="flex flex-col gap-2 sm:flex-row">
         <Input
@@ -90,12 +92,21 @@ function SuccessShare({ refCode }: { refCode: string }) {
         />
         <CopyLinkButton link={link} />
       </div>
-      <Button
-        render={<a href={whatsappHref} target="_blank" rel="noreferrer" />}
-        className="w-fit"
-      >
-        Compartir por WhatsApp
-      </Button>
+      <div className="flex flex-col sm:flex-row items-center gap-2 pt-1">
+        <Button
+          render={<a href={whatsappHref} target="_blank" rel="noreferrer" />}
+          className="w-full sm:w-auto"
+        >
+          Invitar por WhatsApp
+        </Button>
+        <Button
+          render={<Link href="/ingresar?modo=registro" />}
+          variant="outline"
+          className="w-full sm:w-auto"
+        >
+          Probar la app ahora →
+        </Button>
+      </div>
     </div>
   )
 }

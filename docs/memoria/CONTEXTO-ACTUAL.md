@@ -2,7 +2,52 @@
 
 > **Léeme primero si eres un agente nuevo entrando a este repo.** Este archivo se **reescribe** cada sesión de trabajo para reflejar el estado más reciente — es una fotografía del presente, no un historial. Para ver cómo llegamos aquí y por qué cambiaron las decisiones, ver `bitacora/` (esa sí es append-only, nunca se reescribe).
 >
-> Última actualización: 06 Set. 2026 (día 6 de 8 del sprint). En orden: sesiones del 01 al 05 Set. cerraron branding, research, stack y landing v1. Sesiones del 06 Set.: (1) pulió `/ingresar` con máscara telefónica de 3 en 3, retroceso inteligente, spinners y componente `InputOTP` de 4 casillas; (2) documentó la visión y features completas en `docs/10-features/` (01 a 07) y artifact interactivo; (3) rediseñó `/hoy` v2 con selector semanal de 7 días, racha activa con escudo de protección anti-ansiedad, tarjetas de hábitos enriquecidas con identidad cromática por pilar (Bolsillo, Cuerpo, Mente), Drawer de plantillas 1-tap y confetti; (4) creó la nueva pestaña `/comunidad` y expandió `BottomNav` a 4 tabs (`Hoy`, `Comunidad`, `Progreso`, `Perfil`) integrando retos grupales, tribus de bienestar y microseguros on-demand colectivos (pichanga y salidas de fin de semana con Yape); (5) rediseñó `/progreso` (cobertura tangible de S/ 15,000, hitos escalonados, AreaChart Recharts) y `/perfil` (vitrina social, portada, insignias, privacidad pública/privada y herramientas de salud); (6) **bifurcó `/ingresar` (Iniciar sesión vs. Crear cuenta) e implementó el Onboarding Integral de Primer Ingreso (`/onboarding`)** en 5 pasos interactivos (Identidad & Alias, Diagnóstico Gen Z, Transparencia de Datos formal, Storytelling y Tour del App Shell), con persistencia reactiva en `localStorage` y saludo dinámico por alias en `/hoy`; (7) optimizó los metadatos PWA y navegación de header. Todo verificado con `tsc --noEmit` y `next build` (17/17 páginas y rutas estáticas generadas sin errores).
+> Última actualización: 08 Set. 2026 (día 8 de 8 del sprint). En orden: sesiones del 01 al 05 Set. cerraron branding, research, stack y landing v1. Sesiones del 06 Set. pulieron `/ingresar`, onboarding de 5 pasos, pestañas de `/comunidad`, `/progreso` y `/perfil`, metadatos PWA e indexación. **Sesión del 08 Set. (hoy):** 
+> 1. **Mindful Rituals en `/hoy`:** resolvió el "Checkbox Syndrome" e implementó rituales por pilar (Alcancía de Salud para Bolsillo; Selector de movimiento con Live Timer sincronizado en la card de Cuerpo; Pausa de Respiración Guiada 4-4-4 de 30s y Check-in mental para Mente).
+> 2. **Navegación temporal y calendario reactivo:** manejadores `‹` y `›` en Calendar Strip con estados contextuales (Hoy activo con dual-path, días pasados completados y días protegidos por el Escudo de Racha sin culpa).
+> 3. **Desacople del Anillo Central:** Anillo de `/hoy` 100% calibrado al progreso de HOY (0-100%) con banner de cobertura del día asegurada al cumplir los 3 hábitos.
+> 4. **Anti-intrusión de modales:** persistencia en `localStorage` (`fibo_niveles_celebrados_v1`) para evitar aperturas repetitivas de felicitación de nivel.
+> 5. **Centro de Notificaciones y Avisos:** campana interactiva en el Header (`notificaciones-sheet.tsx`) con acceso a recompensas, racha y avisos de Dr. Online.
+> 6. **Rediseño integral de `/recompensa`:** voucher digital perforado con código copiable (`FIBO-CALM-2026`), conversión a microseguro médico pay-as-you-go de Pacífico (S/ 9.90/mes vía Yape, pausable sin penalidad, hasta S/ 15,000 de respaldo) y camino escalonado de 3 niveles.
+> 7. **Ecosistema de Comunidad, Tribus y Ruta Dedicada `/salida` (`/comunidad`, `/salida` y `/hoy`):** 
+>    - **Feedback Loop de Retos:** retos inscritos en `/comunidad` se sincronizan en tiempo real en `/hoy` con botón de check diario (+10 pts a la Reserva).
+>    - **Ciclo de vida de Tribus:** creación interactiva de tribus con selectores limpios para Ámbito (universidad, instituto, trabajo, etc.) y Metas Colectivas Semanales, membresía activa y modal de detalle con desafío semanal, Escudo de Tribu Pacífico e invitación automática vía WhatsApp.
+>    - **Ruta Dedicada de Salida Protegida (`/salida`):** reemplazó el modal claustrofóbico por una página transaccional ergonómica con botón de retorno (`← Comunidad`). Integra selector de Tribu anfitriona, regla de proporcionalidad del Capitán (cubre únicamente a los asistentes reales, e.g. 12 de 100 miembros), desglose financiero transparente con recaudación Yape, deep linking (`/salida?t=...&act=...&p=...`) con link copiable para el grupo de WhatsApp de la tribu, y emisión express con póliza colectiva real (`PAC-TRIBU-XXXX`). Títulos y tarjetas limpios de saturación de emojis, priorizando iconografía vectorial fina.
+>    - Todo documentado formalmente en `docs/10-features/08-hoy-v3-mindful-habits-y-navegacion.md`, `09-recompensa-v2-voucher-y-microseguro.md` y `10-comunidad-tribus-y-seguro-grupal.md`.
+> 8. **Progreso y Analíticas de Bienestar Coherentes (`/progreso` v3):**
+>    - **Sincronización Total con Hoy y Comunidad:** Visualización de Retos Activos (`diasCompletados` de `metaDias`, barra de progreso y recompensas) y de la Tribu activa (meta colectiva semanal y % de cumplimiento grupal).
+>    - **Métricas Vivas por Pilar:** Distribución dinámica conectada con los hábitos de `/hoy` (Alcancía de Salud para Bolsillo, movimiento para Cuerpo y pausas mindful para Mente).
+>    - **Selector Temporal Reactivo:** Filtro interactivo `Semana` | `Mes` | `Histórico` que recalcula la curva de crecimiento compuesto en `AreaChart`.
+>    - **Corrección Aseguradora Pacífico:** Retirada la mención de "descuento de prima"; se reemplazó por la tarjeta oficial de "Derecho Ganado / Microseguro Pay-as-you-go" a S/ 9.90/mes vía Yape con respaldo médico de hasta S/ 15,000.
+>    - Documentado en `docs/10-features/05-progreso-analiticas-y-reserva.md` y bitácora. Verificado con `pnpm exec tsc --noEmit` (0 errores) y `pnpm run build` (18/18 páginas generadas).
+> 9. **Perfil de Bienestar Minimalista (`/perfil` v3):**
+>    - **Estética Deportiva y Cero Ruido Visual (Inspiración Adidas Running & Strava):** Retiro de la foto mock genérica de Unsplash y del banner superior de gradiente. Implementación de avatar vectorial sobrio con icono `<User />` y micro-badge de verificación de Pacífico Seguros.
+>    - **Tira de Métricas Clave:** 4 métricas compactas (Racha 5d, Reserva en puntos, Movimiento activo 4.5h, Respaldo médico garantizado S/ 15k).
+>    - **Cards Deslizables Horizontales (`snap-x overflow-x-auto scrollbar-none`):**
+>      * Carrusel de Vitrina de Insignias (Ahorro Hormiga, Movimiento Constante, Mente Serena, Capitán de Tribu).
+>      * Carrusel de Beneficios Pacífico (Dr. Online telemedicina 24/7, Quererte Sano y Microseguro Pay-as-you-go S/ 9.90/mes).
+>    - **Conexión Social y Gestión de Cuenta:** Tarjeta compacta de Tribu con enlace para compartir vía WhatsApp, y menú agrupado estilo iOS para gestionar póliza, declaración jurada de salud y agente de reclamos.
+>    - Documentado en `docs/10-features/06-perfil-social-y-proteccion.md` y bitácora. Verificado con `pnpm exec tsc --noEmit` (0 errores) y `pnpm run build` (18/18 páginas generadas).
+> 10. **Auditoría Heurística y Actualización de la Landing Page:**
+>    - Se corrigió el mockup del iPhone en `mecanismo.tsx` (reemplazando `S/ 150 en Reserva` por `150 pts en Reserva` y `Nivel 1 • Cobertura activa`).
+>    - Se incorporó la oferta concreta de telemedicina 24/7 y microseguros médicos pay-as-you-go desde S/ 9.90/mes vía Yape respaldados por Pacífico.
+>    - Se añadieron bloques comunitarios de Tribus & Salida Protegida (cobertura colectiva on-demand desde S/ 3.50 por persona).
+>    - Se actualizaron `hero.tsx`, `problema.tsx` (con el dato verificado del 84.9% de informalidad juvenil) y `faq.tsx` (con preguntas sobre Tribus y freemium).
+> 11. **Aviso de Prototipo y Privacidad en Flujo de Registro (`/ingresar` y `/onboarding`):**
+>    - Implementación del componente reutilizable `PrototipoAvisoModal` (`app/app/(app)/_components/prototipo-aviso-modal.tsx`).
+>    - Comunica explícitamente que la app es una prueba de concepto para la Hackathon UCSUR × Pacífico × AWS, con cero recolección de datos en servidores externos y almacenamiento 100% local en `localStorage`.
+>    - Incorpora trigger no invasivo con persistencia en `localStorage` (`fibo_aviso_prototipo_visto_v1`), botón para probar con datos ficticios y banner informativo discreto en pantalla. Verificado con `pnpm exec tsc --noEmit` (0 errores) y `pnpm run build` (18/18 páginas generadas).
+> 12. **One-Pager Oficial Interactivo en HTML (`docs/05-entregables/one-pager.html`):**
+>    - Construido en HTML semántico, responsive (canvas 16:9 widescreen) y formato listo para exportar a PDF (`@media print` A4 apaisado).
+>    - Integración de citas bibliográficas verificadas con enlaces URL directos (APESEG 2.05%, INEI 84.9%, Sapien Labs 40%, Pacífico Seguros).
+>    - Showcase con las rutas reales del MVP v3 (`/hoy`, `/salida`, `/progreso`). Verificado con renderizado visual en Chromium (`one-pager-preview.png`).
+> 12. **Resiliencia Offline y Fallback de Base de Datos (Anti-Cuelgues):**
+>    - **Diagnóstico:** Se identificó que la landing se colgaba ante caídas de red o sin internet debido a la espera no acotada de sockets/DNS hacia NeonDB en SSR (`page.tsx`), intentos de mutación en `actions.ts` y la excepción síncrona ante `DATABASE_URL` no definida en `lib/db.ts`.
+>    - **Capa DB Resiliente (`lib/db.ts`):** Detección no bloqueante de variables de entorno, timeout estricto de 1.5s por consulta y Circuit Breaker automático con enfriamiento de 30s (fail-fast 0ms) que previene cuelgues recurrentes.
+>    - **Almacén Fallback en Memoria (`lib/waitlist.ts`):** Retorno instantáneo de línea base (48 registros y 5 códigos de referido para demo). Registro offline 100% operativo con generación de código único, incremento de contador y flujo de confeti/WhatsApp funcional.
+>    - **Avatares Deterministas Offline (`avatar-circles.tsx`):** Soporte de fallback en SVG data URI con la paleta de FIBO ante fallos de carga externa de Dicebear.
+>    - **Agente Conversacional (`/api/agente`):** Timeout acotado a 2.5s con entrega del guion de contingencia en caso de no contar con acceso a AWS Bedrock.
+>    - **Validación rigurosa:** Suite `app/scripts/test-db-fallback.mjs` aprobada, `tsc --noEmit` (0 errores), `pnpm run build` (18/18 páginas generadas) y prueba en servidor de producción con respuesta en 116ms.
 
 ## Qué es esto
 
@@ -70,12 +115,10 @@ Fuentes completas en `01-research/`.
 
 ## Preguntas abiertas / próximos pasos
 
-Ver `PLAN-TRABAJO.md` §8. Las que bloquean avance real, en orden de prioridad:
-1. **Desplegar `01-research/instrumento-campo.md` v2** — sigue sin hacerse, es la tarea #1. Ya incorpora las preguntas de la mentoría (comunidad, transparencia de datos, valor real del hábito mental, ubicación, rubro).
-2. Restructurar `05-entregables/guion-pitch-v1.md` según las notas de cierre ya dejadas (abrir con el usuario, no con la cifra; Betterfly sin protagonismo; respuesta lista a "¿por qué no Quererte Sano?").
-3. **Landing v1 ya construida y funcionando** (`app/`, ver `memoria/bitacora/2026-09-05-landing-v1-y-direccion-visual.md`) — falta el deploy a Vercel (stack ya listo, falta que el equipo conecte el repo o dé acceso). El prototipo del flujo crítico (hábitos/Reserva/agente) sigue sin empezar — es el siguiente bloque grande de construcción, con la misma barra de calidad que la landing (no básico en los flujos que sí construya).
-
-**Nota para la próxima sesión:** no hay correcciones de consistencia pendientes conocidas — la auditoría del 05 Set. (`memoria/auditoria-consistencia-2026-09-05.md`) ya se resolvió por completo. Si se hace una auditoría de seguimiento más adelante, conviene esperar a que haya más contenido nuevo (campo desplegado, prototipo construido) para que valga la pena repetirla.
+Ver `PLAN-TRABAJO.md` §8. Las prioridades vigentes para el cierre del sprint:
+1. **Redacción y entrega del One-Pager oficial ([`05-entregables/one-pager.md`](../05-entregables)):** Elaborar el documento oficial bajo el formato de `MODELO-ONE-PAGER.md` con foco en los criterios de preselección (Sustentación 35%, MVP 35%, GTM 20%, Equipo 10%).
+2. **Grabación y edición del Video de Sustentación (≤3 min):** Estructurar el guion final en `05-entregables/guion-pitch-v1.md` guiando la demo sobre el prototipo funcional codeado v3.
+3. **Prototipo v3 100% construido y validado:** Shell con 4 tabs (`/hoy`, `/comunidad`, `/progreso`, `/perfil`), rutas transaccionales (`/recompensa`, `/salida`, `/seguro`, `/momento-de-verdad`), Mindful Rituals, analíticas en Recharts y emisión de seguro grupal. Verificado con `tsc --noEmit` (0 errores) y `pnpm run build` (18/18 páginas generadas).
 
 ## Mapa de documentos
 
@@ -83,17 +126,18 @@ Ver `PLAN-TRABAJO.md` §8. Las que bloquean avance real, en orden de prioridad:
 docs/
 ├── memoria/              ← estás aquí (CONTEXTO-ACTUAL.md + bitacora/ + auditoria-consistencia-2026-09-05.md)
 ├── 00-bases/              BASES-CONCURSO.md (única fuente de rúbrica/plazos) + LANZAMIENTO.md/plantillas (contexto, no puntaje) + equipo
-├── 01-research/           insumo oficial + research propio + instrumento de campo v2 (a desplegar 05 Set.) + insight-salud-mental-y-habito-gen-z.md
-├── 02-ideacion/           territorio de solución, historias de usuario, identidad, problem-statement-v2.md (v1 superado, se conserva por trazabilidad), hallazgos-mentoria-04-set.md
-├── 03-mvp/                alcance del producto + referencias UI/UX de Pacífico (Ref 1: Corporativo, Ref 2: Quererte Sano) + Ref 3 (caldera.xyz, solo su método tipográfico) + Ref 4 (Betterfly real, HTML guardado — usar el archivo, no lo que alguien crea recordar de su paleta) con sus DESIGN.md
+├── 01-research/           insumo oficial + research propio + instrumento de campo v2 + insight-salud-mental-y-habito-gen-z.md
+├── 02-ideacion/           territorio de solución, historias de usuario, identidad, problem-statement-v2.md, hallazgos-mentoria-04-set.md
+├── 03-mvp/                alcance del producto v3 + referencias UI/UX de Pacífico y benchmarks
 ├── 04-gtm/                modelo de negocio y viabilidad
-├── 05-entregables/        guion-pitch-v1.md (borrador, con notas de reestructuración pendientes) — one-pager y video final van aquí
+├── 05-entregables/        one-pager.md (entregable oficial) + guion-pitch-v1.md (video ≤3 min)
 ├── 06-ideas/              notas crudas sin validar del equipo
-├── 07-construccion/       PRDs (landing + MVP), design system + brandboard.html, esquemas de pantalla, customer-journey.md, stack-tecnico.md — puente a construcción
+├── 07-construccion/       PRDs (landing + MVP v3), design system + brandboard.html, esquemas de pantalla v3, customer-journey.md, decisiones-app-web.md, stack-tecnico.md
+├── 10-features/           especificaciones granulares de componentes y pantallas (01 a 10)
 └── PLAN-TRABAJO.md         plan de sprint + registro de decisiones (tabla de trazabilidad)
 ```
 
-Fuera de `docs/`, en la raíz del repo: **`app/`** (proyecto Next.js — landing v1 funcional con lista de espera real en NeonDB, ver `app/components/landing/`; el prototipo del flujo crítico todavía no empieza) y **`.claude/skills/`** (`iniciar-sesion`, `cerrar-sesion`).
+Fuera de `docs/`, en la raíz del repo: **`app/`** (proyecto Next.js 16 con App Router — landing v1 y prototipo funcional v3 completo con 18 rutas generadas y persistencia en cliente) y **`.claude/skills/`** (`iniciar-sesion`, `cerrar-sesion`).
 
 **Tooling de diseño disponible en sesiones futuras (agregado 05 Set., sesión 4):** plugin oficial `frontend-design` (evaluación/crítica de diseño, no solo generación), skill de terceros `taste-skill` (`/taste <url>`, requiere Playwright MCP — ya configurado y funcionando), registries de shadcn `@magicui`, `@react-bits` y `@aceternity` en `app/components.json` (ver bitácora de sesión 4 para qué se usó de cada una y qué se descartó explícitamente).
 

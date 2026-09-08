@@ -6,32 +6,36 @@
 
 ### 1. Hero
 - Nombre "FIBO" + ícono de espiral (ver `design-system.md` §6).
-- **Copy cerrado (05 Set.):** tagline oficial de marca como subtítulo del hero — *"Cada hábito suma al siguiente. Tu Reserva crece en espiral."* (`design-system.md` §8). Como titular corto encima, en el patrón Two-Tone Heading: *"Pequeños hábitos,* **gran Reserva"** (no usar "historial crediticio" — es impreciso, ver `01-research/pacifico-friccion-usuario-eps.md` §3).
-- CTA único, visible sin hacer scroll: "Únete a la lista de espera".
+- **Copy actualizado (08 Set. - tono Betterfly):**
+  - Titular Two-Tone: *"Tus hábitos diarios,* **tu mejor respaldo"**.
+  - Subtítulo: *"Una app que premia tu constancia. Suma pequeños hábitos de bolsillo, cuerpo y mente cada semana y desbloquea protección médica real, a tu ritmo y sin letra chica."*
+  - Badge superior: *"Tu bienestar diario convertido en protección"*.
+  - CTAs adaptados al flujo real de la app:
+    - Principal: `"Comenzar gratis"` (`/ingresar?modo=registro`).
+    - Secundario: `"Cómo funciona ↓"` (`#mecanismo`).
 
-### 2. El problema (breve, 2-3 líneas)
-- Resume la brecha: seguro tradicional no encaja con ingresos variables ni con la falta de un empleador que subsidie/afilie. Fuente de contenido: `problem-statement-v1.md`, sección Problem Statement.
-- No usar cifras de mercado aquí (informalidad, penetración) — eso es para el jurado/pitch, no para el usuario final; a Camila no le habla el dato macro, le habla su propia situación.
+### 2. Por qué FIBO (comparación de valor, no queja institucional)
+- Titular: *"Tu bienestar merece otra lógica"*.
+- Bajada: *"Si tu estilo de vida es flexible, tu protección también debería serlo. Sin ataduras, sin trámites infinitos y sin pagar por adelantado por algo que no sabes cuándo vas a usar."*
+- Comparativa visual positiva: "Los seguros de siempre" vs. "La experiencia FIBO" (autonomía, pausa sin penalidad, respaldo ganado con el día a día).
 
-### 3. Cómo funciona (3 pasos simples, no un flujo técnico)
-1. Registra hábitos simples cada semana (ahorro chico, actividad física, bienestar mental).
-2. Tu Reserva de Bienestar crece — sin costo, sin letra chica.
-3. Cuando algo pasa, ya tienes cobertura ganada, no una que tuviste que pagar desde el día uno.
+### 3. Cómo funciona (3 pasos simples inspirados en bienestar)
+1. **Elige tus hábitos:** Acciones simples a tu ritmo (Bolsillo, Cuerpo, Mente). Sin wearables costosos ni trámites invasivos.
+2. **Haz crecer tu Reserva:** Tu constancia suma valor como un fondo de bienestar. Cobertura activa desde el inicio.
+3. **Protección cuando la necesitas:** Telemedicina, consultas y cobertura ante imprevistos respaldada por Pacífico Seguros.
+- Incluye tarjeta explicativa de **Modo pausa anti-ansiedad**: si una semana no llegas, la cobertura se pausa intacta sin cobros ni penalidades.
 
-Contenido base: loop central de `02-ideacion/historias-usuario-y-validacion.md` §1, simplificado a lenguaje de landing (no reutilizar el lenguaje técnico del documento interno).
+### 4. Comunidad y respaldo de pares
+- Badge: `X personas listas para cambiar las reglas`.
+- Mensaje de pertenencia: *"Una comunidad de jóvenes construyendo un nuevo estándar de salud y respaldo en Perú. Recomendado de persona a persona."*
 
-### 4. Prueba social / lista de espera
-- Contador de personas ya registradas (opcional si el tiempo aprieta, ver `PRD-landing.md` §4).
-- Refuerzo de que esto se comparte entre pares, no es publicidad — coherente con "entrada social, no publicitaria" (`historias-usuario-y-validacion.md` §5.2).
-
-### 5. Formulario de registro
+### 5. Formulario de registro / lista de espera
 - Campos mínimos: nombre/alias + celular o correo.
-- Al completar, generar el link único de referido (`?ref=<id>`) y mostrarlo de inmediato con un CTA claro para compartirlo (ej. botón de compartir por WhatsApp, canal natural del segmento).
-- Este es el momento donde se captura el dato que responde a la pregunta de fondo del PRD: quién invitó a quién.
+- Al completar, generar el link único de referido (`?ref=<id>`) con invitación directa por WhatsApp y botón directo para `Probar la app ahora →`.
 
 ### 6. Cierre / footer
-- Mención breve de que FIBO es una propuesta en desarrollo para la Hackathon UCSUR–Pacífico Seguros×AWS — transparencia simple, sin necesidad de legales complejos (no se procesan pagos ni datos sensibles reales).
-- Sin necesidad de política de privacidad extensa dado el alcance (solo nombre + contacto), pero sí una línea que aclare que los datos no se usan para nada fuera de la lista de espera.
+- Mención de FIBO como iniciativa para la Hackathon UCSUR–Pacífico Seguros × AWS.
+- Enlace directo a Iniciar sesión y política de privacidad simple.
 
 ## Qué NO lleva esta landing
 

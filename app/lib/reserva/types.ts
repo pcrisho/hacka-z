@@ -48,6 +48,23 @@ export type PuntoHistorial = {
   puntos: number
 }
 
+export type Tribu = {
+  id: string
+  nombre: string
+  universidad: string
+  miembros: number
+  metaSemanal: string
+  rachaSemanas: number
+  cumplimiento: number
+  esMiembro: boolean
+  esAdmin?: boolean
+}
+
+export type RetoProgreso = {
+  completadoHoy: boolean
+  diasCompletados: number
+}
+
 export type ReservaState = {
   sesion: SesionEstado | null
   onboardingDone: boolean
@@ -57,6 +74,9 @@ export type ReservaState = {
   historial: PuntoHistorial[]
   recompensasDesbloqueadas: NivelId[]
   seguro: SeguroEstado
+  retosActivos: string[]
+  retosProgreso: Record<string, RetoProgreso>
+  tribus: Tribu[]
 }
 
 export type ReservaAction =
@@ -71,4 +91,17 @@ export type ReservaAction =
   | { type: "activar-seguro" }
   | { type: "pausar-seguro" }
   | { type: "reanudar-seguro" }
+  | { type: "unirse-reto"; retoId: string }
+  | { type: "abandonar-reto"; retoId: string }
+  | { type: "check-reto"; retoId: string }
+  | { type: "unirse-tribu"; tribuId: string }
+  | { type: "salir-tribu"; tribuId: string }
+  | {
+      type: "crear-tribu"
+      tribu: {
+        nombre: string
+        universidad: string
+        metaSemanal: string
+      }
+    }
   | { type: "hidratar"; state: ReservaState }

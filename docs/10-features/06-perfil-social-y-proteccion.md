@@ -1,84 +1,79 @@
-# Feature 06: Perfil Social, Insignias y Ecosistema de Protección Personal (/perfil)
+# Feature 06: Perfil de Bienestar y Protección Personal (/perfil)
 
-> **Estado:** Especificación aprobada para implementación  
-> **Ruta:** `app/app/(app)/(tabs)/perfil/page.tsx`  
-> **Público objetivo:** Gen Z conectada que valora la identidad, el reconocimiento social entre pares y el autocuidado sin burocracia.  
-> **Inspiración:** Strava Profile, BeReal / Instagram bio, Duolingo Trophy Case, Nubank Profile.
-
----
-
-## 1. Filosofía de Diseño: "Esto soy yo, y esto cuida lo mío"
-
-En los seguros tradicionales, el perfil del asegurado es una ficha clínica fría con número de póliza y fecha de vencimiento.
-En **FIBO**, el perfil es la **carta de presentación de bienestar del usuario**:
-1. **Identidad & Conexión Social:** Foto/Avatar, bio, racha, amistades y comunidades donde participa.
-2. **Vitrina de Insignias (Trophy Case):** Reconocimiento a los hábitos cumplidos (ahorro, actividad física, salud mental).
-3. **Control de Privacidad:** Toggle `Público / Solo Amigos` para compartir logros sin exponer datos financieros privados.
-4. **Herramientas de Protección Integradas:** Los servicios de Pacífico (Dr. Online, Quererte Sano, Microseguro pausable) ya no aparecen como un menú rígido arriba, sino abajo como el kit de herramientas que respaldan su estilo de vida.
-5. **Menú de Configuración & Salida:** Ajustes de notificaciones, soporte y cierre de sesión.
+> **Estado:** Implementado / Actualizado (v3 Minimalista)  
+> **Ruta:** `app/app/(app)/(tabs)/perfil/perfil-view.tsx`  
+> **Público objetivo:** Gen Z que valora el diseño limpio, la ausencia de fricción y el entendimiento claro de sus coberturas y logros sin ruido visual.  
+> **Inspiración:** Adidas Running (Runtastic), Strava Athlete Profile, Apple Fitness, Calm.
 
 ---
 
-## 2. Wireframe de la Pantalla /perfil v2
+## 1. Filosofía de Diseño: Minimalismo y Cero Ruido Visual
+
+Inspirado en las mejores aplicaciones deportivas y de bienestar contemporáneas:
+1. **Identidad Limpia sin Fotos Mock:** Se elimina la fotografía genérica de stock de Unsplash y se reemplaza por un avatar tipográfico/vectorial sobrio con el icono `<User />` de Lucide y un sutil anillo de estado según el Nivel alcanzado.
+2. **Eliminación de Banners Abultados:** Se retira el banner de gradiente pesado para dar prioridad al contenido, tipografía y espacio negativo.
+3. **Cards Deslizables Horizontales (Horizontal Snap Carousels):**
+   - **Vitrina de Insignias:** Carrusel horizontal fluido con snap táctil (`snap-x overflow-x-auto scrollbar-none`), reduciendo drásticamente la altura vertical de la pantalla.
+   - **Beneficios y Cobertura Pacífico:** Carrusel horizontal deslizable con tarjetas de servicios (Dr. Online, Quererte Sano y Microseguro Pay-as-you-go).
+4. **Tira de Métricas Clave (Estilo Running/Fitness):** 4 métricas compactas (Racha, Reserva, Movimiento activo, Respaldo médico garantizado).
+5. **Menú de Cuenta y Póliza:** Opciones agrupadas con iconografía vectorial nítida y chevrons discretos para acceder a la póliza oficial, declaración de salud, soporte y cierre de sesión.
+
+---
+
+## 2. Anatomía de la Pantalla /perfil v3
 
 ```
 +-------------------------------------------------------------+
-|  [ Banner de Portada en Gradiente Orgánico FIBO           ] |
-|               [ (FOTO / AVATAR CON BADGE) ]                 |
+|  PERFIL                                           [ Ajustes ]|
++-------------------------------------------------------------+
 |                                                             |
-|  Camila Rodríguez ✨                     [@camila.r]        |
-|  UCSUR • Estudiante de Medicina & Runner                    |
-|  "Cuidando mi salud mental y ahorrando para mi internado"   |
+|  1. IDENTIDAD (AVATAR VECTORIAL LIMPIO)                     |
+|            ( [Icono User] )                                 |
+|            Camila Rodríguez                                 |
+|            @camila.r • Miembro activo FIBO                  |
+|            [ Nivel 2 • Guardián ]                           |
 |                                                             |
-|  [ 🟢 Perfil Público ]                        [Editar Perfil]|
-|                                                             |
-|  MÉTRICAS SOCIALES:                                         |
+|  2. TIRA DE MÉTRICAS COMPACTAS                              |
 |  +-------------------------------------------------------+  |
-|  |   🔥 5 días    |   🛡️ Nivel 2   |   👥 2 Tribus  | 🤝 18  |
-|  |     Racha      |     Guardián   |   Comunidad    | Amigos |
-|  +-------------------------------------------------------+  |
-|                                                             |
-|  VITRINA DE INSIGNIAS GANADAS (4/8)                         |
-|  +-------------------------------------------------------+  |
-|  | 🪙 Ahorrador Hormiga    🏃 Runner Urbano                 |  |
-|  | 🧘 Mente Serena         ⚽ Capitán Pichanga              |  |
+|  |  5 días      145 pts       4.5 hrs       S/ 15,000    |  |
+|  |  Racha       Reserva       Movimiento    Respaldo     |  |
 |  +-------------------------------------------------------+  |
 |                                                             |
-|  MIS COMUNIDADES Y AMIGOS:                                  |
+|  3. INSIGNIAS DESBLOQUEADAS (CARRUSEL HORIZONTAL SNAP)      |
+|  Logros de bienestar (4 de 8)                      [Ver todo]|
+|  +----------------+  +----------------+  +----------------+ |
+|  | 🪙 Ahorrador   |  | 🏃 Movimiento  |  | 🧘 Mente       | |
+|  | S/ 50 ahorrados|  | 5 días activo  |  | 8 pausas relax | |
+|  +----------------+  +----------------+  +----------------+ |
+|                                                             |
+|  4. BENEFICIOS Y COBERTURA PACÍFICO (CARRUSEL SNAP)         |
+|  Herramientas que te cuidan                                 |
+|  +-----------------------+  +-----------------------+       |
+|  | 🩺 Dr. Online         |  | 🛡️ Microseguro Pacífico|      |
+|  | Telemedicina 24/7     |  | S/ 9.90/mes Yape      |       |
+|  | [Consultar médico]    |  | [Gestionar póliza]    |       |
+|  +-----------------------+  +-----------------------+       |
+|                                                             |
+|  5. TU TRIBU ACTIVA (TARJETA COMPACTA)                      |
 |  +-------------------------------------------------------+  |
-|  | • UCSUR Runners & Active (128 miembros)               |  |
-|  | • Gen Z Primer Empleo (210 miembros)                  |  |
-|  | [ (A) (B) (C) (D) +14 amigos en FIBO ]  [+ Conectar]  |  |
+|  | Runners Lima Sur • 78% meta semanal   [Invitar amigos] |  |
 |  +-------------------------------------------------------+  |
 |                                                             |
-|  HERRAMIENTAS QUE ME PROTEGEN (Pacífico Seguros) 🛡️         |
+|  6. GESTIÓN DE CUENTA Y PÓLIZAS                             |
 |  +-------------------------------------------------------+  |
-|  | 🩺 Dr. Online Pacífico: Telemedicina 24/7 sin costo    |  |
-|  |    [ Consultar médico ahora ]                         |  |
+|  | > Recordatorios de hábitos y avisos                      |
+|  | > Declaración Jurada de Salud & Póliza Pacífico          |
+|  | > Reportar reclamo o emergencia médica (Agente FIBO)     |
 |  +-------------------------------------------------------+  |
-|  | 💚 Quererte Sano: Descuentos en farmacias & salud      |  |
-|  +-------------------------------------------------------+  |
-|  | ⚡ Microseguro FIBO: Cobertura Activa (S/ 9.90/mes)     |  |
-|  |    Pausable sin penalidad cuando lo necesites.        |  |
-|  +-------------------------------------------------------+  |
-|                                                             |
-|  MÁS OPCIONES:                                              |
-|  [ Notificaciones y Recordatorios                      > ]  |
-|  [ Declaración de Salud y Documentos                   > ]  |
-|  [ Centro de Ayuda & Términos                          > ]  |
-|                                                             |
-|  [                  Cerrar sesión                        ]  |
-|                                                             |
-|  [Hoy]              [Comunidad]        [Progreso]   [Perfil]|
+|  [ Cerrar sesión ]                                          |
 +-------------------------------------------------------------+
 ```
 
 ---
 
-## 3. Especificación de Componentes
+## 3. Principios Técnicos y de UX
 
-1. **Avatar con Status Ring:** Aro de color dorado/cyan que indica el Nivel de Reserva alcanzado.
-2. **Insignias Gamificadas:** Tarjetas pequeñas con iconografía, nombre y fecha de obtención.
-3. **Conexión de Amistades:** Lista horizontal con avatares y botón para compartir link de invitación personal.
-4. **Protección Pacífico Contextual:** Presentado como "Respaldado por Pacífico Seguros para cuidar lo que ya construiste".
-5. **Menú de Cuenta:** Lista limpia de opciones con flechas de navegación y botón de cierre de sesión secundario.
+- **`scrollbar-none` & `snap-x`:** Desplazamiento horizontal táctil optimizado para iOS/Android y web, sin barras grises antiestéticas.
+- **Iconografía Unificada:** Lucide SVG nítidos (`User`, `Shield`, `Flame`, `Activity`, `Trophy`, `Stethoscope`, `HeartPulse`, `Zap`, `ChevronRight`).
+- **Respeto a Datos Globales:** Consumo dinámico de `state.sesion?.perfil`, `state.reservaPuntos`, `state.seguro` y `state.tribus`.
+

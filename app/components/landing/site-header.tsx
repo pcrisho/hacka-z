@@ -18,9 +18,9 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false)
 
   const navLinks = [
-    { href: "#mecanismo", label: "¿Cómo funciona?" },
-    { href: "#problema", label: "El problema" },
-    { href: "#faq", label: "Preguntas" },
+    { href: "#mecanismo", label: "Cómo funciona" },
+    { href: "#problema", label: "Por qué FIBO" },
+    { href: "#faq", label: "Dudas frecuentes" },
   ]
 
   return (
@@ -43,13 +43,13 @@ export function SiteHeader() {
           ))}
           <div className="h-4 w-px bg-border/60" />
           <a
-            href="/ingresar"
+            href="/ingresar?modo=iniciar"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Iniciar sesión
           </a>
-          <a href="#registro" className={cn(buttonVariants({ size: "sm" }))}>
-            Únete a la lista de espera
+          <a href="/ingresar?modo=registro" className={cn(buttonVariants({ size: "sm" }))}>
+            Comenzar gratis
           </a>
         </nav>
 
@@ -95,7 +95,7 @@ export function SiteHeader() {
                   ))}
                   <div className="my-2 border-t border-border/60" />
                   <a
-                    href="/ingresar"
+                    href="/ingresar?modo=iniciar"
                     onClick={() => setOpen(false)}
                     className="rounded-lg px-3 py-2.5 text-base font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   >
@@ -106,14 +106,14 @@ export function SiteHeader() {
 
               <div className="pt-4 border-t border-border/60">
                 <a
-                  href="#registro"
+                  href="/ingresar?modo=registro"
                   onClick={() => setOpen(false)}
                   className={cn(
                     buttonVariants({ size: "default" }),
                     "w-full justify-center text-sm font-semibold"
                   )}
                 >
-                  Únete a la lista de espera
+                  Comenzar gratis
                 </a>
               </div>
             </SheetContent>

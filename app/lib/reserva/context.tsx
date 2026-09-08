@@ -12,6 +12,7 @@ import {
   HABITOS_INICIALES,
   NIVELES_RECOMPENSA,
   RESERVA_STORAGE_KEY,
+  TRIBUS_INICIALES,
 } from "@/lib/reserva/constants"
 import type { NivelId, ReservaAction, ReservaState } from "@/lib/reserva/types"
 
@@ -24,6 +25,11 @@ const ESTADO_INICIAL: ReservaState = {
   historial: [],
   recompensasDesbloqueadas: [],
   seguro: { ofrecido: false, activo: false, pausado: false },
+  retosActivos: ["anti-burnout"],
+  retosProgreso: {
+    "anti-burnout": { completadoHoy: false, diasCompletados: 2 },
+  },
+  tribus: TRIBUS_INICIALES,
 }
 
 export function nivelParaPuntos(puntos: number): NivelId | null {
@@ -39,9 +45,15 @@ function reservaReducer(
     case "hidratar":
       // Merge, no reemplazo — localStorage puede traer un estado guardado
       // con una sesión de desarrollo anterior a que existieran estos campos
-      // (ej. antes de agregar sesion/historial), y un reemplazo directo
+      // (ej. antes de agregar sesion/historial/retos), y un reemplazo directo
       // dejaría esos campos undefined en vez de con su default.
-      return { ...ESTADO_INICIAL, ...action.state }
+      return {
+        ...ESTADO_INICIAL,
+        ...action.state,
+        retosActivos: action.state.retosActivos ?? ESTADO_INICIAL.retosActivos,
+        retosProgreso: action.state.retosProgreso ?? ESTADO_INICIAL.retosProgreso,
+        tribus: action.state.tribus ?? ESTADO_INICIAL.tribus,
+      }
     case "iniciar-sesion":
       return { ...state, sesion: { telefono: action.telefono } }
     case "guardar-perfil":
@@ -103,6 +115,83 @@ function reservaReducer(
       return { ...state, seguro: { ...state.seguro, pausado: true } }
     case "reanudar-seguro":
       return { ...state, seguro: { ...state.seguro, pausado: false } }
+    case "unirse-reto": {
+      if (state.retosActivos.includes(action.retoId)) return state
+      return {
+        ...state,
+        retosActivos: [...state.retosActivos, action.retoId],
+        retosProgreso: {
+          ...state.retosProgreso,
+          [action.retoId]: state.retosProgreso[action.retoId] || {
+            completadoHoy: false,
+            diasCompletados: 0,
+          },
+        },
+      }
+    }
+    case "abandonar-reto": {
+      return {
+        ...state,
+        retosActivos: state.retosActivos.filter((id) => id !== action.retoId),
+      }
+    }
+    case "check-reto": {
+      const actual = state.retosProgreso[action.retoId] || {
+        completadoHoy: false,
+        diasCompletados: 0,
+      }
+      if (actual.completadoHoy) return state
+      const nuevaReserva = state.reservaPuntos + 10
+      return {
+        ...state,
+        reservaPuntos: nuevaReserva,
+        historial: [...state.historial, { ts: Date.now(), puntos: nuevaReserva }],
+        retosProgreso: {
+          ...state.retosProgreso,
+          [action.retoId]: {
+            completadoHoy: true,
+            diasCompletados: actual.diasCompletados + 1,
+          },
+        },
+      }
+    }
+    case "unirse-tribu": {
+      return {
+        ...state,
+        tribus: state.tribus.map((t) =>
+          t.id === action.tribuId
+            ? { ...t, esMiembro: true, miembros: t.miembros + 1 }
+            : t
+        ),
+      }
+    }
+    case "salir-tribu": {
+      return {
+        ...state,
+        tribus: state.tribus.map((t) =>
+          t.id === action.tribuId
+            ? { ...t, esMiembro: false, miembros: Math.max(1, t.miembros - 1) }
+            : t
+        ),
+      }
+    }
+    case "crear-tribu": {
+      const nuevaTribu = {
+        id: `tribu-${Date.now()}`,
+        nombre: action.tribu.nombre,
+        universidad: action.tribu.universidad,
+        metaSemanal: action.tribu.metaSemanal,
+        miembros: 1,
+        rachaSemanas: 1,
+        cumplimiento: 100,
+        esMiembro: true,
+        esAdmin: true,
+      }
+      return {
+        ...state,
+        tribus: [nuevaTribu, ...state.tribus],
+      }
+    }
     default:
       return state
   }

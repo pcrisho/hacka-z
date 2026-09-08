@@ -14,29 +14,37 @@
 - **Momento de transparencia obligatorio (nuevo, `hallazgos-mentoria-04-set.md` §3.6):** antes de pedir cualquier hábito, FIBO comunica explícitamente y en lenguaje simple que, según la constancia del usuario, más adelante le ofrecerá microseguros personalizados — sin presión, decisión del usuario. No es letra chica al final, es parte de la presentación inicial.
 - Entrega de valor antes de pedir compromiso (principio de cold-start ya cerrado).
 
-## 3. Durante — el loop de hábitos
+## 3. Durante — el loop de hábitos diarios y accountability de tribu
 
-- Registro semanal de los 3 hábitos (uno de ellos, bienestar mental, tratado como hábito ancla — `03-mvp/alcance-producto.md` §2).
-- Refuerzo social/comunidad (territorio validado en mentoría, `hallazgos-mentoria-04-set.md` §3.3) — fuera de alcance del MVP de 7 días, pero parte de la visión de producto.
-- Honor system aceptado explícitamente como limitación del MVP (§3.5 de `hallazgos-mentoria-04-set.md`) — no se construye verificación por evidencia/wearable en esta fase.
+- **Loop Diario de Hábitos (`/hoy`):** Registro consciente mediante Mindful Rituals (Alcancía de salud, selector de movimiento con live timer, pausa de respiración guiada 4-4-4).
+- **Refuerzo Social Comunitario (`/comunidad`):** Pertenencia a una **Tribu** (universidad, instituto, trabajo) con meta colectiva semanal y retos compartidos. El compromiso social eleva entre 65% y 95% el cumplimiento de metas (`insight-salud-mental-y-habito-gen-z.md`).
+- **Feedback Loop Integrado:** Los retos de comunidad se sincronizan en el dashboard diario `/hoy` para dar recompensa inmediata de +10 puntos de Reserva.
+- **Honor system explícito:** Autodeclarado para el hackathon, con diseño que prioriza honestidad y consistencia antes que penalización burocrática.
 
-## 4. El momento de la oferta — donde más se puede romper la confianza
+## 4. El momento de la oferta y la recompensa ganada
 
-- Al alcanzar el nivel correspondiente, FIBO **entrega primero la recompensa** (contenido/insignia, o beneficio digital) — ya anunciada desde el onboarding como el camino hacia una oferta de seguro, nunca como sorpresa.
-- Solo después, y de forma clara, se presenta la oferta de microseguro personalizado — encuadrada como consecuencia de la recompensa ya ganada (decisión `hallazgos-mentoria-04-set.md` §3.2: la recompensa gana el derecho a la oferta, no son dos productos separados).
-- **Regla explícita:** nunca como pop-up que interrumpe el flujo de uso normal (validado por Cami — ver §2 de `hallazgos-mentoria-04-set.md`). La oferta aparece en un espacio propio dedicado a "lo que ganaste", no sobre la pantalla de hábitos.
-- El usuario puede decir que no sin penalidad ni fricción — declinar la oferta no afecta la Reserva ni el acceso a la app.
+- Al acumular constancia y subir de nivel, FIBO **entrega primero la recompensa no monetaria** (voucher digital perforado interactivo en `/recompensa`, ej. `FIBO-CALM-2026`).
+- **Conversión natural a microseguro pay-as-you-go:** En la misma pantalla `/recompensa`, el usuario descubre que su disciplina ha "ganado el derecho" a un microseguro médico de Pacífico a S/ 9.90/mes vía Yape (cobertura médica hasta S/ 15,000, pausable sin penalidad).
+- **Regla explícita:** Nunca un pop-up invasivo; la oferta es un derecho ganado que el usuario activa cuando lo desea.
 
-## 5. Activación y uso del microseguro
+## 5. Salidas Protegidas y Activación Grupal (`/salida`)
 
-- Pago vía Yape (integración de pasarela, no de contenedor — `hallazgos-mentoria-04-set.md` §3.1).
-- Uso real: el "momento de verdad" (reclamo/canje) — flujo conversacional con el agente, escalamiento humano cuando corresponde (`historias-usuario-y-validacion.md` §6).
+- **Momento contextual de protección:** Cuando la tribu organiza una salida deportiva, pichanga, trekking o viaje grupal, el Capitán activa una **Salida Protegida** desde `/comunidad` que lo lleva a `/salida`.
+- **Proporcionalidad y transparencia:** El Capitán cotiza el seguro colectivo para los asistentes reales (ej. 12 personas a S/ 3.50 cada una = S/ 42 total), comparte el link de pago y nómina por WhatsApp, y emite una póliza de accidentes personales colectiva (`PAC-TRIBU-XXXX`).
 
-## 6. Pausa y cancelación — lo que el flujo feliz no muestra
+## 6. Uso y momento de verdad
 
-- Pausar un top-up: ya definido, sin penalidad, un toggle simple (`03-mvp/alcance-producto.md` §5, `07-construccion/esquema-mvp.md`).
-- **Cancelar del todo (dejar de usar FIBO):** no debe sentirse como una ruptura — la Reserva de hábitos y el historial de comportamiento quedan disponibles si el usuario vuelve más adelante (coherente con "no depende de una relación laboral formal", el mismo principio de no penalizar discontinuidad se extiende aquí). No es un requisito construido para el MVP, pero si el jurado pregunta "¿qué pasa si me voy?", la respuesta ya está pensada: nada se pierde, nada penaliza, se puede volver.
+- **Asistencia / Siniestro (`/momento-de-verdad`):** El usuario reporta cualquier incidente guiado por el agente FIBO, adjuntando fotografía y recibiendo triaje inmediato con derivación a telemedicina Dr. Online o asesor humano de Pacífico.
+- **Pausa sin castigo (`/seguro`):** El usuario puede pausar su seguro en cualquier momento con un solo switch; su Reserva de hábitos se conserva intacta.
 
-## 7. Qué de este journey se construye para el hackathon
+## 7. Qué de este journey está construido en el MVP
 
-Ver `esquema-mvp.md` para el detalle real-vs-simulado pantalla por pantalla. Regla general: los pasos 2 (onboarding con transparencia), 3 (loop de hábitos) y 4 (recompensa → oferta) son el corazón del prototipo y deben sentirse reales; los pasos 1 (adquisición), 5 (pago real) y 6 (cancelación) se narran o se simulan — no requieren pantallas propias más allá de lo ya definido.
+A diferencia de la planificación preliminar, **la dimensión comunitaria y transaccional grupal fue construida exitosamente para el hackathon**:
+1. Acceso y Onboarding conversacional con transparencia de datos (`/ingresar`, `/onboarding`).
+2. Dashboard diario con rituales conscientes y racha protegida (`/hoy`).
+3. Ecosistema de tribus, retos grupales e invitación WhatsApp (`/comunidad`).
+4. Analíticas vivas con Recharts y métricas por pilar (`/progreso`).
+5. Perfil deportivo minimalista con vitrina de coberturas e insignias (`/perfil`).
+6. Recompensa digital y conversión a microseguro (`/recompensa`).
+7. Emisión de póliza colectiva para eventos y salidas (`/salida`).
+8. Flujo asistido de reclamo y siniestro (`/momento-de-verdad`).

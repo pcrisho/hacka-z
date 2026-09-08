@@ -6,6 +6,7 @@ import { ChevronLeft } from "lucide-react"
 
 import { BrandMark } from "@/components/landing/brand-mark"
 import { Button } from "@/components/ui/button"
+import { NotificacionesSheet } from "./notificaciones-sheet"
 
 // Pantallas de flujo (llegadas siempre navegando hacia adelante) muestran un
 // back tipo iOS con su propio título; las pantallas raíz (tabs + entrada)
@@ -39,7 +40,7 @@ export function AppHeader() {
     const destino = esRutaApp ? "/hoy" : "/"
 
     return (
-      <header className="flex h-14 shrink-0 items-center border-b border-border px-4">
+      <header className="flex h-14 shrink-0 items-center justify-between border-b border-border px-4">
         <Link
           href={destino}
           className="flex items-center transition-opacity hover:opacity-85"
@@ -51,6 +52,8 @@ export function AppHeader() {
         >
           <BrandMark />
         </Link>
+
+        {esRutaApp && <NotificacionesSheet />}
       </header>
     )
   }

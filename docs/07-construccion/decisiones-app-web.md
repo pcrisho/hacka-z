@@ -24,45 +24,59 @@ El estado de hábitos/Reserva vive 100% en cliente. No hay cuentas de usuario, n
 - **Pendiente fuera de este repo:** pedir acceso a los modelos de Bedrock en la consola de AWS — la aprobación puede tardar horas.
 - **Plan de respaldo si Bedrock no está listo a tiempo:** Neon AI Gateway (el equipo ya tiene cuenta Neon por la waitlist) — expone una URL compatible con OpenAI, así que cambiar de proveedor es agregar `@ai-sdk/openai` apuntando a esa URL, no reescribir el route handler.
 
-## 4. Estructura de rutas
+## 4. Evolución de la Estructura de Rutas y Adopción de BottomNav (06–08 Set.)
 
-Las 6 pantallas de `esquema-mvp.md` se implementan como 5 rutas bajo un route group `app/app/(app)/`, con layout propio (`app/app/(app)/layout.tsx`): solo la marca FIBO en el header, **sin bottom nav** — una barra de navegación persistente insinuaría secciones que no existen, lo que rompería el principio de "mostrarse honestamente" que ya rige el resto del prototipo (escalamiento del momento de verdad, límite del honor system).
+El prototipo superó el esquema de flujo lineal aislado al evidenciarse que la retención de la Gen Z exige un sentido de permanencia y exploración diaria. Se implementó un **Shell con Bottom Navigation de 4 pestañas** en `app/app/(app)/(tabs)/_components/bottom-nav.tsx`:
 
-| Ruta | Pantalla de `esquema-mvp.md` |
-|---|---|
-| `/onboarding` | 1. Onboarding conversacional |
-| `/hoy` | 2+3 fusionadas — 3 hábitos + anillo de la Reserva en una sola vista (ver nota en `esquema-mvp.md`) |
-| `/recompensa` | 4. Desbloqueo de recompensa → oferta de microseguro (misma pantalla, nunca un pop-up) |
-| `/seguro` | 5. Activar/pausar microseguro |
-| `/momento-de-verdad` | 6. Reclamo/canje guiado por el agente |
-
-## 5. Componentes nuevos
-
-Vía la skill `shadcn` (registry `@shadcn`, base **Base UI** — no Radix, confirmado en `components.json`):
-- `Switch` — toggle de activar/pausar el microseguro.
-- `Message`, `MessageScroller`, `Bubble`, `Marker` — primitivas de chat para el agente (onboarding y momento de verdad), en vez de burbujas hechas a mano.
-
-El resto (tarjeta de hábito, tarjeta de recompensa, input de foto) usa primitivas ya existentes (`Card`, `Badge`, `input type="file"` nativo) sin agregar dependencias.
-
-## 6. Iteración de pulido visual (06 Set., referencias externas)
-
-El usuario compartió capturas de 3 apps de hábitos/metas compartidas (**felt**, **right.**, **COOP**) como referencia de UX/UI. Todas comparten un mecanismo social/de pareja ("pod", User 1 vs User 2) — **confirmado explícitamente con el usuario que ese mecanismo no se adopta** (`historias-usuario-y-validacion.md` §8 ya lo dejó fuera de alcance del hackathon). Solo se adoptó el lenguaje visual, aplicado a una experiencia de un solo usuario:
-
-| Patrón adoptado | Dónde | Componente shadcn |
+| Ruta | Rol dentro de la Arquitectura | Componente y Vista Principal |
 |---|---|---|
-| Número hero (%) con arco de progreso | `/progreso`, header | `AnimatedCircularProgressBar` (ya existente) |
-| Mini-tarjeta de progreso por métrica | `/progreso`, una fila por hábito | `Progress` |
-| Modal de celebración al alcanzar un nivel | `/hoy`, dispara una sola vez por nivel (no en cada visita) | `Dialog` — no reemplaza la regla de "la oferta de microseguro nunca es un pop-up" (`customer-journey.md` §4): el modal solo celebra el nivel, la oferta sigue viviendo en su propia pantalla `/recompensa` |
-| Tarjeta seleccionable con radio + descripción, botón "Continuar" que se habilita con la selección | Onboarding, pregunta 2 (foco) | `RadioGroup` + `Field`/`FieldLabel`/`FieldContent`/`FieldTitle`/`FieldDescription` |
+| `/` | Landing institucional y waitlist NeonDB | `app/page.tsx` + `components/landing/` |
+| `/ingresar` | Acceso rápido express | `app/(app)/ingresar/ingresar-view.tsx` |
+| `/onboarding` | Onboarding conversacional 5 pasos | `app/(app)/onboarding/onboarding-view.tsx` |
+| `/(tabs)/hoy` | Tab 1: Dashboard diario y Mindful Rituals | `app/(app)/(tabs)/hoy/hoy-view.tsx` |
+| `/(tabs)/comunidad` | Tab 2: Ecosistema de Tribus y Retos | `app/(app)/(tabs)/comunidad/comunidad-view.tsx` |
+| `/(tabs)/progreso` | Tab 3: Analíticas y Crecimiento Compuesto | `app/(app)/(tabs)/progreso/progreso-view.tsx` |
+| `/(tabs)/perfil` | Tab 4: Perfil Deportivo y Coberturas | `app/(app)/(tabs)/perfil/perfil-view.tsx` |
+| `/recompensa` | Flujo de Recompensa y Conversión a Seguro | `app/(app)/recompensa/recompensa-view.tsx` |
+| `/salida` | Ruta dedicada de Salida Protegida (Seguro Grupal) | `app/(app)/salida/salida-view.tsx` |
+| `/seguro` | Gestión y switch de microseguro pay-as-you-go | `app/(app)/seguro/seguro-view.tsx` |
+| `/momento-de-verdad` | Flujo de siniestro/asistencia y triaje con IA | `app/(app)/momento-de-verdad/momento-de-verdad-view.tsx` |
 
-**Nota técnica (Base UI):** `RadioGroup` de este proyecto es Base UI, no Radix — no acepta pasar `value={undefined}` inicialmente y luego un string (lo trata como cambiar de no-controlado a controlado y lanza error en consola). Se resolvió inicializando el estado en `""` en vez de `null`.
+El layout general `app/app/(app)/_components/app-header.tsx` gobierna la navegación contextual: muestra botón de retroceso (`ChevronLeft`) con título en rutas secundarias (`/recompensa`, `/salida`, `/seguro`, `/momento-de-verdad`), marca limpia en las tabs de primer nivel, y campana interactiva para el centro de avisos (`notificaciones-sheet.tsx`).
 
-## 6.1. Corrección de radio de esquinas y navegación tipo iOS (06 Set., feedback directo)
+## 5. Componentes y Librerías Incorporadas
 
-El usuario notó que el onboarding (burbujas de chat) y las tarjetas se veían "muy redondeadas". Verificado contra el código: el `Card`/`Bubble` reales de la librería usan `rounded-4xl`/`rounded-3xl`, y `--radius` se había fijado en `1.25rem` pensando en `--radius-lg` (el supuesto original de `stack-tecnico.md` §3, escrito antes de que el `Card` real del proyecto usara `rounded-4xl`) — el resultado real eran tarjetas de **52px** y burbujas de **44px**, muy por encima de los 20-24px que pide `design-system.md` §5. Se corrigió bajando `--radius` a `0.6rem` en `app/globals.css`, lo que deja `--radius-4xl` (tarjetas) en ~25px y `--radius-3xl` (burbujas) en ~21px sin tocar componente por componente — los botones (`rounded-4xl`) siguen viéndose como píldora porque el navegador clampea el radio a la mitad de la altura del control, no al valor exacto del token.
+- Primitivas UI: shadcn/ui sobre **Base UI** (`Card`, `Badge`, `Button`, `Dialog`, `Drawer`, `Switch`, `RadioGroup`, `Tabs`, `Separator`, `Sheet`).
+- Visualización de Datos: `Recharts` (`AreaChart`, `ResponsiveContainer`) para la curva de crecimiento compuesto en `/progreso`.
+- Micro-interacciones: `canvas-confetti` para celebraciones de nivel y canje de voucher; `AnimatedCircularProgressBar` para el anillo de la Reserva.
+- Iconografía: `lucide-react` (fina, consistente, sin emojis saturados).
 
-También se agregó navegación tipo iOS: `app/app/(app)/_components/app-header.tsx` muestra un back (`ChevronLeft` + `router.back()`) con el título de la pantalla en las 3 pantallas de flujo (`/recompensa`, `/seguro`, `/momento-de-verdad`); las pantallas raíz (tabs + `/ingresar` + `/onboarding`) siguen mostrando la marca FIBO, sin back, porque no hay un "atrás" honesto desde ahí.
+## 6. Iteración de Pulido Visual (06 Set.)
 
-## 7. Qué falta después de esta pasada
+- Corrección de radios de esquina (`--radius: 0.6rem` en `globals.css`) para mantener tarjetas en ~25px y botones en píldora equilibrada.
+- Componentes de selección de foco (`RadioGroup`) en onboarding.
+- Modal de celebración de nivel persistido para evitar intrusión reiterada (`fibo_niveles_celebrados_v1`).
 
-El contenido visual de las pantallas de flujo restantes (recompensa, seguro, momento de verdad) todavía no pasó por esta misma revisión de referencias — es la siguiente iteración pendiente, con el mismo criterio: adoptar patrones visuales de apps de referencia sin heredar mecanismos de producto (social, pagos reales, etc.) que ya están fuera de alcance.
+## 7. Mindful Rituals v3 en `/hoy` (08 Set.)
+
+Para evitar el "Checkbox Syndrome" (clic mecánico plano), cada hábito activa un modal de ritual según su pilar:
+- **Alcancía de Salud (Bolsillo):** Aporte rápido con confirmación visual de micro-ahorro.
+- **Selector de Movimiento y Live Timer (Cuerpo):** Temporizador real de 15, 30 o 45 minutos con actualización de progreso en vivo en la tarjeta del dashboard.
+- **Pausa Guiada de Respiración 4-4-4 (Mente):** Ejercicio guiado de inhalar-retener-exhalar de 30s con registro de check-in mental y anclaje emocional.
+- **Calendar Strip Reactivo:** Navegación semanal (L-D) con dual-path (días activos vs. días cubiertos con el Escudo de Racha).
+
+## 8. Ecosistema de Tribus y Salida Protegida en `/comunidad` y `/salida` (08 Set.)
+
+- **Tribus Universitarias y Laborales:** Creación y membresía activa, metas semanales grupales e integración directa con grupos de WhatsApp.
+- **Salida Protegida (`/salida`):** Reemplazo del modal limitado por una ruta transaccional completa. El Capitán de la tribu emite una póliza de accidentes personales de Pacífico que cubre únicamente a los asistentes confirmados (proporcionalidad real, ej. 12 de 100 miembros), con desglose a S/ 3.50 por persona, deep linking (`/salida?t=...&act=...&p=...`) con link copiable para el chat de WhatsApp y emisión de póliza `PAC-TRIBU-XXXX`.
+
+## 9. Analíticas y Perfil Minimalista (08 Set.)
+
+- **`/progreso` v3:** Conexión real con hábitos y metas de tribu, desglose vivo por pilar y proyección de Reserva en curva de crecimiento compuesto.
+- **`/perfil` v3:** Rediseño sobrio inspirado en Strava y Adidas Running, eliminando ruido visual y mockups genéricos para priorizar métricas clave de racha, movimiento y respaldo médico garantizado.
+
+## 10. Estado de Compilación y Gobernanza
+
+- TypeScript estricto verificado con `0 errores` (`tsc --noEmit`).
+- 18/18 páginas generadas limpiamente en `pnpm run build`.
+- Persistencia cliente completa sin inconsistencias de hidratación de Next.js.

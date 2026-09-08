@@ -8,27 +8,33 @@ import {
 const faqs = [
   {
     id: "gratis",
-    pregunta: "¿FIBO realmente es gratis?",
+    pregunta: "¿FIBO realmente no me cuesta nada para empezar?",
     respuesta:
-      "Sí, 100%. Tu Reserva de Bienestar y la cobertura básica se activan y crecen registrando hábitos semanales autodeclarados (ahorro chico, actividad física o bienestar mental). No pagas ninguna prima mensual para empezar ni te pediremos dinero para activarla.",
+      "Totalmente. El registro, el seguimiento de hábitos diarios (mente, cuerpo, ahorro) y tu Reserva de Bienestar son 100% gratuitos. Al acumular constancia ganas el derecho a activar microseguros médicos de Pacífico vía Yape desde S/ 9.90/mes, sin contratos forzosos ni pagos por adelantado.",
   },
   {
     id: "tarjeta",
-    pregunta: "¿Tengo que registrar tarjeta de crédito o cuenta de banco?",
+    pregunta: "¿Tengo que ingresar alguna tarjeta o cuenta de banco?",
     respuesta:
-      "No. Para unirte a la lista de espera y acceder al producto solo necesitas tu correo electrónico (y tu nombre si deseas). Cero datos bancarios y cero cobros sorpresa.",
+      "Para nada. Para registrarte y comenzar a cuidar tus hábitos solo necesitas tu número de celular o correo. Cero datos bancarios y cero cobros sorpresa.",
+  },
+  {
+    id: "tribus",
+    pregunta: "¿Puedo usar FIBO con mis amigos o en mi universidad?",
+    respuesta:
+      "¡Sí! Puedes crear o unirte a una Tribu con compañeros de tu universidad, instituto o grupo de amigos. Juntos asumen retos semanales y pueden activar Salidas Protegidas: seguros colectivos de accidentes para pichangas o eventos desde S/ 3.50 por persona vía Yape.",
   },
   {
     id: "pausa",
-    pregunta: "¿Qué pasa si una semana se complica y no registro mi hábito?",
+    pregunta: "¿Qué pasa si una semana se complica y no registro mis hábitos?",
     respuesta:
-      "Tu cobertura no se cancela ni se pierde: entra en modo 'Pausado' sin penalidad. No te cobramos recargos ni intereses; cuando puedas retomar tu ritmo, tu Reserva acumulada te estará esperando intacta.",
+      "Cero culpa y cero penalidades. Tu respaldo entra automáticamente en modo 'Pausado'. No hay recargos ni intereses; cuando puedas retomar tu ritmo, tu protección acumulada te estará esperando intacta.",
   },
   {
     id: "respaldo",
     pregunta: "¿Quién respalda FIBO?",
     respuesta:
-      "FIBO es una iniciativa desarrollada en el marco de la Hackathon UCSUR – Pacífico Seguros × AWS. Está diseñada por y para la Generación Z, con la convicción de que la salud y la protección deben ser accesibles para quienes estudian, practican o trabajan de forma independiente.",
+      "FIBO nace en el marco de la Hackathon UCSUR – Pacífico Seguros × AWS. Diseñada por y para la Generación Z, une la solidez aseguradora líder de Pacífico con una experiencia ágil, preventiva y humana.",
   },
 ]
 
@@ -37,10 +43,10 @@ export function Faq() {
     <section id="faq" className="mx-auto max-w-4xl px-6 py-16 sm:py-20 md:py-24 scroll-mt-16">
       <div className="mb-12 flex flex-col gap-3 text-center">
         <h2 className="font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-          Preguntas frecuentes
+          Dudas frecuentes
         </h2>
         <p className="mx-auto max-w-md text-base text-muted-foreground text-balance sm:text-lg">
-          Cero letra chica. Todo lo que necesitas saber antes de sumarte a la lista.
+          Cero letra chica. Todo lo que necesitas saber antes de empezar.
         </p>
       </div>
 

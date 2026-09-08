@@ -4,6 +4,8 @@ import { useLayoutEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 
+import { ShieldCheck } from "lucide-react"
+
 import { BrandMark } from "@/components/landing/brand-mark"
 import { Button } from "@/components/ui/button"
 import { Field, FieldLabel } from "@/components/ui/field"
@@ -16,6 +18,7 @@ import {
 import { Spinner } from "@/components/ui/spinner"
 import { useReserva } from "@/hooks/use-reserva"
 import { cn } from "@/lib/utils"
+import { PrototipoAvisoModal } from "../_components/prototipo-aviso-modal"
 
 function formatTelefono(value: string): string {
   let clean = value.replace(/\D/g, "")
@@ -62,6 +65,7 @@ export function IngresarView() {
   const [codigo, setCodigo] = useState("")
   const [enviando, setEnviando] = useState(false)
   const [confirmando, setConfirmando] = useState(false)
+  const [mostrarAviso, setMostrarAviso] = useState(false)
 
   const inputRef = useRef<HTMLInputElement>(null)
   const cursorRef = useRef<number | null>(null)
@@ -77,6 +81,16 @@ export function IngresarView() {
     setModo(nuevoModo)
     setPaso("telefono")
     setCodigo("")
+    if (nuevoModo === "registro") {
+      try {
+        const visto = window.localStorage.getItem("fibo_aviso_prototipo_visto_v1")
+        if (!visto) {
+          setMostrarAviso(true)
+        }
+      } catch {
+        // Modo privado
+      }
+    }
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -222,6 +236,18 @@ export function IngresarView() {
         </button>
       </div>
 
+      {/* Banner discreto de prototipo seguro */}
+      <div className="flex items-center justify-center -mt-2">
+        <button
+          type="button"
+          onClick={() => setMostrarAviso(true)}
+          className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+        >
+          <ShieldCheck className="size-3.5 text-primary" />
+          <span>Prototipo interactivo • Sin recolección de datos</span>
+        </button>
+      </div>
+
       {paso === "telefono" ? (
         <div className="flex w-full flex-col gap-4">
           <div className="flex flex-col gap-1 text-center">
@@ -358,6 +384,11 @@ export function IngresarView() {
           </Button>
         </div>
       )}
+
+      <PrototipoAvisoModal
+        forzarApertura={mostrarAviso}
+        onClose={() => setMostrarAviso(false)}
+      />
     </div>
   )
 }

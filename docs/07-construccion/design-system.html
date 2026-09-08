@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIBO · Design System & Brandboard Oficial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;600;700;800&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap">
+  <style>
+    :root {
+      --bg: #F9FAFB;
+      --surface: #FFFFFF;
+      --surface-2: #F2F5F5;
+      --surface-card: #FFFFFF;
+      --border: #E7EBED;
+      --border-subtle: #F0F3F4;
+      --text: #545E62;
+      --text-strong: #2F373C;
+      --text-muted: #65737B;
+      --text-light: #8E9CA3;
+      
+      /* Brand Palette (Pacífico + Quererte Sano + FIBO) */
+      --cyan-50: #E8F9FF;
+      --cyan-100: #AADDEE;
+      --cyan-500: #0099CC;
+      --cyan-600: #0080AA;
+      --cyan-700: #006688;
+      --cyan-800: #004C66;
+      --cyan-900: #001F29;
+      --deep-teal: #003840;
+      
+      /* Pillar Accents */
+      --green-500: #01A355;
+      --green-text: #007C2D;
+      --green-pill: #CFF8DD;
+      --green-xlow: #D6F5DF;
+      
+      --gold: #D4A24C;
+      --gold-light: #FCE3A6;
+      --gold-dark: #B88334;
+      --gold-bg: #FFF8EB;
+      
+      --terracota: #C97B5B;
+      --terracota-dark: #8C4A2F;
+      --terracota-xlow: #FBEEE9;
+      
+      --grad-fresh: linear-gradient(90deg, #35DAFF 0%, #65F9CF 50%, #98FFF3 100%);
+      --grad-dark: linear-gradient(135deg, #001822 0%, #002633 50%, #04323E 100%);
+      --grad-gold: linear-gradient(135deg, #FCE3A6 0%, #D4A24C 50%, #B88334 100%);
+      --grad-cyan: linear-gradient(135deg, #35DAFF 0%, #0099CC 50%, #004C66 100%);
+      
+      --radius: 0.6rem;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px -2px rgba(0, 56, 64, 0.08);
+      --shadow-lg: 0 12px 28px -4px rgba(0, 56, 64, 0.12);
+      
+      --font-display: 'Bricolage Grotesque', 'Poppins', -apple-system, sans-serif;
+      --font-body: 'Geist', -apple-system, system-ui, sans-serif;
+      --font-mono: 'Geist Mono', monospace;
+      
+      color-scheme: light;
+    }
+
+    [data-theme="dark"] {
+      --bg: #00161E;
+      --surface: #04262F;
+      --surface-2: #0A333D;
+      --surface-card: #04262F;
+      --border: #0F3F49;
+      --border-subtle: #082F38;
+      --text: #B8D4DC;
+      --text-strong: #F2FBFD;
+      --text-muted: #7FA3AD;
+      --text-light: #527A85;
+      
+      --cyan-50: #062B36;
+      --gold-bg: #292212;
+      --terracota-xlow: #2B1812;
+      --green-xlow: #082917;
+      --green-pill: #0D3E24;
+      --green-text: #4AE08A;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 14px 34px rgba(0, 0, 0, 0.5);
+      
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Container */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+    /* Header Nav */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topnav-content {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .brand-mark {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text-strong);
+      font-family: var(--font-display); font-weight: 800; font-size: 20px;
+    }
+    .brand-mark svg { width: 28px; height: 28px; }
+    .brand-badge {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      background: var(--cyan-50); color: var(--cyan-600);
+      padding: 3px 8px; border-radius: var(--radius-full);
+      border: 1px solid var(--cyan-100);
+    }
+    .nav-links {
+      display: flex; gap: 24px; font-size: 13.5px; font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--text-muted);
+      transition: color 0.15s ease;
+    }
+    .nav-links a:hover { color: var(--cyan-500); }
+    .theme-toggle {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text-strong); padding: 7px 14px;
+      border-radius: var(--radius-full); font-size: 12px;
+      font-family: var(--font-mono); cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 72px 0 54px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.2fr 0.8fr;
+      gap: 56px; align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+      color: var(--cyan-500); text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .eyebrow::before {
+      content: ""; width: 20px; height: 2px; background: var(--cyan-500);
+    }
+    .hero h1 {
+      font-family: var(--font-display); font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 800; line-height: 1.02; color: var(--text-strong);
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .accent-i { color: var(--gold); }
+    .hero h1 .sub { font-weight: 300; display: block; color: var(--text); }
+    .hero-tagline {
+      font-size: 19px; line-height: 1.45; color: var(--text-strong);
+      margin-top: 20px; max-width: 52ch;
+    }
+    .hero-tagline b { color: var(--cyan-600); }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px;
+      font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted);
+    }
+    .hero-meta-item {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--surface-2); padding: 6px 14px;
+      border-radius: var(--radius-full); border: 1px solid var(--border);
+    }
+    .hero-meta-item strong { color: var(--text-strong); }
+    .hero-preview-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: 36px;
+      box-shadow: var(--shadow-md); text-align: center;
+    }
+
+    /* Sections */
+    section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-family: var(--font-display); font-size: 32px; font-weight: 800;
+      color: var(--text-strong); letter-spacing: -0.01em;
+    }
+    .section-desc {
+      font-size: 15px; color: var(--text-muted); margin-top: 6px;
+      max-width: 65ch;
+    }
+
+    /* Asset Grid (Brand Kit) */
+    .asset-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .asset-card {
+      background: var(--surface-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      display: flex; flex-direction: column; box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .asset-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .asset-preview {
+      height: 180px; display: flex; align-items: center; justify-content: center;
+      padding: 24px; position: relative;
+    }
+    .asset-preview.light-bg {
+      background: #FFFFFF;
+      background-image: radial-gradient(#E7EBED 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .asset-preview.dark-bg {
+      background: #001822;
+      background-image: radial-gradient(#08303C 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .asset-preview img {
+      max-width: 90%; max-height: 90%; object-fit: contain;
+    }
+    .asset-info {
+      padding: 18px 20px; display: flex; flex-direction: column; gap: 8px;
+      border-top: 1px solid var(--border); flex: 1;
+    }
+    .asset-name {
+      font-weight: 700; font-size: 15px; color: var(--text-strong);
+    }
+    .asset-detail {
+      font-size: 12.5px; color: var(--text-muted); line-height: 1.4;
+    }
+    .asset-actions {
+      display: flex; gap: 8px; margin-top: auto; padding-top: 12px;
+    }
+    .btn-download {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 7px 12px; border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 600; text-decoration: none;
+      font-family: var(--font-mono); transition: all 0.15s ease;
+    }
+    .btn-svg {
+      background: var(--cyan-50); color: var(--cyan-700);
+      border: 1px solid var(--cyan-100);
+    }
+    .btn-svg:hover { background: var(--cyan-100); }
+    .btn-png {
+      background: var(--surface-2); color: var(--text-strong);
+      border: 1px solid var(--border);
+    }
+    .btn-png:hover { background: var(--border); }
+
+    /* Swatches Grid */
+    .color-subgroup {
+      font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-muted); margin: 34px 0 16px;
+      font-weight: 700;
+    }
+    .color-subgroup:first-child { margin-top: 0; }
+    .swatch-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .swatch {
+      background: var(--surface-card); border: 1px solid var(--border);
+      border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: var(--shadow-sm); cursor: pointer; position: relative;
+    }
+    .swatch-fill {
+      height: 96px; position: relative;
+    }
+    .swatch-body {
+      padding: 14px 16px; display: flex; flex-direction: column; gap: 4px;
+    }
+    .swatch-name { font-weight: 700; font-size: 14px; color: var(--text-strong); }
+    .swatch-hex { font-family: var(--font-mono); font-size: 12px; color: var(--cyan-600); font-weight: 600; }
+    .swatch-use { font-size: 12px; color: var(--text-muted); line-height: 1.35; margin-top: 4px; }
+    .swatch-badge {
+      display: inline-block; align-self: flex-start; margin-top: 8px;
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      padding: 2px 7px; border-radius: var(--radius-full);
+    }
+    .swatch-badge.pass { background: var(--green-pill); color: var(--green-text); }
+    .swatch-badge.accent { background: var(--gold-bg); color: var(--gold-dark); }
+    .swatch-badge.info { background: var(--cyan-50); color: var(--cyan-700); }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      background: var(--deep-teal); color: #FFF;
+      padding: 12px 20px; border-radius: var(--radius-full);
+      font-size: 13px; font-weight: 600; box-shadow: var(--shadow-lg);
+      transform: translateY(100px); opacity: 0;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; align-items: center; gap: 10px;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    /* Typography Table */
+    .type-card {
+      background: var(--surface-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; gap: 28px;
+    }
+    .type-row {
+      display: grid; grid-template-columns: 180px 1fr; gap: 24px;
+      align-items: baseline; border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+    }
+    .type-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .type-role {
+      font-family: var(--font-mono); font-size: 12px; color: var(--cyan-600);
+      font-weight: 700; text-transform: uppercase;
+    }
+    .type-spec {
+      font-size: 12px; color: var(--text-light); margin-top: 4px; font-family: var(--font-mono);
+    }
+
+    /* UI Tokens Preview for One-Pager */
+    .components-showcase {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .demo-card {
+      background: var(--surface-card); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 26px; box-shadow: var(--shadow-sm);
+    }
+    .demo-card-title {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* Voucher Mockup */
+    .voucher-mock {
+      background: linear-gradient(135deg, #001822 0%, #003840 100%);
+      border: 1px solid #0099CC33; border-radius: var(--radius-lg);
+      padding: 22px; color: #FFF; position: relative; overflow: hidden;
+    }
+    .voucher-code {
+      font-family: var(--font-mono); font-size: 20px; font-weight: 700;
+      letter-spacing: 2px; color: var(--gold); background: #00000044;
+      padding: 8px 14px; border-radius: var(--radius-sm); border: 1px dashed #D4A24C66;
+      display: inline-block; margin-top: 10px;
+    }
+
+    /* Copy Guidance & Voice */
+    .voice-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .voice-box {
+      border-radius: var(--radius-md); padding: 22px;
+    }
+    .voice-box.good { background: var(--green-xlow); color: var(--green-text); }
+    .voice-box.bad { background: var(--terracota-xlow); color: var(--terracota-dark); }
+    .voice-box h4 {
+      font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+      font-weight: 800; letter-spacing: 0.06em; margin-bottom: 10px;
+    }
+    .voice-box p { font-size: 14px; line-height: 1.5; font-weight: 500; }
+
+    /* Footer */
+    footer {
+      padding: 48px 0 64px; font-size: 13px; color: var(--text-muted);
+    }
+    .footer-content {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .type-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast -->
+  <div id="toast"><span>✓</span> Código copiado al portapapeles</div>
+
+  <!-- Top Nav -->
+  <nav class="topnav">
+    <div class="wrap topnav-content">
+      <a href="#" class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none">
+          <g transform="translate(0, 2.5)">
+            <path d="M12 2C7 2 4 5 4 9c0 3 2 5 5 5" stroke="#D4A24C" stroke-width="2.3" stroke-linecap="round"/>
+            <path d="M12 2c5 0 8 3 8 7 0 5-4 8-9 8-3.5 0-6-2-6-5" stroke="#0099CC" stroke-width="2.3" stroke-linecap="round" opacity=".65"/>
+          </g>
+        </svg>
+        FIBO
+        <span class="brand-badge">Brandboard v3</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#assets">Brand Kit & Logos</a>
+        <a href="#colores">Paleta One-Pager</a>
+        <a href="#tipografia">Tipografía</a>
+        <a href="#componentes">Componentes UI</a>
+        <a href="#voz">Tono & Reglas</a>
+      </div>
+
+      <button id="themeToggle" class="theme-toggle" type="button">
+        <span id="themeIcon">🌓</span>
+        <span id="themeLabel">Tema</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Design System & Assets · Preselección 08 Set. 2026</div>
+        <h1>
+          F<span class="accent-i">I</span>BO
+          <span class="sub">crece en espiral.</span>
+        </h1>
+        <p class="hero-tagline">
+          <b>Cada hábito suma al siguiente.</b> Guía visual oficial, tokens de color y assets vectoriales listos para diseñar el <b>One-Pager</b> y las láminas del video pitch de 3 minutos.
+        </p>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item"><span>Paleta:</span> <strong>Pacífico × Quererte Sano</strong></div>
+          <div class="hero-meta-item"><span>Tipografía:</span> <strong>Bricolage + Geist</strong></div>
+          <div class="hero-meta-item"><span>Contraste:</span> <strong>WCAG 2.1 AA</strong></div>
+        </div>
+      </div>
+
+      <div class="hero-preview-box">
+        <img src="assets/fibo-imagotipo-vertical.svg" alt="FIBO Imagotipo Oficial" style="max-width: 240px; height: auto;">
+        <div style="margin-top: 18px; font-size: 13px; color: var(--text-muted); font-family: var(--font-mono);">
+          Versión Oficial de Marca para Entregables
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: Brand Kit & Logos -->
+  <section id="assets">
+    <div class="wrap">
+      <div class="section-header">
+        <h2 class="section-title">Brand Kit: Logotipos e Imagotipos Exportados</h2>
+        <p class="section-desc">
+          Archivos en alta resolución (SVG vectorial y PNG a 1x y 2x con fondo transparente) listos para importar directamente a Canva, Figma, Illustrator o diapositivas.
+        </p>
+      </div>
+
+      <div class="asset-grid">
+        <!-- 1. Isotipo Puro -->
+        <div class="asset-card">
+          <div class="asset-preview light-bg">
+            <img src="assets/fibo-isotipo.svg" alt="FIBO Isotipo Transparente">
+          </div>
+          <div class="asset-info">
+            <div class="asset-name">Isotipo (Espiral Áurea)</div>
+            <div class="asset-detail">Símbolo gráfico puro de crecimiento compuesto. Curva interior en dorado (#D4A24C) y expansión en Cyan (#0099CC).</div>
+            <div class="asset-actions">
+              <a href="assets/fibo-isotipo.svg" download class="btn-download btn-svg">SVG</a>
+              <a href="assets/fibo-isotipo.png" download class="btn-download btn-png">PNG (512px)</a>
+              <a href="assets/fibo-isotipo@2x.png" download class="btn-download btn-png">PNG @2x</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Isotipo Badge (App Icon) -->
+        <div class="asset-card">
+          <div class="asset-preview dark-bg">
+            <img src="assets/fibo-isotipo-badge.svg" alt="FIBO App Icon Squircle">
+          </div>
+          <div class="asset-info">
+            <div class="asset-name">Isotipo Badge (App Icon)</div>
+            <div class="asset-detail">Ícono de aplicación con contenedor squircle de gradiente oscuro profundo y glow cyan.</div>
+            <div class="asset-actions">
+              <a href="assets/fibo-isotipo-badge.svg" download class="btn-download btn-svg">SVG</a>
+              <a href="assets/fibo-isotipo-badge.png" download class="btn-download btn-png">PNG (512px)</a>
+              <a href="assets/fibo-isotipo-badge@2x.png" download class="btn-download btn-png">PNG @2x</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Logotipo Light -->
+        <div class="asset-card">
+          <div class="asset-preview light-bg">
+            <img src="assets/fibo-logotipo-light.svg" alt="FIBO Logotipo Light">
+          </div>
+          <div class="asset-info">
+            <div class="asset-name">Logotipo (Wordmark Claro)</div>
+            <div class="asset-detail">Wordmark "FIBO" estilizado en Cyan Pacífico (#0099CC) con la letra "I" en Dorado (#D4A24C) para fondos claros.</div>
+            <div class="asset-actions">
+              <a href="assets/fibo-logotipo-light.svg" download class="btn-download btn-svg">SVG</a>
+              <a href="assets/fibo-logotipo-light.png" download class="btn-download btn-png">PNG</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Logotipo Dark -->
+        <div class="asset-card">
+          <div class="asset-preview dark-bg">
+            <img src="assets/fibo-logotipo-dark.svg" alt="FIBO Logotipo Dark">
+          </div>
+          <div class="asset-info">
+            <div class="asset-name">Logotipo (Wordmark Oscuro)</div>
+            <div class="asset-detail">Wordmark "FIBO" en blanco puro (#FFFFFF) con "I" dorada para fondos oscuros o diapositivas institucionales.</div>
+            <div class="asset-actions">
+              <a href="assets/fibo-logotipo-dark.svg" download class="btn-download btn-svg">SVG</a>
+              <a href="assets/fibo-logotipo-dark.png" download class="btn-download btn-png">PNG</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Imagotipo Horizontal Light -->
+        <div class="asset-card">
+          <div class="asset-preview light-bg">
+            <img src="assets/fibo-imagotipo-horizontal-light.svg" alt="FIBO Imagotipo Horizontal Light">
+          </div>
+          <div class="asset-info">
+            <div class="asset-name">Imagotipo Horizontal (Light)</div>
+            <div class="asset-detail">Lockup completo: Espiral + FIBO + Tagline institucional. Recomendado para cabecera del One-Pager.</div>
+            <div class="asset-actions">
+              <a href="assets/fibo-imagotipo-horizontal-light.svg" download class="btn-download btn-svg">SVG</a>
+              <a href="assets/fibo-imagotipo-horizontal-light.png" download class="btn-download btn-png">PNG</a>
+              <a href="assets/fibo-imagotipo-horizontal-light@2x.png" download class="btn-download btn-png">PNG @2x</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Imagotipo Horizontal Dark -->
+        <div class="asset-card">
+          <div class="asset-preview dark-bg">
+            <img src="assets/fibo-imagotipo-horizontal-dark.svg" alt="FIBO Imagotipo Horizontal Dark">
+          </div>
+          <div class="asset-info">
+            <div class="asset-name">Imagotipo Horizontal (Dark)</div>
+            <div class="asset-detail">Lockup completo para presentaciones con fondos oscuros o banners institucionales.</div>
+            <div class="asset-actions">
+              <a href="assets/fibo-imagotipo-horizontal-dark.svg" download class="btn-download btn-svg">SVG</a>
+              <a href="assets/fibo-imagotipo-horizontal-dark.png" download class="btn-download btn-png">PNG</a>
+              <a href="assets/fibo-imagotipo-horizontal-dark@2x.png" download class="btn-download btn-png">PNG @2x</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Imagotipo Vertical -->
+        <div class="asset-card">
+          <div class="asset-preview light-bg">
+            <img src="assets/fibo-imagotipo-vertical.svg" alt="FIBO Imagotipo Vertical">
+          </div>
+          <div class="asset-info">
+            <div class="asset-name">Imagotipo Vertical (Emblema)</div>
+            <div class="asset-detail">Versión apilada centrada con tagline completo. Ideal para portada de reportes y posters.</div>
+            <div class="asset-actions">
+              <a href="assets/fibo-imagotipo-vertical.svg" download class="btn-download btn-svg">SVG</a>
+              <a href="assets/fibo-imagotipo-vertical.png" download class="btn-download btn-png">PNG</a>
+              <a href="assets/fibo-imagotipo-vertical@2x.png" download class="btn-download btn-png">PNG @2x</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Paleta de Color para el One-Pager -->
+  <section id="colores">
+    <div class="wrap">
+      <div class="section-header">
+        <h2 class="section-title">Paleta Cromática Oficial para el One-Pager</h2>
+        <p class="section-desc">
+          Haz clic sobre cualquier muestra para copiar su código HEX o RGB directamente al portapapeles. Colores heredados de Pacífico Corporativo, Quererte Sano y acentos propios de FIBO.
+        </p>
+      </div>
+
+      <div class="color-subgroup">Marca y Respaldo Institucional (Pacífico Seguros)</div>
+      <div class="swatch-grid">
+        <div class="swatch" onclick="copyColor('#0099CC')">
+          <div class="swatch-fill" style="background: #0099CC;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Cyan Pacífico</span>
+            <span class="swatch-hex">#0099CC</span>
+            <span class="swatch-use">Color primario. Botones principales, acentos de marca y titulares.</span>
+            <span class="swatch-badge info">Primario Oficial</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('#003840')">
+          <div class="swatch-fill" style="background: #003840;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Deep Teal</span>
+            <span class="swatch-hex">#003840</span>
+            <span class="swatch-use">Fondo institucional oscuro, pies de página y anclaje de seriedad.</span>
+            <span class="swatch-badge pass">Contraste 13:1</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('#004C66')">
+          <div class="swatch-fill" style="background: #004C66;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Cyan Profundo</span>
+            <span class="swatch-hex">#004C66</span>
+            <span class="swatch-use">Texto cyan de alta legibilidad sobre fondos claros.</span>
+            <span class="swatch-badge pass">Apto Texto WCAG</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('#E8F9FF')">
+          <div class="swatch-fill" style="background: #E8F9FF; border-bottom: 1px solid var(--border);"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Cyan Suave</span>
+            <span class="swatch-hex">#E8F9FF</span>
+            <span class="swatch-use">Fondo de pastillas, tarjetas de destaque y burbujas de agente.</span>
+            <span class="swatch-badge info">Fondo de Tarjetas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-subgroup">Acentos Propios de FIBO (Pilares de Hábitos y Espiral)</div>
+      <div class="swatch-grid">
+        <div class="swatch" onclick="copyColor('#D4A24C')">
+          <div class="swatch-fill" style="background: #D4A24C;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Dorado Espiral</span>
+            <span class="swatch-hex">#D4A24C</span>
+            <span class="swatch-use">Símbolo de la espiral áurea y anillo de crecimiento de Reserva.</span>
+            <span class="swatch-badge accent">Acento Espiral</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('#01A355')">
+          <div class="swatch-fill" style="background: #01A355;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Verde Salud</span>
+            <span class="swatch-hex">#01A355</span>
+            <span class="swatch-use">Ícono de hábitos completados, racha activa y vitalidad.</span>
+            <span class="swatch-badge pass">Hábito Hecho</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('#C97B5B')">
+          <div class="swatch-fill" style="background: #C97B5B;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Terracota Pausa</span>
+            <span class="swatch-hex">#C97B5B</span>
+            <span class="swatch-use">Estado "pausado sin castigo", respiración mindful y calma.</span>
+            <span class="swatch-badge info">Sin Penalidad</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('linear-gradient(90deg, #35DAFF, #65F9CF, #98FFF3)')">
+          <div class="swatch-fill" style="background: linear-gradient(90deg, #35DAFF, #65F9CF, #98FFF3);"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Tritono Vitalidad</span>
+            <span class="swatch-hex">#35DAFF → #98FFF3</span>
+            <span class="swatch-use">Firma visual Quererte Sano para logros y badges de comunidad.</span>
+            <span class="swatch-badge accent">Gradiente</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-subgroup">Neutros y Fondos de Interfaz</div>
+      <div class="swatch-grid">
+        <div class="swatch" onclick="copyColor('#F9FAFB')">
+          <div class="swatch-fill" style="background: #F9FAFB; border-bottom: 1px solid var(--border);"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Fondo General</span>
+            <span class="swatch-hex">#F9FAFB</span>
+            <span class="swatch-use">Fondo claro de la aplicación y láminas de presentación.</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('#2F373C')">
+          <div class="swatch-fill" style="background: #2F373C;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Texto Titulares</span>
+            <span class="swatch-hex">#2F373C</span>
+            <span class="swatch-use">Encabezados principales de alto contraste y lecturabilidad.</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('#545E62')">
+          <div class="swatch-fill" style="background: #545E62;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Texto Párrafos</span>
+            <span class="swatch-hex">#545E62</span>
+            <span class="swatch-use">Cuerpo de texto, explicaciones de propuesta y viñetas.</span>
+          </div>
+        </div>
+
+        <div class="swatch" onclick="copyColor('#001A23')">
+          <div class="swatch-fill" style="background: #001A23;"></div>
+          <div class="swatch-body">
+            <span class="swatch-name">Fondo Oscuro App</span>
+            <span class="swatch-hex">#001A23</span>
+            <span class="swatch-use">Modo oscuro oficial y diapositivas de cierre/pitch.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Tipografía -->
+  <section id="tipografia">
+    <div class="wrap">
+      <div class="section-header">
+        <h2 class="section-title">Tipografía y Jerarquía Visual</h2>
+        <p class="section-desc">
+          Combinación oficial de fuentes: <b>Bricolage Grotesque</b> (Display contemporáneo y con carácter) + <b>Geist</b> (Cuerpo legible y neutral) + <b>Geist Mono</b> (Datos y tokens).
+        </p>
+      </div>
+
+      <div class="type-card">
+        <div class="type-row">
+          <div>
+            <div class="type-role">Titular Principal</div>
+            <div class="type-spec">Bricolage Grotesque · 800</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 38px; font-weight: 800; color: var(--text-strong); line-height: 1.05;">
+              Tu Reserva crece en espiral.
+            </div>
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div>
+            <div class="type-role">Two-Tone Heading</div>
+            <div class="type-spec">Bricolage Light + Bold</div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 32px; color: var(--text-strong); line-height: 1.1;">
+              <span style="font-weight: 300;">Pequeños hábitos,</span> <span style="font-weight: 800; color: var(--cyan-500);">gran protección.</span>
+            </div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">Patrón visual heredado de Quererte Sano aplicado a los encabezados del One-Pager.</div>
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div>
+            <div class="type-role">Cuerpo de Texto</div>
+            <div class="type-spec">Geist · Regular / Medium (15-17px)</div>
+          </div>
+          <div>
+            <p style="font-size: 16px; color: var(--text); max-width: 65ch; line-height: 1.6;">
+              FIBO invierte la ecuación de los seguros tradicionales para la Generación Z: la cobertura médica no se compra en frío, se gana con hábitos diarios de bolsillo, cuerpo y mente.
+            </p>
+          </div>
+        </div>
+
+        <div class="type-row">
+          <div>
+            <div class="type-role">Datos / Utilitario</div>
+            <div class="type-spec">Geist Mono · 500/700</div>
+          </div>
+          <div>
+            <span style="font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--cyan-600); background: var(--cyan-50); padding: 4px 10px; border-radius: 6px;">
+              PAC-TRIBU-2026 · S/ 9.90/mes vía Yape
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Componentes Clave para One-Pager -->
+  <section id="componentes">
+    <div class="wrap">
+      <div class="section-header">
+        <h2 class="section-title">Bloques Gráficos Listos para el One-Pager</h2>
+        <p class="section-desc">
+          Elementos de interfaz que representan las funcionalidades más potentes del MVP: Anillo de Reserva, Voucher perforado y tarjeta de Salida Protegida.
+        </p>
+      </div>
+
+      <div class="components-showcase">
+        <!-- 1. Anillo de Reserva -->
+        <div class="demo-card">
+          <div class="demo-card-title">1. Anillo Central de Reserva</div>
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <svg width="88" height="88" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--border)" stroke-width="8"/>
+              <circle cx="50" cy="50" r="42" fill="none" stroke="var(--gold)" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="66" transform="rotate(-90 50 50)"/>
+            </svg>
+            <div>
+              <div style="font-family: var(--font-display); font-size: 26px; font-weight: 800; color: var(--text-strong);">75% HOY</div>
+              <div style="font-size: 12.5px; color: var(--text-muted);">A 1 hábito de proteger tu semana</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Voucher Perforado Digital -->
+        <div class="demo-card">
+          <div class="demo-card-title">2. Voucher Digital Perforado</div>
+          <div class="voucher-mock">
+            <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #AADDEE; font-weight: 700;">Recompensa Nivel 2</div>
+            <div style="font-size: 16px; font-weight: 700; margin-top: 4px;">1 Mes Gratis App Mindfulness</div>
+            <div class="voucher-code">FIBO-CALM-2026</div>
+          </div>
+        </div>
+
+        <!-- 3. Salida Protegida Tribu -->
+        <div class="demo-card">
+          <div class="demo-card-title">3. Póliza Grupal de Salida</div>
+          <div style="background: var(--surface-2); border-radius: var(--radius-md); padding: 18px; border: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-weight: 700; color: var(--text-strong);">Pichanga de los Jueves</span>
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--green-text); font-weight: 700; background: var(--green-pill); padding: 3px 8px; border-radius: var(--radius-full);">Cubre 12 Asistentes</span>
+            </div>
+            <div style="margin-top: 10px; font-size: 13px; color: var(--text-muted);">
+              S/ 3.50 por persona · Recaudado con Yape · Póliza <strong>PAC-TRIBU-8492</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Tono y Reglas Inmutables -->
+  <section id="voz">
+    <div class="wrap">
+      <div class="section-header">
+        <h2 class="section-title">Reglas de Copywriting y Tono para el One-Pager</h2>
+        <p class="section-desc">
+          Lineamientos obligatorios para respetar las bases del concurso y la psicología del segmento Generación Z.
+        </p>
+      </div>
+
+      <div class="voice-grid">
+        <div class="voice-box bad">
+          <h4>❌ Prohibido (Plot Twist de las Bases)</h4>
+          <p>"¡Aprovecha un 40% de descuento solo por hoy en tu prima de seguro!"</p>
+          <p style="margin-top: 8px; font-size: 12px; opacity: 0.85;">Las bases prohíben descuentos tradicionales. La Gen Z desconfía de rebajas artificiales.</p>
+        </div>
+
+        <div class="voice-box good">
+          <h4>✓ Voz Oficial FIBO</h4>
+          <p>"Cumpliste tus hábitos esta semana: has ganado el derecho a activar tu respaldo médico a S/ 9.90/mes vía Yape."</p>
+          <p style="margin-top: 8px; font-size: 12px; opacity: 0.85;">Enfoque de mérito, dignidad y autonomía. El seguro es una consecuencia lógica.</p>
+        </div>
+
+        <div class="voice-box bad">
+          <h4>❌ Evitar Alarmismo Tradicional</h4>
+          <p>"Si sufres un accidente fatal mañana, dejarás desprotegida a tu familia con deudas."</p>
+          <p style="margin-top: 8px; font-size: 12px; opacity: 0.85;">Genera rechazo inmediato y bloqueo emocional en jóvenes de 18 a 24 años.</p>
+        </div>
+
+        <div class="voice-box good">
+          <h4>✓ Empatía y Tranquilidad Cotidiana</h4>
+          <p>"Tener el control de tu salud y tu bolsillo te da la libertad de enfocarte en tus proyectos."</p>
+          <p style="margin-top: 8px; font-size: 12px; opacity: 0.85;">Anclado en el insight oficial: la salud es más que no enfermarse, es tener el control.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap footer-content">
+      <div>
+        <strong>FIBO · El futuro de los seguros para la Generación Z</strong><br>
+        <span style="font-size: 12px;">Hackathon UCSUR – Pacífico Seguros × AWS (2026) · Equipo Crisóstomo - Chávez - Manrique</span>
+      </div>
+      <div>
+        <a href="#assets" style="color: var(--cyan-500); text-decoration: none; font-weight: 600;">↑ Volver arriba</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Copy color functionality
+    function copyColor(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.innerHTML = `<span>✓</span> Copiado: <code>${text}</code>`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      });
+    }
+
+    // Theme toggle
+    const themeBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+    let currentTheme = localStorage.getItem('fibo-brand-theme') || 'light';
+    
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('fibo-brand-theme', theme);
+      if (theme === 'dark') {
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Claro';
+      } else {
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Oscuro';
+      }
+    }
+    
+    setTheme(currentTheme);
+    themeBtn.addEventListener('click', () => {
+      currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+      setTheme(currentTheme);
+    });
+  </script>
+</body>
+</html>

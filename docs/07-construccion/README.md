@@ -18,12 +18,16 @@ Son cosas distintas con objetivos distintos — no confundirlas:
 ## Documentos de esta carpeta
 
 1. **[`PRD-landing.md`](./PRD-landing.md)** — qué problema resuelve la landing, alcance, qué mide, qué queda fuera.
-2. **[`PRD-mvp.md`](./PRD-mvp.md)** — PRD del prototipo codeado, construido sobre `03-mvp/alcance-producto.md` (no lo repite, lo convierte en requisitos accionables).
-3. **[`design-system.md`](./design-system.md)** — identidad visual de FIBO: paleta, tipografía, tono, componentes clave. Es una **propuesta inicial** (no hay validación visual de campo todavía) — sirve para no bloquear la construcción, no es un cierre definitivo de marca.
+2. **[`PRD-mvp.md`](./PRD-mvp.md)** — PRD del prototipo codeado v3 (actualizado al alcance real: 4 tabs, rituales mindful, tribus, salida protegida y microseguro pay-as-you-go).
+3. **[`design-system.md`](./design-system.md)** — identidad visual de FIBO: paleta, tipografía, tono, componentes clave.
 4. **[`esquema-landing.md`](./esquema-landing.md)** — wireframe en texto de la landing, sección por sección.
-5. **[`esquema-mvp.md`](./esquema-mvp.md)** — flujo de pantallas del prototipo, mapeado 1:1 contra la tabla real-vs-simulado de `03-mvp/alcance-producto.md` §5.
-6. **[`brandboard.html`](./brandboard.html)** — versión visual/interactiva de `design-system.md` (paleta con anotaciones de contraste, tipografía en vivo, tono, componentes, dirección de logo). Abrir directamente en el navegador para iterar en local; espejo del artifact publicado (05 Set. 2026). Si se edita aquí, considerar si el cambio también debe reflejarse en `design-system.md` para que ambos no diverjan.
-7. **[`stack-tecnico.md`](./stack-tecnico.md)** — Next.js + Vercel + shadcn/ui + NeonDB (solo para waitlist), cerrado 05 Set. 2026. Única pregunta abierta: dónde vive el código dentro del repo.
+5. **[`esquema-mvp.md`](./esquema-mvp.md)** — arquitectura completa de rutas y flujos del prototipo v3 (tabs + flujos dedicados), mapeado real-vs-simulado.
+6. **[`decisiones-app-web.md`](./decisiones-app-web.md)** — decisiones técnicas del prototipo (navegación por tabs, estado en cliente con localStorage, integración Bedrock con fallback).
+7. **[`customer-journey.md`](./customer-journey.md)** — customer journey de punta a punta (onboarding, loop de hábitos, comunidad/tribus, salida protegida, recompensa y momento de verdad).
+8. **[`brandboard.html`](./brandboard.html)** — versión visual/interactiva de `design-system.md` (paleta con anotaciones de contraste, tipografía en vivo, tono, componentes, dirección de logo).
+9. **[`stack-tecnico.md`](./stack-tecnico.md)** — Next.js 16 (App Router) + Vercel + shadcn/ui (Base UI) + NeonDB (waitlist).
+
+> **Relación con `docs/10-features/`:** Las especificaciones de diseño granular y requerimientos por pantalla de cada una de las funcionalidades construidas viven en [`docs/10-features/`](../10-features/) (desde `01-dashboard-hoy-v2.md` hasta `10-comunidad-tribus-y-seguro-grupal.md`). Esta carpeta `07-construccion/` actúa como el marco maestro y gobernanza general.
 
 ## Qué no se resuelve aquí
 

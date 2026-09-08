@@ -51,18 +51,20 @@ Pacífico ya tiene **Dr. Online** y la adopción nacional de telemedicina ya es 
 
 **Su lugar correcto en la propuesta:** aparece más adelante, como parte de la cobertura ya ganada — en el "momento de verdad" (ej. la laptop dañada de Camila), el flujo puede conectar o simular una conexión al servicio real de Pacífico (Dr. Online) en vez de reinventar uno propio. Coherente con el principio ya establecido: "no reemplazamos lo que Pacífico construyó, lo completamos".
 
-## 5. Qué es real vs. qué se simula en el MVP del hackathon
+## 5. Qué es real vs. qué se simula en el MVP del hackathon (v3 Actualizado)
 
-El equipo no considera los 7 días un riesgo de ejecución (corrección 03 Set.) — el criterio no es "cuánto se puede construir", es "qué demuestra la propuesta de valor y qué no aporta demostrar". Se prioriza:
+El prototipo construido superó el alcance inicial mínimo de un flujo lineal para convertirse en un ecosistema navegable de 4 pestañas y rutas transaccionales:
 
-| Elemento | Real (construido) | Simulado / mockup |
+| Elemento | Real (construido en cliente / API) | Simulado / Emulado |
 |---|---|---|
-| Registro de los 3 hábitos y crecimiento de la Reserva | Sí — es el corazón del loop, debe sentirse real e interactivo | — |
-| Contenido de las cápsulas | Sí, un set acotado (no la biblioteca completa) | — |
-| Recompensa (sesión de bienestar) | Se muestra el flujo de "gané algo real" | El servicio en sí (no hay psicólogo real conectado) |
-| Micro-prima pay-as-you-go (activar/pausar) | Sí — es el flujo que demuestra el diferencial frente a Seguro Salud Yape | El cobro real / pasarela de pago |
-| Momento de verdad (reclamo/canje) | Sí — el flujo conversacional con el agente | La resolución real del caso; la escalación a humano se simula |
-| Telemedicina / Dr. Online | — | Se referencia como flujo de salida hacia el servicio real de Pacífico, no se reconstruye |
-| Onboarding conversacional | Sí, con una llamada real a un LLM (Bedrock u otro) — ver `02-ideacion/historias-usuario-y-validacion.md` §6 | — |
+| **Registro de hábitos con Mindful Rituals** | Sí — Alcancía con montos rápidos, Live Timer sincronizado y Pausa guiada 4-4-4 con check-in. | Wearables y sensores biomédicos (honor system). |
+| **Crecimiento de la Reserva y Analíticas** | Sí — Anillo interactivo diario y gráfico Recharts temporal (`Semana` \| `Mes` \| `Histórico`). | Scoring crediticio tradicional de la banca. |
+| **Comunidad, Tribus y Retos Colectivos** | Sí — Creación de tribus por universidad/instituto/trabajo, retos semanales y feedback loop con `/hoy`. | Chat grupal propio dentro de la app (redirige a WhatsApp). |
+| **Salida Protegida (Seguro Colectivo)** | Sí — Ruta transaccional `/salida`, cotizador proporcional para asistentes reales, link copiable WhatsApp y póliza `PAC-TRIBU-XXXX`. | Débito bancario real en Yape (se simula el checkout visual transparente). |
+| **Recompensa por Niveles** | Sí — Voucher digital perforado interactivo con código copiable (`FIBO-CALM-2026`) y confetti. | Integración API con proveedores externos de suscripción. |
+| **Microseguro Pay-as-you-go** | Sí — Switch instantáneo de activar/pausar en `/seguro` y reflejado en el perfil con respaldo médico de hasta S/ 15,000. | Cobro bancario mensual recurrente. |
+| **Momento de verdad (siniestro/canje)** | Sí — Flujo conversacional guiado con carga de fotografías y triaje asistido. | La resolución final por un perito humano de Pacífico Seguros. |
+| **Telemedicina / Dr. Online** | Se referencia e integra como aviso/beneficio real de Pacífico Seguros en el perfil y notificaciones. | No se reconstruye telemedicina propia (aprovecha la existente de Pacífico). |
+| **Onboarding conversacional** | Sí — Con llamada real a AWS Bedrock Nova Micro y fallback garantizado no bloqueante. | — |
 
-**Regla general:** todo lo que sea parte del flujo crítico único (cotizar/registrar hábito → activar/crecer Reserva → ver el momento de verdad) se construye real e interactivo. Todo lo que dependa de infraestructura externa real (pagos, terapeutas, aseguradora de respaldo) se simula o se deja como conexión de salida hacia lo que Pacífico ya tiene.
+**Regla general del MVP v3:** Todo lo que corresponde a la experiencia del usuario, hábito, sentido de comunidad, cotización grupal y activación de microseguros se encuentra 100% construido, interactivo y persistido en el cliente. Lo que requiere contratos bancarios reales o peritajes médicos se emula con transparencia y fidelidad operativa.

@@ -4,9 +4,9 @@ import { Iphone } from "@/components/ui/iphone"
 import { ReserveRing } from "@/components/landing/reserve-ring"
 
 const habitos = [
-  { icon: PiggyBank, label: "Ahorro chico" },
-  { icon: Activity, label: "Actividad física" },
-  { icon: Brain, label: "Bienestar mental" },
+  { icon: PiggyBank, label: "Bolsillo • Ahorro chico" },
+  { icon: Activity, label: "Cuerpo • Movimiento diario" },
+  { icon: Brain, label: "Mente • Pausa consciente" },
 ]
 
 function PauseTrack() {
@@ -17,18 +17,17 @@ function PauseTrack() {
   )
 }
 
-// Los 3 pasos son un ciclo semanal real (registrar → crecer → cobertura
-// ganada), no una colección de features — por eso se leen en secuencia con
-// divisores entre columnas, en vez de repartirlos en tarjetas idénticas.
+// Los 3 pasos representan el ciclo de bienestar de FIBO: hábitos cotidianos,
+// acumulación de respaldo y acceso a protección real sin fricción.
 export function Mecanismo() {
   return (
     <section id="mecanismo" className="mx-auto max-w-6xl px-6 py-16 sm:py-20 md:py-28 scroll-mt-16">
       <div className="mb-14 flex flex-col gap-3 text-center">
         <h2 className="font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-          Así funciona FIBO
+          Tan simple como vivir bien
         </h2>
         <p className="mx-auto max-w-md text-base text-muted-foreground text-balance sm:text-lg">
-          Un hábito, una Reserva que crece, una cobertura que ya ganaste.
+          Tres pasos semanales para transformar tu estilo de vida en tranquilidad médica.
         </p>
       </div>
 
@@ -38,10 +37,10 @@ export function Mecanismo() {
           <div className="flex flex-col gap-1">
             <span className="text-xs font-semibold uppercase tracking-wider text-primary">Paso 1</span>
             <h3 className="font-heading text-lg font-semibold">
-              Registra un hábito
+              Elige tus hábitos
             </h3>
             <p className="text-sm text-muted-foreground">
-              Hábitos simples y autodeclarados cada semana. Sin relojes caros ni complicaciones.
+              Acciones simples a tu propio ritmo. Sin relojes inteligentes ni pruebas complejas: tú decides qué hábito sumar.
             </p>
           </div>
           <ul className="flex flex-col gap-3 pt-2">
@@ -70,8 +69,8 @@ export function Mecanismo() {
                     <ReserveRing compact />
                   </div>
                   <div className="w-full rounded-xl border border-border/70 bg-card p-2 text-center">
-                    <span className="block text-xs font-bold text-foreground">S/ 150 en Reserva</span>
-                    <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">● Cobertura médica activa</span>
+                    <span className="block text-xs font-bold text-foreground">150 pts en Reserva</span>
+                    <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">● Nivel 1 • Cobertura activa</span>
                   </div>
                 </div>
               }
@@ -80,10 +79,10 @@ export function Mecanismo() {
           <div>
             <span className="text-xs font-semibold uppercase tracking-wider text-primary">Paso 2</span>
             <h3 className="font-heading text-lg font-semibold">
-              Tu Reserva crece en espiral
+              Haz crecer tu Reserva
             </h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              Cada hábito suma al siguiente. 100% gratuita desde el día uno.
+              Cada hábito suma puntos a tu espiral de constancia. Al alcanzar un nivel, desbloqueas el derecho a estar protegido.
             </p>
           </div>
         </div>
@@ -93,10 +92,10 @@ export function Mecanismo() {
           <div className="flex flex-col gap-1">
             <span className="text-xs font-semibold uppercase tracking-wider text-primary">Paso 3</span>
             <h3 className="font-heading text-lg font-semibold">
-              Cobertura ganada
+              Protección cuando la necesitas
             </h3>
             <p className="text-sm text-muted-foreground">
-              No pagada desde el inicio. Ya ganaste tu respaldo médico básico.
+              Desbloquea telemedicina 24/7 y microseguros médicos desde S/ 9.90/mes vía Yape, respaldados por Pacífico Seguros.
             </p>
           </div>
 
@@ -107,10 +106,35 @@ export function Mecanismo() {
               <span className="font-medium text-muted-foreground">Pausado</span>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              <strong>¿Semana complicada?</strong> Tu cobertura no se cancela:
-              se pausa sin penalidad ni cobros sorpresa y te espera hasta que retomes tu ritmo.
+              <strong>Modo pausa anti-ansiedad:</strong> La vida no es lineal. Si una semana no llegas,
+              tu cobertura se pausa intacta y te espera sin cobrarte ni un sol.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/* Bloque Comunitario: Tribus & Salida Protegida */}
+      <div className="mt-12 rounded-2xl border border-primary/25 bg-primary/[0.03] p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="flex flex-col gap-2 max-w-2xl">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+            <span>👥 Ecosistema Comunitario</span>
+            <span className="size-1 rounded-full bg-primary" />
+            <span>Tribus & Salida Protegida</span>
+          </div>
+          <h3 className="font-heading text-xl font-bold text-foreground">
+            Cumplir metas es más fácil cuando no vas solo
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Crea tu Tribu con compañeros de universidad o amigos, sumen retos grupales y activen <strong className="text-foreground">Salidas Protegidas</strong>: un seguro colectivo on-demand de Pacífico para pichangas o eventos desde <strong className="text-foreground">S/ 3.50 por persona</strong>, cobrado por Yape y compartido al instante por WhatsApp.
+          </p>
+        </div>
+        <div className="shrink-0">
+          <a
+            href="/ingresar?modo=registro"
+            className="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-xs hover:bg-primary/90 transition-colors"
+          >
+            Crear mi Tribu →
+          </a>
         </div>
       </div>
     </section>

@@ -23,17 +23,16 @@ export function PruebaSocial({
             numPeople={Math.max(0, count - recentRefCodes.length)}
           />
           <Badge className="text-sm">
-            {count} {count === 1 ? "persona" : "personas"} ya en la lista
+            {count} {count === 1 ? "persona lista" : "personas listas"} para cambiar las reglas
           </Badge>
         </div>
       ) : (
         <Badge variant="secondary" className="text-sm">
-          Sé de las primeras personas en unirte
+          Sé de las primeras personas en sumarte
         </Badge>
       )}
       <p className="text-sm text-muted-foreground">
-        Esto se comparte entre pares — no es publicidad, es la lista de
-        espera real de FIBO.
+        Una comunidad de jóvenes construyendo un nuevo estándar de salud y respaldo en Perú. Recomendado de persona a persona.
       </p>
     </section>
   )

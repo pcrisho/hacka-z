@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One-Pager Oficial: FIBO — Pacífico Seguros × AWS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0099CC;
+      --primary-dark: #0077A3;
+      --primary-subtle: #E6F5FA;
+      --slate-dark: #0F172A;
+      --slate-muted: #64748B;
+      --slate-border: #E2E8F0;
+      --gold: #D4A24C;
+      --gold-subtle: #FEF8ED;
+      --coral: #E26D5C;
+      --coral-subtle: #FDF2F0;
+      --canvas: #FAF8F5;
+      --card-bg: #FFFFFF;
+      --card-alt: #F3EFEA;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #E2E8F0;
+      color: var(--slate-dark);
+      line-height: 1.35;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Barra de herramientas superior (solo pantalla) */
+    .toolbar {
+      width: 100%;
+      max-width: 1440px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 8px 16px;
+      background: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .toolbar-info {
+      font-size: 12px;
+      color: var(--slate-muted);
+      font-weight: 500;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid var(--slate-border);
+      background: #FFFFFF;
+      color: var(--slate-dark);
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: #F8FAFC;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      color: #FFFFFF;
+    }
+
+    /* Contenedor Principal del One-Pager (Canvas 16:9 / A4 Apaisado) */
+    .one-pager-canvas {
+      width: 100%;
+      max-width: 1440px;
+      background-color: var(--canvas);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* HEADER BANNER */
+    header.canvas-header {
+      background: var(--slate-dark);
+      color: #FFFFFF;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid rgba(0, 153, 204, 0.3);
+    }
+
+    .header-pill {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .header-branding {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-text {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .header-subtext {
+      font-size: 12px;
+      color: #94A3B8;
+      border-left: 1px solid #334155;
+      padding-left: 12px;
+      font-weight: 500;
+    }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-aws {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+
+    /* CONTENIDO PRINCIPAL: 3 COLUMNAS */
+    main.canvas-grid {
+      display: grid;
+      grid-template-columns: 28% 36% 36%;
+      gap: 18px;
+      padding: 20px 24px;
+      flex: 1;
+    }
+
+    /* ESTILOS COMUNES DE SECCIÓN */
+    .section-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      border-bottom: 1.5px solid var(--slate-border);
+      padding-bottom: 4px;
+    }
+
+    .section-title .num {
+      background: var(--primary);
+      color: #FFFFFF;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+
+    p.lead-desc {
+      font-size: 11px;
+      color: #334155;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    /* CITAS Y ENLACES METODOLÓGICOS */
+    a.cite-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px dotted var(--primary);
+      transition: all 0.15s ease;
+    }
+
+    a.cite-link:hover {
+      color: var(--primary-dark);
+      background-color: var(--primary-subtle);
+    }
+
+    /* TARJETAS DE DATOS Y CALLOUTS */
+    .stat-card {
+      background: var(--gold-subtle);
+      border: 1px solid rgba(212, 162, 76, 0.35);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .stat-card.cyan-card {
+      background: var(--primary-subtle);
+      border-color: rgba(0, 153, 204, 0.3);
+    }
+
+    .stat-number {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--slate-dark);
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+
+    .stat-number.gold { color: #B3812E; }
+    .stat-number.cyan { color: var(--primary); }
+
+    .stat-label {
+      font-size: 10px;
+      color: #475569;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .tag-pill {
+      background: #E2E8F0;
+      color: #334155;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      letter-spacing: 0.02em;
+    }
+
+    .tag-pill.cyan { background: #BAE6FD; color: #0369A1; }
+    .tag-pill.gold { background: #FEF3C7; color: #92400E; }
+    .tag-pill.coral { background: #FFE4E6; color: #BE123C; }
+
+    /* CAJA ENCUESTA PROPIA */
+    .survey-box {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-border);
+      border-radius: 10px;
+      padding: 9px 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .survey-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--slate-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+
+    .survey-val {
+      font-size: 11px;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    /* CAJETÍN VIDEO PITCH */
+    .video-box {
+      background: #FFFFFF;
+      border: 1.5px dashed var(--primary);
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-top: 6px;
+    }
+
+    .video-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .video-desc {
+      font-size: 9.5px;
+      color: var(--slate-muted);
+      margin-top: 2px;
+    }
+
+    /* COLUMNA 2: PERSONA Y PROPUESTA */
+    .user-card {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .user-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .user-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 2px solid var(--primary);
+      flex-shrink: 0;
+    }
+
+    .user-avatar svg {
+      width: 24px;
+      height: 24px;
+      fill: #64748B;
+    }
+
+    .user-info-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate-dark);
+    }
+
+    .user-income-badge {
+      display: inline-block;
+      background: var(--gold-subtle);
+      border: 1px solid rgba(212, 162, 76, 0.4);
+      color: #92400E;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-top: 1px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      font-size: 10px;
+      color: #334155;
+      line-height: 1.35;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 3px;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .channel-signal {
+      background: var(--primary-subtle);
+      border: 1px solid rgba(0, 153, 204, 0.25);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 9.5px;
+      color: #0369A1;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+
+    /* PROPUESTA DE VALOR */
+    .tagline-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #FFFFFF;
+      border-radius: 8px;
+      padding: 8px 12px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .tagline-text {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .value-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .pillar-box {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-border);
+      border-radius: 8px;
+      padding: 7px 8px;
+      text-align: center;
+    }
+
+    .pillar-name {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+    }
+
+    .pillar-desc {
+      font-size: 9px;
+      color: #475569;
+      line-height: 1.25;
+    }
+
+    /* EQUIPO */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .team-item {
+      background: #FFFFFF;
+      border: 1px solid var(--slate-border);
+      border-radius: 8px;
+      padding: 6px 8px;
+    }
+
+    .team-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--slate-dark);
+    }
+
+    .team-role {
+      font-size: 8.5px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .team-bio {
+      font-size: 8px;
+      color: var(--slate-muted);
+      line-height: 1.2;
+      margin-top: 1px;
+    }
+
+    /* COLUMNA 3: SOLUCIÓN MVP (CONTENEDOR DESTACADO) */
+    .solution-col {
+      background: #F0FDFA;
+      border: 1.5px solid #99F6E4;
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.05);
+    }
+
+    .solution-header-pill {
+      background: var(--slate-dark);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .solution-brand {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--slate-dark);
+      line-height: 1;
+    }
+
+    .solution-brand span { color: var(--primary); }
+
+    .solution-subtitle {
+      font-size: 10px;
+      font-weight: 600;
+      color: #0F766E;
+      margin-bottom: 8px;
+    }
+
+    /* STEPPER DEL FLUJO */
+    .stepper-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+
+    .stepper-flow::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      height: 2px;
+      background: #CCFBF1;
+      z-index: 1;
+    }
+
+    .step-node {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .step-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #FFFFFF;
+    }
+
+    .step-label {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #115E59;
+    }
+
+    /* MOCKUPS DEL PROTOTIPO MVP (3 PANTALLAS) */
+    .mockups-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .phone-mockup {
+      background: #FFFFFF;
+      border: 1px solid #CCFBF1;
+      border-radius: 8px;
+      padding: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 120px;
+    }
+
+    .phone-mockup-header {
+      background: var(--slate-dark);
+      color: #FFFFFF;
+      font-size: 7.5px;
+      font-weight: 700;
+      padding: 2px 4px;
+      border-radius: 4px;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .mockup-inner-title {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--slate-dark);
+      line-height: 1.1;
+    }
+
+    .mockup-inner-metric {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 2px 0;
+    }
+
+    .mockup-inner-metric.coral { color: var(--coral); }
+    .mockup-inner-metric.gold { color: var(--gold); }
+
+    .mockup-inner-desc {
+      font-size: 7.5px;
+      color: var(--slate-muted);
+      line-height: 1.2;
+    }
+
+    .mockup-badge {
+      background: #E0F2FE;
+      color: #0284C7;
+      font-size: 7px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    /* CAJA DE VALIDACIÓN Y TESTEO */
+    .validation-box {
+      background: #FFFFFF;
+      border: 1px solid #99F6E4;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-top: auto;
+    }
+
+    .validation-title {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #0F766E;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .validation-list {
+      list-style: none;
+      font-size: 9.5px;
+      color: #134E4A;
+      line-height: 1.35;
+    }
+
+    .validation-list li {
+      margin-bottom: 3px;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    .validation-list li strong {
+      color: #0F766E;
+    }
+
+    /* FOOTER CON CITAS Y METADATOS */
+    footer.canvas-footer {
+      background: #FFFFFF;
+      border-top: 1px solid var(--slate-border);
+      padding: 8px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 9px;
+      color: var(--slate-muted);
+    }
+
+    .footer-team-signature {
+      font-weight: 600;
+      color: var(--slate-dark);
+    }
+
+    .footer-sources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-sources span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ESTILOS DE IMPRESIÓN Y EXPORTACIÓN A PDF */
+    @media print {
+      body {
+        padding: 0;
+        background: transparent;
+      }
+      .toolbar {
+        display: none !important;
+      }
+      .one-pager-canvas {
+        max-width: 100% !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      main.canvas-grid {
+        grid-template-columns: 1fr;
+      }
+      .one-pager-canvas {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Herramientas Superior -->
+  <aside class="toolbar" aria-label="Herramientas del documento">
+    <div class="toolbar-info">
+      📄 <strong>One-Pager Oficial FIBO (v3.0)</strong> — Hackathon UCSUR × Pacífico Seguros × AWS (08 Set. 2026)
+    </div>
+    <div class="toolbar-actions">
+      <button onclick="window.print()" class="btn btn-primary" title="Imprimir o guardar en PDF (A4 Apaisado / 16:9)">
+        🖨️ Guardar como PDF
+      </button>
+      <a href="/hoy" class="btn" target="_blank" title="Abrir Prototipo Interactivo de FIBO">
+        🚀 Probar Prototipo MVP
+      </a>
+      <a href="https://github.com/pcrisho/hacka-z" class="btn" target="_blank">
+        📦 Ver Repositorio
+      </a>
+    </div>
+  </aside>
+
+  <!-- Canvas Principal del One-Pager (16:9 Widescreen) -->
+  <div class="one-pager-canvas" id="canvas">
+
+    <!-- CABECERA -->
+    <header class="canvas-header">
+      <div class="header-pill">CLUSTER TEAM presenta</div>
+      <div class="header-branding">
+        <!-- Isotipo SVG Oficial: Doble Espiral Concéntrica (Dorado + Cyan) -->
+        <svg class="header-logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C7 2 4 5 4 9c0 3 2 5 5 5" stroke="#D4A24C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 2c5 0 8 3 8 7 0 5-4 8-9 8-3.5 0-6-2-6-5" stroke="#0099CC" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+        </svg>
+        <span class="logo-text">FIBO</span>
+        <span class="header-subtext">Hábitos Conscientes y Microseguros On-Demand</span>
+      </div>
+      <div class="header-meta">
+        <span class="badge-aws">Pacífico Seguros × AWS</span>
+      </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL (3 COLUMNAS) -->
+    <main class="canvas-grid">
+
+      <!-- ======================================================== -->
+      <!-- COLUMNA 1: DIAGNÓSTICO & INSIGHT                         -->
+      <!-- ======================================================== -->
+      <section class="col-1">
+        
+        <!-- 1. OPORTUNIDAD -->
+        <div class="section-title">
+          <span class="num">1</span> Oportunidad
+        </div>
+        <p class="lead-desc">
+          En Perú, la penetración de seguros es de solo <a href="https://www.apeseg.org.pe/wp-content/uploads/2025/10/Resultados-Sistema-Asegurador-2T25-web.pdf" class="cite-link" target="_blank" title="Ver Informe Trimestral APESEG 2T 2025">2.05% del PBI</a> frente al 6.2% OCDE. Para la Gen Z, la desconexión es estructural:
+        </p>
+
+        <div class="stat-card">
+          <div class="stat-number gold">84.9%</div>
+          <div class="stat-label">
+            de jóvenes (18-24 años) en Perú trabaja en la informalidad, sin planilla ni acceso a EPS corporativas (<a href="https://www.infobae.com/peru/2026/04/01/inei-confirma-que-7-de-cada-10-trabajadores-en-peru-son-informales-pierden-acceso-a-cts-seguro-y-pension/" class="cite-link" target="_blank" title="Cifras INEI 2025">INEI 2025</a>).
+          </div>
+        </div>
+
+        <div class="pill-group">
+          <span class="tag-pill cyan">SIN PLANILLA</span>
+          <span class="tag-pill gold">INGRESOS VARIABLES</span>
+          <span class="tag-pill coral">DESCONFIANZA CATEGORÍA</span>
+        </div>
+
+        <div class="survey-box">
+          <div class="survey-title">Evidencia Cuantitativa (n=100)</div>
+          <div class="survey-val">
+            <strong>67.5%</strong> participaría en una oferta de seguro médico después de cumplir metas saludables y cotidianas.
+          </div>
+        </div>
+
+        <!-- 2. INSIGHT -->
+        <div class="section-title">
+          <span class="num">2</span> Insight
+        </div>
+        <p class="lead-desc">
+          La barrera no es el seguro, sino el punto de entrada. La Gen Z no compra por miedo a catástrofes; responde al <strong>valor diario tangible</strong>, la salud mental y el respaldo entre pares.
+        </p>
+
+        <div class="stat-card cyan-card">
+          <div class="stat-number cyan">85%</div>
+          <div class="stat-label">
+            se sumaría más fácilmente a un hábito saludable si lo realiza en grupo o comunidad (Accountability Social).
+          </div>
+        </div>
+
+        <div class="pill-group">
+          <span class="tag-pill cyan">HÁBITOS DIARIOS</span>
+          <span class="tag-pill gold">TRIBUS</span>
+          <span class="tag-pill">DERECHO GANADO</span>
+        </div>
+
+        <!-- CAJETÍN VIDEO PITCH -->
+        <div class="video-box">
+          <div class="video-title">
+            <span>LINK DEL VIDEO SUSTENTACIÓN</span>
+            <span style="font-size: 8px; color: #DC2626; font-weight: 800;">DURACIÓN ≤ 3 MIN</span>
+          </div>
+          <div class="video-desc">
+            Pitch: Oportunidad, arquetipo, propuesta de valor, demo interactiva del MVP y equipo (<a href="https://youtu.be/fibo-pacifico-demo" class="cite-link" target="_blank">youtu.be/fibo-pacifico-demo</a>).
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- COLUMNA 2: PERSONA, VALOR & EQUIPO                       -->
+      <!-- ======================================================== -->
+      <section class="col-2">
+
+        <!-- 3. USUARIO OBJETIVO -->
+        <div class="section-title">
+          <span class="num">3</span> Usuario Objetivo
+        </div>
+        
+        <div class="user-card">
+          <div class="user-header">
+            <div class="user-avatar" title="Camila — Arquetipo Oficial Guardián + Primer Empleo">
+              <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <div>
+              <div class="user-info-name">Camila, 21 años — Diseñadora Freelance</div>
+              <span class="user-income-badge">S/ 1,200 – 1,800/mes • Sin Planilla</span>
+            </div>
+          </div>
+          <ul class="bullet-list">
+            <li><strong>Autonomía & Digital-First:</strong> Gestiona sus clientes y finanzas desde el celular.</li>
+            <li><strong>Rechazo a la letra chica:</strong> Asocia los seguros tradicionales con trámites engorrosos.</li>
+            <li><strong>Vulnerabilidad médica:</strong> <a href="https://sapienlabs.org/mental-health-million/" class="cite-link" target="_blank" title="Sapien Labs 2026">40% de la Gen Z</a> sufre ansiedad por salud y presupuesto imprevisto.</li>
+          </ul>
+          <div class="channel-signal">
+            📱 <strong>Señal de Canal:</strong> 82.5% usa billeteras digitales (Yape/Plin) todos los días.
+          </div>
+        </div>
+
+        <!-- 4. PROPUESTA DE VALOR -->
+        <div class="section-title">
+          <span class="num">4</span> Propuesta de Valor
+        </div>
+
+        <div class="tagline-banner">
+          <div class="tagline-text">"Cada hábito suma al siguiente. Tu Reserva crece en espiral."</div>
+        </div>
+
+        <p class="lead-desc" style="font-size: 10px; margin-bottom: 6px;">
+          Invertimos la lógica del seguro: la protección no se compra en frío, <strong>se gana con hábitos y se activa cuando la necesitas</strong>.
+        </p>
+
+        <div class="value-pillars-grid">
+          <div class="pillar-box">
+            <div class="pillar-name" style="color: var(--primary);">COMUNIDAD</div>
+            <div class="pillar-desc"><strong>85%</strong> prefiere retos en grupo (Tribus universitarias).</div>
+          </div>
+          <div class="pillar-box">
+            <div class="pillar-name" style="color: var(--gold);">TRANSPARENCIA</div>
+            <div class="pillar-desc"><strong>70%</strong> gana confianza al saber el respaldo de Pacífico.</div>
+          </div>
+          <div class="pillar-box">
+            <div class="pillar-name" style="color: var(--coral);">MICROSEGURO</div>
+            <div class="pillar-desc"><strong>Pay-as-you-go</strong> desde S/ 9.90/mes pausable por Yape.</div>
+          </div>
+        </div>
+
+        <!-- 6. EQUIPO -->
+        <div class="section-title">
+          <span class="num">6</span> Equipo Multidisciplinario
+        </div>
+
+        <div class="team-grid">
+          <div class="team-item">
+            <div class="team-name">Roberto Crisóstomo</div>
+            <div class="team-role">Líder & Tech Lead</div>
+            <div class="team-bio">Next.js 16, AWS Bedrock & Arquitectura</div>
+          </div>
+          <div class="team-item">
+            <div class="team-name">Israel Manrique</div>
+            <div class="team-role">UX/UI & Insights Lead</div>
+            <div class="team-bio">Investigación cualitativa & Design System</div>
+          </div>
+          <div class="team-item" style="grid-column: span 2;">
+            <div class="team-name">Franco Chávez Bada</div>
+            <div class="team-role">Strategy & Go-To-Market Lead</div>
+            <div class="team-bio">Modelo de microseguros, pricing actuarial y distribución Credicorp</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- COLUMNA 3: SOLUCIÓN Y PROTOTIPO MVP (DESTACADO)          -->
+      <!-- ======================================================== -->
+      <section class="solution-col">
+
+        <div class="solution-header-pill">5. Solución</div>
+        <div class="solution-brand">FIBO <span>v3</span></div>
+        <div class="solution-subtitle">Ecosistema de Hábitos Diarios + Microseguros On-Demand</div>
+
+        <!-- Stepper -->
+        <div class="stepper-flow">
+          <div class="step-node">
+            <div class="step-circle">1</div>
+            <div class="step-label">Onboarding</div>
+          </div>
+          <div class="step-node">
+            <div class="step-circle">2</div>
+            <div class="step-label">Hábitos</div>
+          </div>
+          <div class="step-node">
+            <div class="step-circle">3</div>
+            <div class="step-label">Tribus</div>
+          </div>
+          <div class="step-node">
+            <div class="step-circle">4</div>
+            <div class="step-label">Protección</div>
+          </div>
+        </div>
+
+        <!-- 3 MOCKUPS DE LA APP CODEADA -->
+        <div class="mockups-row">
+          
+          <!-- Mockup 1: /hoy -->
+          <div class="phone-mockup">
+            <div>
+              <div class="phone-mockup-header">FIBO | /hoy</div>
+              <div class="mockup-inner-title">Mindful Rituals</div>
+              <div class="mockup-inner-metric gold">3/3 hoy</div>
+              <div class="mockup-inner-desc">🪙 Alcancía (S/5)<br>⏱️ Live Timer (30m)<br>🧘 Respiración 4-4-4</div>
+            </div>
+            <div class="mockup-badge">Racha Activa</div>
+          </div>
+
+          <!-- Mockup 2: /salida -->
+          <div class="phone-mockup">
+            <div>
+              <div class="phone-mockup-header">FIBO | /salida</div>
+              <div class="mockup-inner-title">Salida Protegida</div>
+              <div class="mockup-inner-metric coral">S/ 3.50</div>
+              <div class="mockup-inner-desc">Seguro colectivo de accidentes para eventos y pichangas vía Yape.</div>
+            </div>
+            <div class="mockup-badge" style="background:#FFE4E6; color:#BE123C;">PAC-TRIBU-26</div>
+          </div>
+
+          <!-- Mockup 3: /progreso -->
+          <div class="phone-mockup">
+            <div>
+              <div class="phone-mockup-header">FIBO | /progreso</div>
+              <div class="mockup-inner-title">Derecho Ganado</div>
+              <div class="mockup-inner-metric">S/ 9.90</div>
+              <div class="mockup-inner-desc">Microseguro médico de Pacífico (Hasta S/ 15k). Pausable sin multa.</div>
+            </div>
+            <div class="mockup-badge" style="background:#DCFCE7; color:#15803D;">Dr. Online 24/7</div>
+          </div>
+
+        </div>
+
+        <!-- CAJA DE VALIDACIÓN CUANTITATIVA -->
+        <div class="validation-box">
+          <div class="validation-title">Validación Cuantitativa de la Propuesta</div>
+          <ul class="validation-list">
+            <li>
+              <span>🎯</span>
+              <span><strong>57.5%</strong> pagaría con alta probabilidad entre S/ 3 y S/ 10 por una cobertura médica o de accidentes puntual.</span>
+            </li>
+            <li>
+              <span>🛡️</span>
+              <span><strong>70.0%</strong> afirma que conocer la alianza oficial con Pacífico Seguros desde el onboarding genera confianza total.</span>
+            </li>
+            <li>
+              <span>💻</span>
+              <span><strong>Prototipo Funcional Codeado:</strong> 18/18 rutas operativas en Next.js 16 (Turbopack), persistencia PWA en cliente y 0 errores de compilación.</span>
+            </li>
+          </ul>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA (FUENTES Y FIRMA) -->
+    <footer class="canvas-footer">
+      <div class="footer-team-signature">
+        CLUSTER TEAM | Roberto Paolo Crisóstomo Berrocal • Franco Akira Chávez Bada • Israel Manrique Marcelo
+      </div>
+      <div class="footer-sources">
+        <span><strong>Fuentes verificadas:</strong></span>
+        <span>• <a href="https://www.apeseg.org.pe/wp-content/uploads/2025/10/Resultados-Sistema-Asegurador-2T25-web.pdf" class="cite-link" target="_blank">APESEG (2.05% PBI)</a></span>
+        <span>• <a href="https://www.infobae.com/peru/2026/04/01/inei-confirma-que-7-de-cada-10-trabajadores-en-peru-son-informales-pierden-acceso-a-cts-seguro-y-pension/" class="cite-link" target="_blank">INEI (84.9% informalidad)</a></span>
+        <span>• <a href="https://especial.gestion.pe/comunidadesg/2024/04/19/pacifico-seguros-queremos-llegar-a-millones-de-personas-mas-con-los-seguros-inclusivos-y-ser-un-pais-mas-resiliente/" class="cite-link" target="_blank">Pacífico (Seguros Inclusivos)</a></span>
+        <span>• <a href="https://sapienlabs.org/mental-health-million/" class="cite-link" target="_blank">Sapien Labs (40% Salud Mental)</a></span>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

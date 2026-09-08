@@ -10,19 +10,21 @@ export function SpiralIcon({ className }: { className?: string }) {
       aria-hidden="true"
       className={cn("shrink-0", className)}
     >
-      <path
-        d="M12 2C7 2 4 5 4 9c0 3 2 5 5 5"
-        stroke="var(--chart-3)"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-      <path
-        d="M12 2c5 0 8 3 8 7 0 5-4 8-9 8-3.5 0-6-2-6-5"
-        stroke="var(--primary)"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        opacity=".55"
-      />
+      <g transform="translate(0, 2.5)">
+        <path
+          d="M12 2C7 2 4 5 4 9c0 3 2 5 5 5"
+          stroke="var(--chart-3)"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+        />
+        <path
+          d="M12 2c5 0 8 3 8 7 0 5-4 8-9 8-3.5 0-6-2-6-5"
+          stroke="var(--primary)"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          opacity=".55"
+        />
+      </g>
     </svg>
   )
 }

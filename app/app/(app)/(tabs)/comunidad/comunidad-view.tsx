@@ -1,29 +1,35 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import confetti from "canvas-confetti"
 import {
   Activity,
   ArrowRight,
+  Bike,
   Brain,
   Check,
   CheckCircle2,
   Copy,
   Flame,
+  Footprints,
+  HeartHandshake,
   MessageCircle,
-  PiggyBank,
+  Mountain,
   Plus,
   Share2,
   Shield,
+  ShieldCheck,
   Sparkles,
   Trophy,
   Users,
+  UtensilsCrossed,
   Zap,
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -32,269 +38,395 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { NativeSelect } from "@/components/ui/native-select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useReserva } from "@/hooks/use-reserva"
+import {
+  AMBITOS_TRIBU_OPCIONES,
+  METAS_COLECTIVAS_OPCIONES,
+  RETOS_COMUNIDAD,
+  type RetoComunidadItem,
+} from "@/lib/reserva/constants"
+import type { Tribu } from "@/lib/reserva/types"
 
-const RETOS_INICIALES = [
-  {
-    id: "cero-delivery",
-    titulo: "Reto Cero Delivery: Cocinar en Casa 🍱",
-    categoria: "Bolsillo & Finanzas",
-    categoriaBadge: "bg-amber-500/10 text-amber-700 border-amber-500/20 dark:text-amber-400",
-    descripcion: "Cocina en casa al menos 4 días esta semana. Reduce gastos hormiga y cuida tu alimentación.",
-    participantes: 482,
-    progresoComunidad: 68,
-    recompensa: "+30 pts Reserva + Cupón S/ 15 Quererte Sano",
-    diasRestantes: 3,
-    unido: false,
-  },
-  {
-    id: "pasos-lima",
-    titulo: "10,000 Pasos por 5 Días 🏃",
-    categoria: "Cuerpo & Vitalidad",
-    categoriaBadge: "bg-primary/10 text-primary border-primary/20",
-    descripcion: "Mantén el ritmo diario caminando hacia la universidad o tu lugar de trabajo sin wearable.",
-    participantes: 315,
-    progresoComunidad: 54,
-    recompensa: "+25 pts Reserva + Insignia 'Runner Urbano'",
-    diasRestantes: 5,
-    unido: false,
-  },
-  {
-    id: "anti-burnout",
-    titulo: "Semana Anti-Burnout Mental 🧠",
-    categoria: "Salud Mental",
-    categoriaBadge: "bg-emerald-500/10 text-emerald-700 border-emerald-500/20 dark:text-emerald-400",
-    descripcion: "3 pausas de respiración profunda y chequeo preventivo con Dr. Online de Pacífico.",
-    participantes: 240,
-    progresoComunidad: 82,
-    recompensa: "+20 pts Reserva + Desbloqueo de Nivel 2",
-    diasRestantes: 2,
-    unido: true,
-  },
-]
+interface ActividadSalida {
+  id: string
+  nombre: string
+  duracion: string
+  costoPersona: number
+  descripcion: string
+  cobertura: string
+  icono: React.ElementType
+}
 
-const TRIBUS = [
+const ACTIVIDADES_SALIDAS: ActividadSalida[] = [
   {
-    id: "ucsur-active",
-    nombre: "UCSUR Runners & Active 🏃",
-    universidad: "Universidad Científica del Sur",
-    miembros: 128,
-    metaSemanal: "5,000 km colectivos",
-    rachaSemanas: 4,
-    cumplimiento: 88,
-    esMiembro: true,
+    id: "pichanga",
+    nombre: "Pichanga de Fútbol",
+    duracion: "24 horas",
+    costoPersona: 3.5,
+    descripcion: "Para partidos de pasto sintético, futsal o canchas de barrio con integrantes de tu grupo.",
+    cobertura: "Urgencias por fracturas, esguinces de tobillo, desgarros y traslados en ambulancia hasta S/ 15,000.",
+    icono: Zap,
   },
   {
-    id: "freelancers-peru",
-    nombre: "Freelancers & Creadores Perú 💻",
-    universidad: "Comunidad Independiente Lima",
-    miembros: 95,
-    metaSemanal: "Ahorro de emergencia quincenal",
-    rachaSemanas: 2,
-    cumplimiento: 76,
-    esMiembro: false,
+    id: "ciclismo",
+    nombre: "Ruta de Ciclismo Urbano",
+    duracion: "24 horas",
+    costoPersona: 3.0,
+    descripcion: "Salidas nocturnas, ciclovías o recorridos hacia Miraflores, Barranco o el Morro Solar.",
+    cobertura: "Atención inmediata por caídas en pista, traumatismos y curaciones de emergencia en clínicas afiliadas.",
+    icono: Bike,
   },
   {
-    id: "primer-empleo",
-    nombre: "Gen Z Primer Empleo & Finanzas 🪙",
-    universidad: "Interuniversitario Lima",
-    miembros: 210,
-    metaSemanal: "Cero compras compulsivas",
-    rachaSemanas: 3,
-    cumplimiento: 82,
-    esMiembro: false,
+    id: "running",
+    nombre: "Running Grupal / 10K",
+    duracion: "24 horas",
+    costoPersona: 3.0,
+    descripcion: "Tiradas largas de fin de semana, trotes de fondo o entrenamientos colectivos.",
+    cobertura: "Atención de desgarros, distensiones musculares y descompensaciones térmicas en centros médicos Pacífico.",
+    icono: Footprints,
+  },
+  {
+    id: "trekking",
+    nombre: "Trekking & Escapada",
+    duracion: "48 horas",
+    costoPersona: 5.0,
+    descripcion: "Caminatas en Lomas de Lachay, Lunahuaná, Cieneguilla o campamentos de fin de semana.",
+    cobertura: "Protección extendida 48h con asistencia en carretera, rescate médico y urgencias hospitalarias.",
+    icono: Mountain,
+  },
+  {
+    id: "padel",
+    nombre: "Torneo de Pádel / Vóley",
+    duracion: "24 horas",
+    costoPersona: 3.5,
+    descripcion: "Partidos rápidos entre amigos o compañeros de tribu después de clases o trabajo.",
+    cobertura: "Lesiones articulares, traumatismos de muñeca, hombro o rodilla sin deducible para menores de 28.",
+    icono: Activity,
   },
 ]
 
 const FEED_ACTIVIDAD = [
-  { usuario: "Camila R. (UCSUR)", accion: "completó su racha de 5 días 🔥", tiempo: "Hace 5 min" },
-  { usuario: "Mateo V.", accion: "apartó S/ 10 para su Reserva de Salud 🪙", tiempo: "Hace 18 min" },
-  { usuario: "Tribu UCSUR Runners", accion: "alcanzó el 88% de su meta semanal colectiva 🏃", tiempo: "Hace 42 min" },
-  { usuario: "Diego S.", accion: "activó seguro de pichanga para 8 amigos ⚽", tiempo: "Hace 1 hora" },
+  { usuario: "Camila R.", accion: "completó su check del Reto Cero Delivery", tiempo: "Hace 4 min" },
+  { usuario: "Mateo V.", accion: "apartó S/ 10 a su Reserva médica", tiempo: "Hace 15 min" },
+  { usuario: "Tribu Runners Lima Sur", accion: "alcanzó el 88% del desafío semanal colectivo", tiempo: "Hace 38 min" },
+  { usuario: "Diego S. y 11 amigos", accion: "activaron protección médica para su pichanga de sábado", tiempo: "Hace 1 hora" },
+  { usuario: "Valeria M.", accion: "fundó la tribu 'Creativos de Barranco'", tiempo: "Hace 2 horas" },
 ]
 
 export function ComunidadView() {
-  const [retos, setRetos] = useState(RETOS_INICIALES)
-  const [modalPichanga, setModalPichanga] = useState(false)
-  const [jugadoresPichanga, setJugadoresPichanga] = useState(10)
-  const [linkCopiado, setLinkCopiado] = useState(false)
-  const [tribuSeleccionada, setTribuSeleccionada] = useState<(typeof TRIBUS)[0] | null>(null)
+  const router = useRouter()
+  const { state, dispatch } = useReserva()
+
+  // Modales
+  const [modalCrearTribu, setModalCrearTribu] = useState(false)
+  const [tribuDetalle, setTribuDetalle] = useState<Tribu | null>(null)
+  const [actividadSeleccionada, setActividadSeleccionada] = useState<ActividadSalida>(ACTIVIDADES_SALIDAS[0])
+  const [tribuSalidaSeleccionadaId, setTribuSalidaSeleccionadaId] = useState<string>(
+    state.tribus[0]?.id || "ucsur-active"
+  )
+
+  // Formulario nueva tribu
+  const [nuevoNombreTribu, setNuevoNombreTribu] = useState("")
+  const [nuevoAmbito, setNuevoAmbito] = useState(AMBITOS_TRIBU_OPCIONES[0])
+  const [nuevaMetaSemanal, setNuevaMetaSemanal] = useState(METAS_COLECTIVAS_OPCIONES[0])
 
   function dispararConfetti() {
     confetti({
       particleCount: 50,
-      spread: 60,
+      spread: 65,
       origin: { y: 0.65 },
       colors: ["#0099CC", "#D4A24C", "#01A355"],
     })
   }
 
-  function toggleUnirseReto(retoId: string) {
-    setRetos((prev) =>
-      prev.map((r) => {
-        if (r.id === retoId) {
-          const proximo = !r.unido
-          if (proximo) dispararConfetti()
-          return {
-            ...r,
-            unido: proximo,
-            participantes: proximo ? r.participantes + 1 : r.participantes - 1,
-          }
-        }
-        return r
-      })
-    )
+  function handleToggleReto(retoId: string, estaInscrito: boolean) {
+    if (estaInscrito) {
+      dispatch({ type: "abandonar-reto", retoId })
+    } else {
+      dispatch({ type: "unirse-reto", retoId })
+      dispararConfetti()
+    }
   }
 
-  function copiarLinkPichanga() {
-    setLinkCopiado(true)
-    setTimeout(() => setLinkCopiado(false), 2000)
+  function handleCrearTribu(e: React.FormEvent) {
+    e.preventDefault()
+    if (!nuevoNombreTribu.trim()) return
+
+    dispatch({
+      type: "crear-tribu",
+      tribu: {
+        nombre: nuevoNombreTribu.trim(),
+        universidad: nuevoAmbito,
+        metaSemanal: nuevaMetaSemanal,
+      },
+    })
+
+    dispararConfetti()
+    setModalCrearTribu(false)
+    setNuevoNombreTribu("")
   }
+
+  function handleToggleMembresiaTribu(tribu: Tribu) {
+    if (tribu.esMiembro) {
+      dispatch({ type: "salir-tribu", tribuId: tribu.id })
+    } else {
+      dispatch({ type: "unirse-tribu", tribuId: tribu.id })
+      dispararConfetti()
+    }
+    if (tribuDetalle && tribuDetalle.id === tribu.id) {
+      setTribuDetalle({ ...tribuDetalle, esMiembro: !tribu.esMiembro })
+    }
+  }
+
+  function compartirTribuWhatsApp(tribu: Tribu) {
+    const mensaje = encodeURIComponent(
+      `¡Hola! Me uní a la tribu "${tribu.nombre}" en FIBO × Pacífico. Estamos sumando hábitos colectivos y activando el Escudo de Protección semanal. ¡Súmate gratis aquí: https://fibo.pe/tribu/${tribu.id}!`
+    )
+    window.open(`https://wa.me/?text=${mensaje}`, "_blank")
+  }
+
+  const tribuSalidaActual =
+    state.tribus.find((t) => t.id === tribuSalidaSeleccionadaId) || state.tribus[0]
 
   return (
-    <div className="flex flex-1 flex-col gap-6 p-4 pb-12">
-      {/* Header */}
+    <div className="flex flex-1 flex-col gap-6 p-4 pb-16">
+      {/* Header General */}
       <div className="flex flex-col gap-1 pt-1">
         <div className="flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-            Comunidad FIBO × Pacífico
+            Comunidad FIBO
           </p>
-          <span className="flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-0.5 text-[11px] font-semibold text-primary">
-            <Users className="size-3" /> 480+ en Lima
+          <span className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
+            <Users className="size-3 text-primary" />
+            <span>520+ en Lima</span>
           </span>
         </div>
         <h1 className="font-heading text-xl font-bold tracking-tight">
-          El bienestar se comparte 👥
+          El bienestar se comparte
         </h1>
         <p className="text-xs text-muted-foreground leading-relaxed">
-          Unirte a retos y tribus multiplica hasta 95% tu constancia y desbloquea protección colectiva.
+          Cumple metas en grupo y activa protección colectiva con Pacífico.
         </p>
       </div>
 
-      {/* Tabs de Navegación */}
+      {/* Tabs Principales */}
       <Tabs defaultValue="retos" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="retos" className="text-xs cursor-pointer">
-            🏆 Retos
+          <TabsTrigger value="retos" className="text-xs gap-1.5 cursor-pointer">
+            <Trophy className="size-3.5" />
+            <span>Retos</span>
           </TabsTrigger>
-          <TabsTrigger value="tribus" className="text-xs cursor-pointer">
-            👥 Tribus
+          <TabsTrigger value="tribus" className="text-xs gap-1.5 cursor-pointer">
+            <Users className="size-3.5" />
+            <span>Tribus</span>
           </TabsTrigger>
-          <TabsTrigger value="pichanga" className="text-xs cursor-pointer">
-            ⚡ Pichanga
+          <TabsTrigger value="salidas" className="text-xs gap-1.5 cursor-pointer">
+            <ShieldCheck className="size-3.5" />
+            <span>Salidas</span>
           </TabsTrigger>
         </TabsList>
 
         {/* ============================================================ */}
-        {/* PESTAÑA 1: RETOS DEL MES */}
+        {/* PESTAÑA 1: RETOS COMUNITARIOS (Sincronizados con /hoy) */}
         {/* ============================================================ */}
         <TabsContent value="retos" className="mt-4 flex flex-col gap-4">
-          <div className="flex items-center justify-between px-0.5">
-            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Retos Activos de la Semana
+          <div className="flex items-center justify-between px-1">
+            <p className="font-heading text-sm font-bold text-foreground">
+              Retos de la semana
             </p>
-            <span className="text-[11px] font-medium text-primary">
-              Gana bonificación a tu Reserva
+            <span className="text-xs font-semibold text-primary">
+              +10 pts por día
             </span>
           </div>
 
           <div className="flex flex-col gap-3">
-            {retos.map((reto) => (
-              <Card key={reto.id} className="overflow-hidden">
-                <CardContent className="flex flex-col gap-3 p-4">
-                  {/* Categoría y Tiempo */}
-                  <div className="flex items-center justify-between">
-                    <Badge variant="outline" className={reto.categoriaBadge}>
-                      {reto.categoria}
-                    </Badge>
-                    <span className="text-[11px] font-medium text-muted-foreground">
-                      Quedan {reto.diasRestantes} días
-                    </span>
-                  </div>
+            {RETOS_COMUNIDAD.map((reto: RetoComunidadItem) => {
+              const estaInscrito = state.retosActivos.includes(reto.id)
+              const progreso = state.retosProgreso[reto.id] || { completadoHoy: false, diasCompletados: 0 }
 
-                  {/* Título y descripción */}
-                  <div className="flex flex-col gap-1">
-                    <h3 className="font-heading text-sm font-bold leading-snug">
-                      {reto.titulo}
-                    </h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {reto.descripcion}
-                    </p>
-                  </div>
+              let CategoriaIcon = UtensilsCrossed
+              if (reto.pilar === "Cuerpo") CategoriaIcon = Activity
+              if (reto.pilar === "Mente") CategoriaIcon = Brain
 
-                  {/* Progreso de la comunidad */}
-                  <div className="flex flex-col gap-1.5 rounded-xl bg-muted/40 p-2.5">
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="font-medium text-muted-foreground">
-                        👥 {reto.participantes} participantes
+              return (
+                <Card
+                  key={reto.id}
+                  className={`overflow-hidden transition-all ${
+                    estaInscrito
+                      ? "border-emerald-500/40 bg-card shadow-xs"
+                      : "border-border/80 hover:border-primary/40 bg-card"
+                  }`}
+                >
+                  <CardContent className="flex flex-col gap-3 p-4">
+                    {/* Categoría y Estado / Tiempo */}
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="flex items-center gap-1.5 font-semibold text-muted-foreground">
+                        <CategoriaIcon className="size-3.5 text-primary" />
+                        <span>{reto.categoria}</span>
                       </span>
-                      <span className="font-bold text-foreground">
-                        {reto.progresoComunidad}% logrado
-                      </span>
-                    </div>
-                    {/* Barra de progreso */}
-                    <div className="h-2 w-full overflow-hidden rounded-full bg-input/60">
-                      <div
-                        className="h-full rounded-full bg-primary transition-all duration-500"
-                        style={{ width: `${reto.progresoComunidad}%` }}
-                      />
-                    </div>
-                  </div>
 
-                  {/* Recompensa comunitaria y botón */}
-                  <div className="flex items-center justify-between gap-2 pt-1">
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                      <Trophy className="size-3.5" />
-                      <span className="text-[11px]">{reto.recompensa}</span>
-                    </div>
-
-                    <Button
-                      size="sm"
-                      variant={reto.unido ? "outline" : "default"}
-                      className="h-8 gap-1 text-xs cursor-pointer"
-                      onClick={() => toggleUnirseReto(reto.id)}
-                    >
-                      {reto.unido ? (
-                        <>
-                          <Check className="size-3.5 text-emerald-600" />
-                          <span>Unido</span>
-                        </>
+                      {estaInscrito ? (
+                        <span className="flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                          <Check className="size-3 stroke-[2.5]" />
+                          <span>Inscrito</span>
+                        </span>
                       ) : (
-                        "Unirme al reto"
+                        <span className="text-[11px] font-medium text-muted-foreground">
+                          {reto.diasRestantes} días restantes
+                        </span>
                       )}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                    </div>
+
+                    {/* Título y descripción limpia */}
+                    <div className="flex flex-col gap-0.5">
+                      <h3 className="font-heading text-sm font-bold leading-snug">
+                        {reto.titulo}
+                      </h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {reto.descripcion}
+                      </p>
+                    </div>
+
+                    {/* Progreso integrado (sin caja gris anidada) */}
+                    <div className="flex flex-col gap-1.5 py-0.5">
+                      <div className="flex items-center justify-between text-[11px]">
+                        <span className="font-medium text-muted-foreground flex items-center gap-1">
+                          <Users className="size-3 text-muted-foreground" />
+                          <span>{reto.participantes + (estaInscrito ? 1 : 0)} personas</span>
+                        </span>
+                        <span className="font-semibold text-foreground">
+                          {estaInscrito ? (
+                            <span className="text-emerald-600 dark:text-emerald-400">
+                              Tu avance: {progreso.diasCompletados}/{reto.metaDias} días
+                            </span>
+                          ) : (
+                            <span>{reto.progresoComunidad}% grupal</span>
+                          )}
+                        </span>
+                      </div>
+                      <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                        <div
+                          className={`h-full rounded-full transition-all duration-500 ${
+                            estaInscrito ? "bg-emerald-500" : "bg-primary"
+                          }`}
+                          style={{
+                            width: `${
+                              estaInscrito
+                                ? Math.min(100, Math.round((progreso.diasCompletados / reto.metaDias) * 100))
+                                : reto.progresoComunidad
+                            }%`,
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Recompensa y Acciones */}
+                    <div className="flex items-center justify-between gap-2 pt-1 border-t border-border/40">
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                        <Trophy className="size-3.5 shrink-0" />
+                        <span className="text-[11px] font-medium">{reto.recompensa}</span>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {estaInscrito ? (
+                          <>
+                            <Button
+                              size="xs"
+                              variant="outline"
+                              className="h-7 text-[11px] gap-1 text-primary border-primary/30 hover:bg-primary/10 cursor-pointer"
+                              onClick={() => router.push("/hoy")}
+                            >
+                              <span>Ver en Hoy</span>
+                              <ArrowRight className="size-3" />
+                            </Button>
+                            <Button
+                              size="xs"
+                              variant="ghost"
+                              className="h-7 text-[10px] text-muted-foreground hover:text-destructive cursor-pointer"
+                              onClick={() => handleToggleReto(reto.id, true)}
+                            >
+                              Salir
+                            </Button>
+                          </>
+                        ) : (
+                          <Button
+                            size="xs"
+                            className="h-7 px-3 text-xs font-semibold cursor-pointer"
+                            onClick={() => handleToggleReto(reto.id, false)}
+                          >
+                            <span>Unirme</span>
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </TabsContent>
 
         {/* ============================================================ */}
-        {/* PESTAÑA 2: MIS TRIBUS */}
+        {/* PESTAÑA 2: TRIBUS (Creación guiada con selects y desafíos) */}
         {/* ============================================================ */}
         <TabsContent value="tribus" className="mt-4 flex flex-col gap-4">
-          <div className="flex flex-col gap-1 rounded-2xl border border-primary/20 bg-primary/5 p-3.5">
-            <div className="flex items-center gap-1.5 font-heading text-xs font-bold text-primary">
-              <Shield className="size-4" />
-              <span>Regla del Escudo de Tribu</span>
+          {/* Banner Regla del Escudo de Tribu */}
+          <div className="flex items-center justify-between gap-3 rounded-2xl border border-primary/20 bg-primary/5 p-3.5 shadow-xs">
+            <div className="flex flex-col gap-0.5">
+              <span className="font-heading text-xs font-bold text-primary flex items-center gap-1.5">
+                <Shield className="size-3.5" /> Escudo Colectivo 80/20
+              </span>
+              <p className="text-xs text-muted-foreground leading-snug">
+                Si el 80% de tu tribu cumple sus metas, todos ganan un escudo.
+              </p>
             </div>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">
-              Si el 80% de los miembros de tu tribu completa sus hábitos de la semana, todos reciben un Escudo de Racha colectivo. Sin juzgar ni exponer saldos.
-            </p>
+            <Button
+              size="xs"
+              className="h-7 gap-1 text-xs font-semibold shrink-0 cursor-pointer"
+              onClick={() => setModalCrearTribu(true)}
+            >
+              <Plus className="size-3.5" />
+              <span>Crear</span>
+            </Button>
           </div>
 
+          {/* Listado de Tribus */}
           <div className="flex flex-col gap-3">
-            {TRIBUS.map((tribu) => (
-              <Card key={tribu.id}>
+            <div className="flex items-center justify-between px-1">
+              <p className="font-heading text-sm font-bold text-foreground">
+                Tribus en tu red ({state.tribus.length})
+              </p>
+              <span className="text-xs text-muted-foreground">
+                {state.tribus.filter((t) => t.esMiembro).length} unidas
+              </span>
+            </div>
+
+            {state.tribus.map((tribu) => (
+              <Card
+                key={tribu.id}
+                className={`transition-all ${
+                  tribu.esMiembro
+                    ? "border-primary/40 bg-card shadow-xs"
+                    : "border-border/80 hover:border-primary/30 bg-card"
+                }`}
+              >
                 <CardContent className="flex flex-col gap-3 p-4">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex flex-col gap-0.5">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="font-heading text-sm font-bold">
                           {tribu.nombre}
                         </h3>
-                        {tribu.esMiembro && (
+                        {tribu.esAdmin && (
+                          <Badge className="bg-amber-500 text-white text-[10px]">
+                            Capitán
+                          </Badge>
+                        )}
+                        {tribu.esMiembro && !tribu.esAdmin && (
                           <Badge variant="secondary" className="text-[10px]">
                             Miembro
                           </Badge>
@@ -304,37 +436,55 @@ export function ComunidadView() {
                         {tribu.universidad}
                       </p>
                     </div>
-                    <span className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-[10px] font-semibold text-amber-600 dark:text-amber-400">
-                      <Flame className="size-3 fill-amber-500" /> Sem {tribu.rachaSemanas}
+                    <span className="flex items-center gap-1 text-[11px] font-semibold text-amber-600 dark:text-amber-400 shrink-0">
+                      <Flame className="size-3.5 fill-amber-500" /> Sem {tribu.rachaSemanas}
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between rounded-xl bg-muted/40 px-3 py-2 text-xs">
-                    <div className="flex flex-col">
-                      <span className="text-[10px] text-muted-foreground">Meta de la semana</span>
-                      <span className="font-semibold text-foreground">{tribu.metaSemanal}</span>
-                    </div>
-                    <div className="flex flex-col text-right">
-                      <span className="text-[10px] text-muted-foreground">Cumplimiento</span>
+                  {/* Desafío y Cumplimiento Colectivo (integrado sin caja gris) */}
+                  <div className="flex flex-col gap-1.5 py-0.5">
+                    <div className="flex items-center justify-between text-[11px]">
+                      <span className="text-muted-foreground">
+                        {tribu.metaSemanal}
+                      </span>
                       <span className="font-bold text-emerald-600 dark:text-emerald-400">
-                        {tribu.cumplimiento}%
+                        {tribu.cumplimiento}% logrado
                       </span>
                     </div>
+                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                      <div
+                        className="h-full rounded-full bg-emerald-500 transition-all duration-500"
+                        style={{ width: `${tribu.cumplimiento}%` }}
+                      />
+                    </div>
                   </div>
 
+                  {/* Acciones */}
                   <div className="flex items-center justify-between pt-1">
                     <span className="text-xs text-muted-foreground">
-                      👥 {tribu.miembros} miembros
+                      {tribu.miembros} miembros
                     </span>
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      className="h-8 gap-1 text-xs cursor-pointer"
-                      onClick={() => setTribuSeleccionada(tribu)}
-                    >
-                      <MessageCircle className="size-3.5" />
-                      <span>Ver tribu</span>
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        size="sm"
+                        variant="secondary"
+                        className="h-8 gap-1 text-xs cursor-pointer"
+                        onClick={() => setTribuDetalle(tribu)}
+                      >
+                        <MessageCircle className="size-3.5" />
+                        <span>Ver Desafío</span>
+                      </Button>
+
+                      {!tribu.esMiembro && (
+                        <Button
+                          size="sm"
+                          className="h-8 text-xs cursor-pointer"
+                          onClick={() => handleToggleMembresiaTribu(tribu)}
+                        >
+                          Unirme
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -343,102 +493,132 @@ export function ComunidadView() {
         </TabsContent>
 
         {/* ============================================================ */}
-        {/* PESTAÑA 3: MICROSEGURO GRUPAL / PICHANGA */}
+        {/* PESTAÑA 3: SALIDAS PROTEGIDAS (Cobertura por Tribu) */}
         {/* ============================================================ */}
-        <TabsContent value="pichanga" className="mt-4 flex flex-col gap-4">
-          <div className="flex flex-col gap-1 rounded-2xl border border-border bg-card p-4 shadow-xs">
+        <TabsContent value="salidas" className="mt-4 flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5 rounded-2xl border border-primary/20 bg-linear-to-br from-primary/10 via-card to-card p-4 shadow-xs">
             <div className="flex items-center gap-2">
               <span className="flex size-7 items-center justify-center rounded-full bg-primary/20 text-primary">
-                ⚡
+                <ShieldCheck className="size-4" />
               </span>
-              <h3 className="font-heading text-sm font-bold">
-                Pacífico On-Demand para Grupos
-              </h3>
+              <div>
+                <h3 className="font-heading text-sm font-bold">
+                  Salidas Protegidas
+                </h3>
+                <p className="text-[11px] text-muted-foreground">
+                  El seguro cubre solo a los que asisten, sin importar el tamaño del grupo.
+                </p>
+              </div>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed pt-1">
-              ¿Vas a jugar fútbol, hacer trekking o viajar el fin de semana? Activa una póliza express de accidentes válida por 24 o 48 horas para tu grupo dividiendo el pago por Yape.
+            <p className="text-xs text-muted-foreground leading-relaxed pt-0.5">
+              Elige la salida deportiva de tu grupo y asegura a los participantes por 24h o 48h vía Yape.
             </p>
           </div>
 
-          {/* Card 1: Pichanga */}
+          {/* Selector de Tribu Anfitriona */}
+          <div className="flex flex-col gap-1.5 rounded-xl border border-border bg-card p-3 shadow-xs">
+            <Label className="text-xs font-semibold text-foreground">
+              Tribu anfitriona de la salida:
+            </Label>
+            <NativeSelect
+              className="w-full"
+              value={tribuSalidaSeleccionadaId}
+              onChange={(e) => setTribuSalidaSeleccionadaId(e.target.value)}
+            >
+              {state.tribus.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.nombre} ({t.miembros} miembros • {t.universidad})
+                </option>
+              ))}
+            </NativeSelect>
+          </div>
+
+          {/* Selector de Actividad */}
+          <div className="flex flex-col gap-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground px-0.5">
+              Tipo de salida o evento deportivo
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {ACTIVIDADES_SALIDAS.map((act) => {
+                const esActiva = actividadSeleccionada.id === act.id
+                const IconoComp = act.icono
+                return (
+                  <button
+                    key={act.id}
+                    type="button"
+                    onClick={() => setActividadSeleccionada(act)}
+                    className={`flex flex-col items-start gap-1 p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                      esActiva
+                        ? "border-primary bg-primary/10 ring-1 ring-primary shadow-xs"
+                        : "border-border/80 bg-card hover:border-primary/40"
+                    }`}
+                  >
+                    <IconoComp className={`size-5 ${esActiva ? "text-primary" : "text-muted-foreground"}`} />
+                    <span className="font-heading text-xs font-bold leading-tight line-clamp-1">
+                      {act.nombre}
+                    </span>
+                    <span className="text-[11px] font-semibold text-primary">
+                      S/ {act.costoPersona.toFixed(2)} • {act.duracion}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Card Destacada de la Actividad Seleccionada */}
           <Card className="border-primary/40 bg-linear-to-br from-card via-card to-primary/5">
-            <CardContent className="flex flex-col gap-3 p-4">
+            <CardContent className="flex flex-col gap-3.5 p-4">
               <div className="flex items-center justify-between">
                 <Badge className="bg-primary text-primary-foreground text-[10px]">
-                  Innovación Pacífico
+                  {actividadSeleccionada.duracion} de Cobertura
                 </Badge>
-                <span className="text-xs font-bold text-primary">
-                  S/ 3.50 por persona
+                <span className="text-sm font-bold text-primary">
+                  S/ {actividadSeleccionada.costoPersona.toFixed(2)} por persona
                 </span>
               </div>
 
               <div className="flex flex-col gap-1">
                 <h3 className="font-heading text-base font-bold">
-                  ⚽ Seguro Pichanga de Fin de Semana
+                  {actividadSeleccionada.nombre}
                 </h3>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Cobertura médica de emergencia ante esguinces, fracturas o golpes durante el partido. Válido por 24 horas en clínicas afiliadas de Pacífico.
+                  Organizado por <strong className="text-foreground">{tribuSalidaActual?.nombre}</strong>. {actividadSeleccionada.descripcion}
                 </p>
               </div>
 
-              <div className="flex flex-col gap-1 rounded-xl bg-muted/40 p-2.5 text-xs">
+              <div className="flex flex-col gap-1.5 rounded-xl bg-muted/40 p-3 text-xs">
                 <div className="flex items-center gap-1.5 text-emerald-600 font-semibold dark:text-emerald-400">
-                  <CheckCircle2 className="size-3.5" />
-                  <span>Sin papeleos ni contratos anuales</span>
+                  <CheckCircle2 className="size-4 shrink-0" />
+                  <span>Cobertura grupal FIBO hasta S/ 15,000</span>
                 </div>
-                <p className="text-[11px] text-muted-foreground">
-                  Uno del grupo arma la pichanga, comparte el link a sus amigos y cada uno aprueba con su Yape en 1 clic.
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  {actividadSeleccionada.cobertura}
                 </p>
               </div>
 
               <Button
                 className="w-full h-9 gap-1.5 text-xs font-semibold cursor-pointer"
-                onClick={() => setModalPichanga(true)}
+                onClick={() =>
+                  router.push(
+                    `/salida?act=${actividadSeleccionada.id}&t=${tribuSalidaSeleccionadaId}`
+                  )
+                }
               >
-                <Zap className="size-4" />
-                <span>Armar grupo para pichanga</span>
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* Card 2: Escapada o Viaje Corto */}
-          <Card>
-            <CardContent className="flex flex-col gap-3 p-4">
-              <div className="flex items-center justify-between">
-                <Badge variant="outline" className="text-[10px]">
-                  Trekking & Salidas
-                </Badge>
-                <span className="text-xs font-bold text-foreground">
-                  S/ 5.00 por persona
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <h3 className="font-heading text-sm font-bold">
-                  🎒 Seguro Escapada (48 horas)
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Protección médica para viajes a Lunahuaná, Cieneguilla o caminatas a Huaraz. Cobertura de rescate y atención express.
-                </p>
-              </div>
-
-              <Button
-                variant="secondary"
-                className="w-full h-9 text-xs cursor-pointer"
-                onClick={() => setModalPichanga(true)}
-              >
-                Crear grupo de viaje
+                <ShieldCheck className="size-4" />
+                <span>Configurar salida ({actividadSeleccionada.nombre})</span>
               </Button>
             </CardContent>
           </Card>
         </TabsContent>
       </Tabs>
 
-      {/* Ticker / Feed Social en Vivo */}
-      <div className="flex flex-col gap-2 rounded-2xl border border-border/70 bg-card p-3.5">
+      {/* Feed Social en Vivo */}
+      <div className="flex flex-col gap-2 rounded-2xl border border-border/70 bg-card p-4 shadow-xs">
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span className="flex items-center gap-1.5 font-semibold text-foreground">
-            <Sparkles className="size-3.5 text-amber-500" /> En vivo en la comunidad
+            <Sparkles className="size-3.5 text-amber-500" />
+            <span>En vivo en la comunidad</span>
           </span>
           <span className="text-[10px]">Actualizado ahora</span>
         </div>
@@ -447,7 +627,7 @@ export function ComunidadView() {
           {FEED_ACTIVIDAD.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-start justify-between gap-2 border-b border-border/40 pb-1.5 last:border-0 last:pb-0 text-xs"
+              className="flex items-start justify-between gap-2 border-b border-border/40 pb-2 last:border-0 last:pb-0 text-xs"
             >
               <div className="flex flex-col">
                 <span className="font-semibold text-foreground text-[11px]">
@@ -465,144 +645,162 @@ export function ComunidadView() {
         </div>
       </div>
 
-      {/* Modal: Simulador de Pichanga Grupal */}
-      <Dialog open={modalPichanga} onOpenChange={setModalPichanga}>
-        <DialogContent className="max-w-xs sm:max-w-sm">
-          <DialogHeader className="text-left">
-            <DialogTitle className="font-heading text-base">
-              ⚽ Armar Seguro de Pichanga
-            </DialogTitle>
-            <DialogDescription className="text-xs text-muted-foreground">
-              Define cuántos juegan y comparte el link para que cada amigo pague su parte por Yape.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="flex flex-col gap-3 py-2 text-xs">
-            {/* Selector de jugadores */}
-            <div className="flex items-center justify-between rounded-xl bg-muted/50 p-3">
-              <span className="font-medium">Número de jugadores</span>
-              <div className="flex items-center gap-2">
-                <Button
-                  size="xs"
-                  variant="outline"
-                  className="size-7 p-0 cursor-pointer"
-                  onClick={() => setJugadoresPichanga((j) => Math.max(2, j - 1))}
-                >
-                  -
-                </Button>
-                <span className="w-6 text-center font-bold text-sm">
-                  {jugadoresPichanga}
-                </span>
-                <Button
-                  size="xs"
-                  variant="outline"
-                  className="size-7 p-0 cursor-pointer"
-                  onClick={() => setJugadoresPichanga((j) => Math.min(22, j + 1))}
-                >
-                  +
-                </Button>
-              </div>
-            </div>
-
-            {/* Resumen de costos */}
-            <div className="flex flex-col gap-1 rounded-xl border border-border p-3">
-              <div className="flex justify-between text-muted-foreground text-[11px]">
-                <span>Costo individual (24h)</span>
-                <span>S/ 3.50</span>
-              </div>
-              <div className="flex justify-between text-muted-foreground text-[11px]">
-                <span>Póliza colectiva Pacífico</span>
-                <span>S/ {(jugadoresPichanga * 3.5).toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between font-bold text-foreground pt-1 border-t border-border mt-1">
-                <span>Tu aporte hoy</span>
-                <span className="text-primary font-heading">S/ 3.50</span>
-              </div>
-            </div>
-
-            {/* Link de invitación */}
-            <div className="flex items-center gap-2 rounded-xl bg-muted/40 p-2 text-[11px]">
-              <span className="truncate text-muted-foreground">
-                fibo.pe/pichanga?g=lima-7281
-              </span>
-              <Button
-                size="xs"
-                variant="secondary"
-                className="h-7 shrink-0 gap-1 text-[11px] cursor-pointer"
-                onClick={copiarLinkPichanga}
-              >
-                {linkCopiado ? <Check className="size-3 text-emerald-600" /> : <Copy className="size-3" />}
-                <span>{linkCopiado ? "¡Copiado!" : "Copiar"}</span>
-              </Button>
-            </div>
-          </div>
-
-          <DialogFooter className="flex flex-col gap-2">
-            <Button
-              className="w-full gap-1.5 text-xs font-semibold cursor-pointer"
-              onClick={() => {
-                dispararConfetti()
-                setModalPichanga(false)
-              }}
-            >
-              <Share2 className="size-3.5" />
-              <span>Compartir por WhatsApp</span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="w-full text-xs cursor-pointer"
-              onClick={() => setModalPichanga(false)}
-            >
-              Cancelar
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Modal: Detalle de Tribu */}
+      {/* ============================================================ */}
+      {/* MODAL: DETALLE DE TRIBU Y REGLA DE ESCUDO */}
+      {/* ============================================================ */}
       <Dialog
-        open={tribuSeleccionada !== null}
-        onOpenChange={(open) => !open && setTribuSeleccionada(null)}
+        open={tribuDetalle !== null}
+        onOpenChange={(open) => !open && setTribuDetalle(null)}
       >
         <DialogContent className="max-w-xs sm:max-w-sm">
           <DialogHeader className="text-left">
-            <DialogTitle className="font-heading text-base">
-              {tribuSeleccionada?.nombre}
+            <DialogTitle className="font-heading text-base flex items-center gap-2">
+              <span>{tribuDetalle?.nombre}</span>
             </DialogTitle>
             <DialogDescription className="text-xs text-muted-foreground">
-              {tribuSeleccionada?.universidad} • {tribuSeleccionada?.miembros} miembros
+              {tribuDetalle?.universidad} • {tribuDetalle?.miembros} miembros activos
             </DialogDescription>
           </DialogHeader>
 
-          <div className="flex flex-col gap-2.5 py-2 text-xs">
-            <div className="flex items-center justify-between rounded-xl bg-muted/50 p-3">
-              <span className="text-muted-foreground">Racha colectiva</span>
-              <span className="font-bold text-amber-600 dark:text-amber-400">
-                {tribuSeleccionada?.rachaSemanas} semanas activas 🔥
-              </span>
+          {tribuDetalle && (
+            <div className="flex flex-col gap-3 py-2 text-xs">
+              <div className="flex items-center justify-between rounded-xl bg-amber-500/10 p-3 text-amber-700 dark:text-amber-300">
+                <div className="flex items-center gap-2">
+                  <Flame className="size-4 fill-amber-500 text-amber-500" />
+                  <span className="font-semibold">Racha de la Tribu</span>
+                </div>
+                <span className="font-bold text-sm">
+                  {tribuDetalle.rachaSemanas} semanas activas
+                </span>
+              </div>
+
+              {/* Barra de progreso colectivo */}
+              <div className="flex flex-col gap-1.5 rounded-xl border border-border p-3">
+                <div className="flex justify-between text-[11px]">
+                  <span className="font-medium text-muted-foreground">Meta de la semana</span>
+                  <span className="font-bold text-foreground">{tribuDetalle.cumplimiento}% logrado</span>
+                </div>
+                <div className="h-2 w-full overflow-hidden rounded-full bg-input/60">
+                  <div
+                    className="h-full rounded-full bg-emerald-500 transition-all duration-500"
+                    style={{ width: `${tribuDetalle.cumplimiento}%` }}
+                  />
+                </div>
+                <p className="text-[11px] text-muted-foreground pt-0.5">
+                  Objetivo: <strong>{tribuDetalle.metaSemanal}</strong>
+                </p>
+              </div>
+
+              {/* Explicación del Escudo */}
+              <div className="flex items-start gap-2 rounded-xl bg-muted/40 p-2.5 text-[11px] text-muted-foreground leading-relaxed">
+                <Shield className="size-4 text-primary shrink-0 mt-0.5" />
+                <p>
+                  Si la tribu alcanza el 80% al domingo, todos los integrantes ganan 1 <strong>Escudo de Racha colectivo</strong> para cubrir días libres.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2 pt-1">
+                <Button
+                  className="w-full gap-1.5 text-xs font-semibold cursor-pointer"
+                  onClick={() => compartirTribuWhatsApp(tribuDetalle)}
+                >
+                  <Share2 className="size-3.5" />
+                  <span>Invitar amigos por WhatsApp</span>
+                </Button>
+
+                <Button
+                  variant={tribuDetalle.esMiembro ? "outline" : "secondary"}
+                  className="w-full text-xs cursor-pointer"
+                  onClick={() => handleToggleMembresiaTribu(tribuDetalle)}
+                >
+                  <HeartHandshake className="size-3.5" />
+                  <span>{tribuDetalle.esMiembro ? "Abandonar Tribu" : "Unirme a esta Tribu"}</span>
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* ============================================================ */}
+      {/* MODAL 3: CREAR NUEVA TRIBU (Con Selects) */}
+      {/* ============================================================ */}
+      <Dialog open={modalCrearTribu} onOpenChange={setModalCrearTribu}>
+        <DialogContent className="max-w-xs sm:max-w-sm">
+          <DialogHeader className="text-left">
+            <DialogTitle className="font-heading text-base">
+              Fundar una Nueva Tribu
+            </DialogTitle>
+            <DialogDescription className="text-xs text-muted-foreground">
+              Crea un espacio para ti y tus compañeros de deporte, trabajo o salidas. Serás el Capitán de la tribu.
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleCrearTribu} className="flex flex-col gap-3 py-2 text-xs">
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="tribu-nombre" className="text-xs">
+                Nombre de la Tribu
+              </Label>
+              <Input
+                id="tribu-nombre"
+                placeholder="Ej. Pedaleros de Barranco"
+                value={nuevoNombreTribu}
+                onChange={(e) => setNuevoNombreTribu(e.target.value)}
+                required
+              />
             </div>
 
-            <div className="flex flex-col gap-1 rounded-xl border border-border p-3 text-[11px] text-muted-foreground leading-relaxed">
-              <p className="font-semibold text-foreground">Objetivo en curso:</p>
-              <p>{tribuSeleccionada?.metaSemanal}</p>
-              <p className="pt-1 text-emerald-600 dark:text-emerald-400 font-semibold">
-                ✓ 88% de los miembros ya sumaron hoy
-              </p>
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="tribu-ambito" className="text-xs">
+                Ámbito o Tipo de Grupo
+              </Label>
+              <NativeSelect
+                id="tribu-ambito"
+                className="w-full"
+                value={nuevoAmbito}
+                onChange={(e) => setNuevoAmbito(e.target.value)}
+              >
+                {AMBITOS_TRIBU_OPCIONES.map((opcion) => (
+                  <option key={opcion} value={opcion}>
+                    {opcion}
+                  </option>
+                ))}
+              </NativeSelect>
             </div>
-          </div>
 
-          <DialogFooter>
-            <Button
-              className="w-full text-xs font-semibold cursor-pointer"
-              onClick={() => {
-                dispararConfetti()
-                setTribuSeleccionada(null)
-              }}
-            >
-              ¡Alentar a la Tribu! 🙌
-            </Button>
-          </DialogFooter>
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="tribu-meta" className="text-xs">
+                Meta Colectiva Semanal
+              </Label>
+              <NativeSelect
+                id="tribu-meta"
+                className="w-full"
+                value={nuevaMetaSemanal}
+                onChange={(e) => setNuevaMetaSemanal(e.target.value)}
+              >
+                {METAS_COLECTIVAS_OPCIONES.map((meta) => (
+                  <option key={meta} value={meta}>
+                    {meta}
+                  </option>
+                ))}
+              </NativeSelect>
+            </div>
+
+            <DialogFooter className="flex flex-col gap-2 pt-2">
+              <Button type="submit" className="w-full text-xs font-semibold cursor-pointer">
+                Fundar Tribu y Activar Escudo
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                className="w-full text-xs cursor-pointer"
+                onClick={() => setModalCrearTribu(false)}
+              >
+                Cancelar
+              </Button>
+            </DialogFooter>
+          </form>
         </DialogContent>
       </Dialog>
     </div>
