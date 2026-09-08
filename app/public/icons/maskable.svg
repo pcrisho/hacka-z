@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGradMask" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#001A23"/>
+      <stop offset="100%" stop-color="#04262F"/>
+    </linearGradient>
+    <radialGradient id="glowMask" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#0099CC" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0099CC" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="goldGradMask" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5CE7A"/>
+      <stop offset="50%" stop-color="#D4A24C"/>
+      <stop offset="100%" stop-color="#B88334"/>
+    </linearGradient>
+    <linearGradient id="cyanGradMask" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#35DAFF"/>
+      <stop offset="50%" stop-color="#0099CC"/>
+      <stop offset="100%" stop-color="#004C66"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Full bleed background without border-radius for maskable icons -->
+  <rect width="512" height="512" fill="url(#bgGradMask)"/>
+  <circle cx="256" cy="256" r="160" fill="url(#glowMask)"/>
+
+  <!-- Centered strictly within 60% safe area circle (radius 153px) -->
+  <g transform="translate(256, 230) scale(12) translate(-12, -10)">
+    <path
+      d="M12 2C7 2 4 5 4 9c0 3 2 5 5 5"
+      stroke="url(#goldGradMask)"
+      stroke-width="2.4"
+      stroke-linecap="round"
+    />
+    <path
+      d="M12 2c5 0 8 3 8 7 0 5-4 8-9 8-3.5 0-6-2-6-5"
+      stroke="url(#cyanGradMask)"
+      stroke-width="2.4"
+      stroke-linecap="round"
+      stroke-opacity="0.9"
+    />
+  </g>
+
+  <text
+    x="256"
+    y="384"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="34"
+    font-weight="900"
+    letter-spacing="3"
+    fill="#FFFFFF"
+  >FIBO</text>
+</svg>
